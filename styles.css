@@ -417,7 +417,7 @@ body {
 }
 
 .modality-features li::before {
-    content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 600;
+    content: 'âœ“'; position: absolute; left: 0; color: var(--accent); font-weight: 600;
 }
 
 .modality-card.featured .modality-features li::before {
@@ -780,7 +780,7 @@ body {
 }
 
 .faq-question.active::after {
-    content: '−'; transform: translateY(-50%) rotate(180deg);
+    content: 'âˆ’'; transform: translateY(-50%) rotate(180deg);
 }
 
 .faq-answer {
@@ -901,4 +901,504 @@ body {
         grid-template-columns: 1fr;
     }
     .featured-content h2 { font-size: 1.8rem; }
+}
+/* MEJORAS RESPONSIVE Y AREAS CLICKEABLES */
+
+/* Mejoras Responsive para MÃ³vil */
+@media (max-width: 968px) {
+    .nav-links { 
+        display: none; 
+        position: absolute; 
+        top: 100%; 
+        left: 0; 
+        right: 0;
+        background: white; 
+        flex-direction: column; 
+        padding: 20px; 
+        box-shadow: var(--shadow-md);
+        gap: 20px;
+    }
+    .nav-links.active { display: flex; }
+    .mobile-menu-toggle { display: flex; }
+    
+    .hero-title { font-size: 2.5rem; line-height: 1.2; }
+    .hero-subtitle { font-size: 1.1rem; }
+    .hero-buttons { flex-direction: column; width: 100%; }
+    .btn-hero-primary, .btn-hero-secondary { width: 100%; text-align: center; }
+    
+    .about-grid, .approach-grid, .contact-grid { 
+        grid-template-columns: 1fr; 
+        gap: 40px; 
+    }
+    
+    .footer-grid { 
+        grid-template-columns: 1fr; 
+        gap: 30px; 
+    }
+    
+    .featured-article {
+        grid-template-columns: 1fr;
+    }
+    
+    .featured-content {
+        padding: 30px;
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+    
+    .timeline::before { left: 30px; }
+    .timeline-dot { left: 30px; }
+    .timeline-item { padding-left: 80px; }
+    .timeline-item:nth-child(even) { flex-direction: row; }
+}
+
+@media (max-width: 640px) {
+    :root { --section-padding: 60px 20px; }
+    
+    .hero-full { min-height: 600px; height: auto; padding: 120px 0 60px; }
+    .hero-title { font-size: 2rem; }
+    .hero-subtitle { font-size: 1rem; }
+    .hero-label { font-size: 0.75rem; }
+    
+    .section-title { font-size: 1.8rem; }
+    .section-description { font-size: 1rem; }
+    
+    .testimonials-slider, .areas-grid, .modalities-grid, 
+    .blog-grid, .resources-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-image-wrapper { margin-bottom: 30px; }
+    .credential-box { flex-direction: column; text-align: center; }
+    
+    .pillar-item { flex-direction: column; text-align: center; }
+    .pillar-number { margin-bottom: 10px; }
+    
+    .modality-card { padding: 30px 20px; }
+    .popular-badge { top: 10px; right: 10px; font-size: 0.7rem; }
+    
+    .contact-method-item { flex-direction: column; text-align: center; }
+    .method-icon { margin-bottom: 10px; }
+    
+    .whatsapp-float { 
+        width: 50px; 
+        height: 50px; 
+        bottom: 20px; 
+        right: 20px; 
+    }
+    
+    .nav-logo { font-size: 1.2rem; }
+    
+    .admin-section { padding: 30px 20px; }
+}
+
+@media (max-width: 480px) {
+    .hero-title { font-size: 1.6rem; }
+    .section-title { font-size: 1.5rem; }
+    
+    .area-card, .modality-card, .testimonial-card, 
+    .blog-card, .resource-card {
+        padding: 25px 20px;
+    }
+    
+    .btn-hero-primary, .btn-hero-secondary {
+        padding: 14px 30px;
+        font-size: 0.95rem;
+    }
+}
+
+/* Ãreas de Trabajo Clickeables */
+.area-card {
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.area-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 0;
+    background: var(--accent);
+    transition: height 0.3s ease;
+}
+
+.area-card:hover::before {
+    height: 100%;
+}
+
+.area-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-top-color: var(--accent);
+}
+
+.area-card-footer {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--bg-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.area-learn-more {
+    color: var(--accent);
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap 0.3s ease;
+}
+
+.area-learn-more:hover {
+    gap: 12px;
+    color: var(--accent-dark);
+}
+
+/* Modal para Ãreas Detalladas */
+.area-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 10000;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.area-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.area-modal-content {
+    background: var(--bg-white);
+    max-width: 800px;
+    width: 100%;
+    border-radius: 12px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.area-modal-header {
+    padding: 40px 40px 30px;
+    border-bottom: 2px solid var(--bg-light);
+    position: relative;
+}
+
+.area-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: var(--bg-light);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--text-medium);
+    transition: all 0.3s ease;
+}
+
+.area-modal-close:hover {
+    background: var(--accent);
+    color: white;
+    transform: rotate(90deg);
+}
+
+.area-modal-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.area-modal-title {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--primary-dark);
+    margin-bottom: 16px;
+}
+
+.area-modal-subtitle {
+    color: var(--text-medium);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.area-modal-body {
+    padding: 40px;
+}
+
+.area-modal-section {
+    margin-bottom: 30px;
+}
+
+.area-modal-section h3 {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--primary);
+    margin-bottom: 16px;
+}
+
+.area-modal-section p {
+    color: var(--text-medium);
+    line-height: 1.8;
+    margin-bottom: 12px;
+}
+
+.area-modal-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.area-modal-section li {
+    padding-left: 30px;
+    position: relative;
+    margin-bottom: 12px;
+    color: var(--text-medium);
+    line-height: 1.7;
+}
+
+.area-modal-section li::before {
+    content: 'âœ“';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.area-modal-footer {
+    padding: 30px 40px 40px;
+    background: var(--bg-cream);
+    text-align: center;
+}
+
+.area-modal-cta {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    padding: 16px 50px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-md);
+}
+
+.area-modal-cta:hover {
+    background: var(--accent-dark);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 768px) {
+    .area-modal-content {
+        margin: 20px 0;
+    }
+    
+    .area-modal-header,
+    .area-modal-body,
+    .area-modal-footer {
+        padding: 30px 25px;
+    }
+    
+    .area-modal-title {
+        font-size: 2rem;
+    }
+    
+    .area-modal-close {
+        top: 15px;
+        right: 15px;
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* SecciÃ³n Voces del Tourette */
+.tourette-section {
+    padding: var(--section-padding);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.tourette-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)" /></svg>');
+    opacity: 0.3;
+}
+
+.tourette-content {
+    position: relative;
+    z-index: 10;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.tourette-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.tourette-info h2 {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.tourette-info p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 16px;
+    color: rgba(255,255,255,0.95);
+}
+
+.tourette-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.tourette-stat {
+    background: rgba(255,255,255,0.1);
+    padding: 30px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.tourette-stat-number {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--accent-light);
+}
+
+.tourette-stat-label {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.9);
+}
+
+.tourette-cta-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.tourette-btn {
+    display: inline-block;
+    padding: 16px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+}
+
+.tourette-btn-primary {
+    background: white;
+    color: #667eea;
+}
+
+.tourette-btn-primary:hover {
+    background: var(--accent-light);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.tourette-btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255,255,255,0.5);
+}
+
+.tourette-btn-secondary:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: white;
+}
+
+.tourette-visual {
+    position: relative;
+}
+
+.tourette-logo {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    filter: drop-shadow(0 10px 40px rgba(0,0,0,0.3));
+}
+
+@media (max-width: 968px) {
+    .tourette-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .tourette-info h2 {
+        font-size: 2.2rem;
+    }
+    
+    .tourette-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .tourette-visual {
+        text-align: center;
+    }
+}
+
+@media (max-width: 640px) {
+    .tourette-info h2 {
+        font-size: 1.8rem;
+    }
+    
+    .tourette-info p {
+        font-size: 1.05rem;
+    }
+    
+    .tourette-stat {
+        padding: 20px;
+    }
+    
+    .tourette-stat-number {
+        font-size: 2.5rem;
+    }
+    
+    .tourette-cta-group {
+        flex-direction: column;
+    }
+    
+    .tourette-btn {
+        width: 100%;
+        text-align: center;
+    }
 }
