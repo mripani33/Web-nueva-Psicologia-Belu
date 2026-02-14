@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">María Belén Prieto - Psicóloga Clínica</title>
+    <meta name="description" id="meta-desc" content="Psicóloga clínica especializada en terapia individual, de pareja y familiar. Atención presencial y online.">
+    <link rel="stylesheet" href="styles-new.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- WhatsApp Floating Button -->
+    <a href="#" id="whatsapp-float" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 0C7.163 0 0 7.163 0 16c0 2.825.737 5.482 2.028 7.784L.064 31.267l7.653-1.933A15.937 15.937 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0z" fill="#25D366"/>
+            <path d="M25.229 22.817c-.342.963-2.012 1.766-2.926 1.877-.781.093-1.801.14-2.905-.182-.67-.195-1.527-.455-2.621-.892-4.585-1.834-7.568-6.472-7.796-6.77-.227-.299-1.85-2.461-1.85-4.695 0-2.234 1.173-3.33 1.588-3.784.416-.455.908-.568 1.21-.568.303 0 .605.002.871.016.279.013.654-.106.995.758.342.864 1.166 2.843 1.268 3.048.102.205.171.444.034.743-.137.298-.205.485-.41.745-.205.26-.43.58-.615.779-.205.22-.417.458-.18.898.238.44 1.057 1.743 2.268 2.825 1.557 1.39 2.869 1.822 3.278 2.027.41.205.649.171.888-.103.239-.274.923-1.079 1.169-1.452.246-.373.492-.311.829-.186.337.125 2.14 1.01 2.508 1.193.369.183.615.274.705.425.09.15.09.864-.252 1.827z" fill="#fff"/>
+        </svg>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="main-nav" id="main-nav">
+        <div class="nav-container">
+            <a href="#inicio" class="nav-logo" id="nav-logo">María Belén Prieto</a>
+            <button class="mobile-menu-toggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre Mí</a></li>
+                <li><a href="#areas">Áreas de Trabajo</a></li>
+                <li><a href="#formacion">Formación</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contacto" class="nav-cta">Reservar Cita</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Background -->
+    <section id="inicio" class="hero-full">
+        <div class="hero-overlay"></div>
+        <div class="hero-background" id="hero-background"></div>
+        <div class="hero-content-wrapper">
+            <div class="hero-content">
+                <span class="hero-label" id="hero-label">Psicología Clínica</span>
+                <h1 class="hero-title" id="hero-title">Un espacio seguro para tu bienestar emocional</h1>
+                <p class="hero-subtitle" id="hero-subtitle">Acompañamiento profesional en terapia individual, de pareja y familiar. Presencial y online.</p>
+                <div class="hero-buttons">
+                    <a href="#contacto" class="btn-hero-primary" id="hero-btn-1">Primera Consulta Gratuita</a>
+                    <a href="#sobre-mi" class="btn-hero-secondary" id="hero-btn-2">Conocer Más</a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Desliza</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Sobre Mí Section -->
+    <section id="sobre-mi" class="about-section">
+        <div class="container-wide">
+            <div class="about-grid">
+                <div class="about-image-wrapper">
+                    <div class="about-image" id="about-image">
+                        <div class="about-image-placeholder"></div>
+                    </div>
+                    <div class="about-decoration"></div>
+                </div>
+                <div class="about-content">
+                    <span class="section-tag">Sobre Mí</span>
+                    <h2 class="section-title" id="about-title">Comprometida con tu proceso de cambio</h2>
+                    <div class="about-text">
+                        <p id="about-bio1" class="about-paragraph"></p>
+                        <p id="about-bio2" class="about-paragraph"></p>
+                        <p id="about-bio3" class="about-paragraph"></p>
+                    </div>
+                    <div class="about-credentials">
+                        <div class="credential-box">
+                            <div class="credential-icon">🎓</div>
+                            <div class="credential-info">
+                                <strong>Formación Académica</strong>
+                                <p id="about-education"></p>
+                            </div>
+                        </div>
+                        <div class="credential-box">
+                            <div class="credential-icon">📋</div>
+                            <div class="credential-info">
+                                <strong>Colegiación</strong>
+                                <p>Nº <span id="about-colegiacion"></span> - Colegio Oficial de Psicología</p>
+                            </div>
+                        </div>
+                        <div class="credential-box">
+                            <div class="credential-icon">⏱️</div>
+                            <div class="credential-info">
+                                <strong>Experiencia</strong>
+                                <p id="about-experience">Más de X años de práctica clínica</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Áreas de Trabajo / Especialidades -->
+    <section id="areas" class="areas-section">
+        <div class="container">
+            <div class="section-header-centered">
+                <span class="section-tag">Áreas de Trabajo</span>
+                <h2 class="section-title">¿En qué puedo ayudarte?</h2>
+                <p class="section-description">Especializada en diferentes áreas de la psicología clínica para acompañarte en tu proceso terapéutico.</p>
+            </div>
+            <div class="areas-grid" id="areas-grid">
+                <!-- Se cargará dinámicamente desde data.json -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Enfoque Terapéutico -->
+    <section class="approach-section">
+        <div class="container-wide">
+            <div class="approach-grid">
+                <div class="approach-content">
+                    <span class="section-tag">Mi Enfoque</span>
+                    <h2 class="section-title" id="approach-title">Terapia centrada en la persona</h2>
+                    <div class="approach-text" id="approach-description">
+                        <p>Mi enfoque terapéutico es humanista e integrativo, lo que significa que adapto las técnicas y estrategias a las necesidades únicas de cada persona.</p>
+                        <p>Creo firmemente en el potencial de cambio de cada individuo y en la importancia de crear un espacio terapéutico seguro, empático y libre de juicios.</p>
+                    </div>
+                    <div class="approach-pillars">
+                        <div class="pillar-item">
+                            <div class="pillar-number">01</div>
+                            <h4>Escucha Activa</h4>
+                            <p>Un espacio donde ser escuchado sin juicios</p>
+                        </div>
+                        <div class="pillar-item">
+                            <div class="pillar-number">02</div>
+                            <h4>Personalización</h4>
+                            <p>Cada terapia se adapta a tus necesidades</p>
+                        </div>
+                        <div class="pillar-item">
+                            <div class="pillar-number">03</div>
+                            <h4>Compromiso</h4>
+                            <p>Acompañamiento constante en tu proceso</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="approach-visual">
+                    <div class="approach-quote-box">
+                        <svg class="quote-icon" viewBox="0 0 48 48" fill="none">
+                            <path d="M12 24C12 19.6 14.4 16 18 14.4V10.8C11.6 12.8 7.2 19.2 7.2 24C7.2 28.8 11.2 33.6 16 33.6C20.8 33.6 24.8 29.6 24.8 24.8C24.8 20 20.8 16 16 16C14.8 16 13.6 16.4 12.8 16.8C12.4 17.2 12 17.6 12 18.4V24Z" fill="currentColor"/>
+                            <path d="M31.2 24C31.2 19.6 33.6 16 37.2 14.4V10.8C30.8 12.8 26.4 19.2 26.4 24C26.4 28.8 30.4 33.6 35.2 33.6C40 33.6 44 29.6 44 24.8C44 20 40 16 35.2 16C34 16 32.8 16.4 32 16.8C31.6 17.2 31.2 17.6 31.2 18.4V24Z" fill="currentColor"/>
+                        </svg>
+                        <p class="quote-text" id="approach-quote">El proceso terapéutico es un camino de autodescubrimiento donde aprenderás a reconocer tus fortalezas y a gestionar tus dificultades de manera más saludable.</p>
+                        <p class="quote-author">— <span id="config-name-quote">María Belén Prieto</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formación y Experiencia -->
+    <section id="formacion" class="education-section">
+        <div class="container">
+            <div class="section-header-centered">
+                <span class="section-tag">Formación y Experiencia</span>
+                <h2 class="section-title">Trayectoria Profesional</h2>
+            </div>
+            <div class="timeline" id="education-timeline">
+                <!-- Se cargará dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Modalidades de Atención -->
+    <section class="modalities-section">
+        <div class="container">
+            <div class="section-header-centered">
+                <span class="section-tag">Modalidades</span>
+                <h2 class="section-title">Cómo trabajamos juntos</h2>
+            </div>
+            <div class="modalities-grid">
+                <div class="modality-card">
+                    <div class="modality-icon">🏢</div>
+                    <h3>Consulta Presencial</h3>
+                    <p>Atención personalizada en mi consulta en Madrid. Un espacio acogedor y confidencial diseñado para tu comodidad.</p>
+                    <ul class="modality-features">
+                        <li>Sesiones de 50-60 minutos</li>
+                        <li>Ambiente profesional y privado</li>
+                        <li>Fácil acceso y parking</li>
+                    </ul>
+                </div>
+                <div class="modality-card featured">
+                    <div class="popular-badge">Más solicitada</div>
+                    <div class="modality-icon">💻</div>
+                    <h3>Terapia Online</h3>
+                    <p>Sesiones por videollamada con la misma calidad que la terapia presencial. Perfecta si vives fuera de Madrid o prefieres la comodidad de tu hogar.</p>
+                    <ul class="modality-features">
+                        <li>Desde cualquier lugar del mundo</li>
+                        <li>Plataforma segura y confidencial</li>
+                        <li>Flexibilidad de horarios</li>
+                    </ul>
+                </div>
+                <div class="modality-card">
+                    <div class="modality-icon">🔄</div>
+                    <h3>Formato Mixto</h3>
+                    <p>Combina sesiones presenciales y online según tus necesidades. Ideal para quienes viajan o tienen horarios cambiantes.</p>
+                    <ul class="modality-features">
+                        <li>Máxima flexibilidad</li>
+                        <li>Adaptado a tu agenda</li>
+                        <li>Continuidad garantizada</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section id="testimonios" class="testimonials-section">
+        <div class="container">
+            <div class="section-header-centered">
+                <span class="section-tag">Testimonios</span>
+                <h2 class="section-title">Lo que dicen quienes han confiado en mí</h2>
+            </div>
+            <div class="testimonials-slider" id="testimonials-slider">
+                <!-- Se cargará dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog / Recursos -->
+    <section id="blog" class="blog-section">
+        <div class="container">
+            <div class="section-header-split">
+                <div>
+                    <span class="section-tag">Blog y Recursos</span>
+                    <h2 class="section-title">Artículos y material de apoyo</h2>
+                </div>
+                <a href="#" class="btn-view-all">Ver todos los artículos →</a>
+            </div>
+            <div class="blog-featured" id="blog-featured">
+                <!-- Artículo destacado -->
+            </div>
+            <div class="blog-grid" id="blog-grid">
+                <!-- Más artículos -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Recursos Descargables -->
+    <section class="resources-section">
+        <div class="container">
+            <div class="section-header-centered">
+                <span class="section-tag">Recursos Gratuitos</span>
+                <h2 class="section-title">Material descargable para tu bienestar</h2>
+                <p class="section-description">Guías, ejercicios y herramientas que puedes usar en tu día a día</p>
+            </div>
+            <div class="resources-grid" id="resources-grid">
+                <!-- Se cargará dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Preguntas Frecuentes -->
+    <section class="faq-section">
+        <div class="container-narrow">
+            <div class="section-header-centered">
+                <span class="section-tag">FAQ</span>
+                <h2 class="section-title">Preguntas Frecuentes</h2>
+            </div>
+            <div class="faq-accordion" id="faq-accordion">
+                <!-- Se cargará dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto y Citas -->
+    <section id="contacto" class="contact-section">
+        <div class="container-wide">
+            <div class="contact-grid">
+                <div class="contact-info-wrapper">
+                    <span class="section-tag">Contacto</span>
+                    <h2 class="section-title">¿Hablamos?</h2>
+                    <p class="contact-intro">Estoy aquí para escucharte. Reserva tu primera consulta o contáctame para resolver cualquier duda.</p>
+                    
+                    <div class="contact-methods-list">
+                        <div class="contact-method-item">
+                            <div class="method-icon">📧</div>
+                            <div class="method-content">
+                                <h4>Email</h4>
+                                <a href="#" id="contact-email">contacto@mariabelenprieto.com</a>
+                                <p>Respondo en menos de 24 horas</p>
+                            </div>
+                        </div>
+                        <div class="contact-method-item">
+                            <div class="method-icon">📱</div>
+                            <div class="method-content">
+                                <h4>Teléfono / WhatsApp</h4>
+                                <a href="#" id="contact-phone">+34 XXX XXX XXX</a>
+                                <p>Lunes a Viernes: 9:00 - 20:00</p>
+                            </div>
+                        </div>
+                        <div class="contact-method-item">
+                            <div class="method-icon">📍</div>
+                            <div class="method-content">
+                                <h4>Consulta</h4>
+                                <p id="contact-address">Madrid, España</p>
+                                <p class="address-note">Dirección exacta al reservar cita</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-hours">
+                        <h4>Horario de Atención</h4>
+                        <div class="hours-list">
+                            <div class="hour-item">
+                                <span>Lunes - Viernes</span>
+                                <span>9:00 - 20:00</span>
+                            </div>
+                            <div class="hour-item">
+                                <span>Sábados</span>
+                                <span>10:00 - 14:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-wrapper">
+                    <div class="calendar-integration" id="calendar-integration">
+                        <!-- DOCFAV o Calendly -->
+                        <div class="calendar-placeholder">
+                            <h3>Reserva tu cita online</h3>
+                            <p>Sistema de reservas en configuración...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <h3 id="footer-name">María Belén Prieto</h3>
+                    <p>Psicóloga clínica colegiada especializada en terapia humanista e integrativa. Atención presencial en Madrid y online.</p>
+                    <div class="footer-social" id="footer-social">
+                        <!-- Redes sociales -->
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Navegación</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#sobre-mi">Sobre Mí</a></li>
+                        <li><a href="#areas">Áreas de Trabajo</a></li>
+                        <li><a href="#formacion">Formación</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="#testimonios">Testimonios</a></li>
+                        <li><a href="#recursos">Material Descargable</a></li>
+                        <li><a href="#faq">Preguntas Frecuentes</a></li>
+                        <li><a href="/blog">Artículos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#privacidad">Política de Privacidad</a></li>
+                        <li><a href="#cookies">Política de Cookies</a></li>
+                        <li><a href="#aviso-legal">Aviso Legal</a></li>
+                        <li><a href="#condiciones">Condiciones de Uso</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 <span id="footer-copy">María Belén Prieto</span>. Todos los derechos reservados.</p>
+                <p class="footer-credit">Diseñado con dedicación para el bienestar emocional</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app-new.js"></script>
+</body>
+</html>
