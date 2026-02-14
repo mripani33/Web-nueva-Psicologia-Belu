@@ -21,27 +21,27 @@ function loadDefaults() {
     siteData = {
         hero: {
             title: 'Un espacio seguro para tu bienestar emocional',
-            subtitle: 'AcompaÃ±amiento profesional en terapia individual, de pareja y familiar. Presencial y online.',
-            label: 'PsicologÃ­a ClÃ­nica',
+            subtitle: 'Acompañamiento profesional en terapia individual, de pareja y familiar. Presencial y online.',
+            label: 'Psicología Clínica',
             btnPrimary: 'Primera Consulta Gratuita',
-            btnSecondary: 'Conocer MÃ¡s',
+            btnSecondary: 'Conocer Más',
             backgroundImage: ''
         },
         about: {
             title: 'Comprometida con tu proceso de cambio',
-            bio1: 'Soy psicÃ³loga clÃ­nica colegiada con vocaciÃ³n de ayudar a las personas a encontrar su bienestar emocional.',
-            bio2: 'Mi enfoque es humanista e integrativo, adaptÃ¡ndome a las necesidades Ãºnicas de cada persona.',
-            bio3: 'Creo en el potencial de cambio de cada individuo y en la importancia de crear un espacio terapÃ©utico seguro.',
-            education: 'Licenciada en PsicologÃ­a',
+            bio1: 'Soy psicóloga clínica colegiada con vocación de ayudar a las personas a encontrar su bienestar emocional.',
+            bio2: 'Mi enfoque es humanista e integrativo, adaptándome a las necesidades únicas de cada persona.',
+            bio3: 'Creo en el potencial de cambio de cada individuo y en la importancia de crear un espacio terapéutico seguro.',
+            education: 'Licenciada en Psicología',
             colegiacion: 'XXXXX',
-            experience: 'MÃ¡s de X aÃ±os de prÃ¡ctica clÃ­nica',
+            experience: 'Más de X años de práctica clínica',
             image: ''
         },
         areas: [],
         approach: {
             title: 'Terapia centrada en la persona',
-            description: '<p>Mi enfoque terapÃ©utico es humanista e integrativo, lo que significa que adapto las tÃ©cnicas y estrategias a las necesidades Ãºnicas de cada persona.</p><p>Creo firmemente en el potencial de cambio de cada individuo y en la importancia de crear un espacio terapÃ©utico seguro, empÃ¡tico y libre de juicios.</p>',
-            quote: 'El proceso terapÃ©utico es un camino de autodescubrimiento donde aprenderÃ¡s a reconocer tus fortalezas y a gestionar tus dificultades de manera mÃ¡s saludable.'
+            description: '<p>Mi enfoque terapéutico es humanista e integrativo, lo que significa que adapto las técnicas y estrategias a las necesidades únicas de cada persona.</p><p>Creo firmemente en el potencial de cambio de cada individuo y en la importancia de crear un espacio terapéutico seguro, empático y libre de juicios.</p>',
+            quote: 'El proceso terapéutico es un camino de autodescubrimiento donde aprenderás a reconocer tus fortalezas y a gestionar tus dificultades de manera más saludable.'
         },
         education: [],
         testimonials: [],
@@ -49,18 +49,18 @@ function loadDefaults() {
         resources: [],
         faq: [],
         config: {
-            name: 'MarÃ­a BelÃ©n Prieto',
+            name: 'María Belén Prieto',
             email: 'contacto@mariabelenprieto.com',
             whatsapp: '34XXXXXXXXX',
             phone: '+34 XXX XXX XXX',
-            address: 'Madrid, EspaÃ±a',
+            address: 'Madrid, España',
             docfavUrl: '',
             docfavWidget: '',
             instagram: '',
             linkedin: '',
             facebook: '',
             youtube: '',
-            metaDescription: 'PsicÃ³loga clÃ­nica especializada en terapia individual, de pareja y familiar. AtenciÃ³n presencial y online.',
+            metaDescription: 'Psicóloga clínica especializada en terapia individual, de pareja y familiar. Atención presencial y online.',
             analytics: ''
         }
     };
@@ -85,7 +85,7 @@ function applyAllData() {
 // Hero Section
 function applyHero() {
     const { hero } = siteData;
-    document.getElementById('hero-label').textContent = hero.label || 'PsicologÃ­a ClÃ­nica';
+    document.getElementById('hero-label').textContent = hero.label || 'Psicología Clínica';
     document.getElementById('hero-title').textContent = hero.title;
     document.getElementById('hero-subtitle').textContent = hero.subtitle;
     document.getElementById('hero-btn-1').textContent = hero.btnPrimary;
@@ -107,7 +107,7 @@ function applyAbout() {
     }
     document.getElementById('about-education').textContent = about.education;
     document.getElementById('about-colegiacion').textContent = about.colegiacion;
-    document.getElementById('about-experience').textContent = about.experience || 'MÃ¡s de X aÃ±os de prÃ¡ctica clÃ­nica';
+    document.getElementById('about-experience').textContent = about.experience || 'Más de X años de práctica clínica';
     
     if (about.image) {
         const aboutImage = document.querySelector('.about-image-placeholder');
@@ -125,19 +125,19 @@ function applyAreas() {
     if (!areas || areas.length === 0) {
         areasGrid.innerHTML = `
             <div class="area-card">
-                <div class="area-icon">ðŸ’­</div>
+                <div class="area-icon">💭</div>
                 <h3>Terapia Individual</h3>
-                <p>AcompaÃ±amiento personalizado para trabajar ansiedad, depresiÃ³n, autoestima y crecimiento personal.</p>
+                <p>Acompañamiento personalizado para trabajar ansiedad, depresión, autoestima y crecimiento personal.</p>
             </div>
             <div class="area-card">
-                <div class="area-icon">ðŸ’‘</div>
+                <div class="area-icon">💑</div>
                 <h3>Terapia de Pareja</h3>
-                <p>Mejora la comunicaciÃ³n y fortalece la conexiÃ³n emocional en tu relaciÃ³n.</p>
+                <p>Mejora la comunicación y fortalece la conexión emocional en tu relación.</p>
             </div>
             <div class="area-card">
-                <div class="area-icon">ðŸ‘¨â€ðŸ‘©â€ðŸ‘§</div>
+                <div class="area-icon">👨‍👩‍👧</div>
                 <h3>Terapia Familiar</h3>
-                <p>ResoluciÃ³n de conflictos familiares y mejora de la dinÃ¡mica del hogar.</p>
+                <p>Resolución de conflictos familiares y mejora de la dinámica del hogar.</p>
             </div>
         `;
         return;
@@ -145,7 +145,7 @@ function applyAreas() {
     
     areasGrid.innerHTML = areas.map(area => `
         <div class="area-card">
-            <div class="area-icon">${area.icon || 'âœ¨'}</div>
+            <div class="area-icon">${area.icon || '✨'}</div>
             <h3>${area.name}</h3>
             <p>${area.description}</p>
         </div>
@@ -180,8 +180,8 @@ function applyEducation() {
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <span class="timeline-year">2020</span>
-                    <h3>FormaciÃ³n especializada</h3>
-                    <p>Agrega tu formaciÃ³n desde el panel de administraciÃ³n.</p>
+                    <h3>Formación especializada</h3>
+                    <p>Agrega tu formación desde el panel de administración.</p>
                 </div>
                 <div style="flex: 1;"></div>
             </div>
@@ -210,12 +210,12 @@ function applyTestimonials() {
     if (!testimonials || testimonials.length === 0) {
         slider.innerHTML = `
             <div class="testimonial-card">
-                <div class="testimonial-stars">â­â­â­â­â­</div>
+                <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
                 <p class="testimonial-quote">"Un espacio de confianza donde pude trabajar mis emociones. Muy recomendable."</p>
                 <div class="testimonial-author">
                     <div class="author-avatar">A</div>
                     <div class="author-info">
-                        <h4>AnÃ³nimo</h4>
+                        <h4>Anónimo</h4>
                         <p>Paciente</p>
                     </div>
                 </div>
@@ -226,7 +226,7 @@ function applyTestimonials() {
     
     slider.innerHTML = testimonials.map(t => `
         <div class="testimonial-card">
-            <div class="testimonial-stars">${'â­'.repeat(t.rating || 5)}</div>
+            <div class="testimonial-stars">${'⭐'.repeat(t.rating || 5)}</div>
             <p class="testimonial-quote">"${t.text}"</p>
             <div class="testimonial-author">
                 <div class="author-avatar">${t.name.charAt(0)}</div>
@@ -249,7 +249,7 @@ function applyBlog() {
         featuredContainer.innerHTML = '';
         blogGrid.innerHTML = `
             <p style="grid-column: 1/-1; text-align: center; padding: 60px 20px; color: var(--text-light);">
-                PrÃ³ximamente artÃ­culos y recursos para tu bienestar.
+                Próximamente artículos y recursos para tu bienestar.
             </p>
         `;
         return;
@@ -265,10 +265,10 @@ function applyBlog() {
                 <h2>${featured.title}</h2>
                 <p class="featured-excerpt">${featured.content.substring(0, 200)}...</p>
                 <div class="featured-meta">
-                    <span>ðŸ“… ${featured.date}</span>
-                    <span>â±ï¸ ${Math.ceil(featured.content.length / 1000)} min lectura</span>
+                    <span>📅 ${featured.date}</span>
+                    <span>⏱️ ${Math.ceil(featured.content.length / 1000)} min lectura</span>
                 </div>
-                <a href="#" class="btn-read-more" onclick="showFullArticle(${featured.id}); return false;">Leer artÃ­culo completo</a>
+                <a href="#" class="btn-read-more" onclick="showFullArticle(${featured.id}); return false;">Leer artículo completo</a>
             </div>
         </div>
     `;
@@ -283,7 +283,7 @@ function applyBlog() {
                     <div class="blog-date">${post.date}</div>
                     <h3>${post.title}</h3>
                     <p class="blog-excerpt">${post.content.substring(0, 120)}...</p>
-                    <a href="#" class="blog-link" onclick="showFullArticle(${post.id}); return false;">Leer mÃ¡s â†’</a>
+                    <a href="#" class="blog-link" onclick="showFullArticle(${post.id}); return false;">Leer más →</a>
                 </div>
             </div>
         `).join('');
@@ -295,7 +295,7 @@ function applyBlog() {
 function showFullArticle(id) {
     const article = siteData.blog.find(a => a.id === id);
     if (article) {
-        alert(`${article.title}\n\n${article.content}\n\n[En producciÃ³n, esto abrirÃ­a la pÃ¡gina completa del artÃ­culo]`);
+        alert(`${article.title}\n\n${article.content}\n\n[En producción, esto abriría la página completa del artículo]`);
     }
 }
 
@@ -307,17 +307,17 @@ function applyResources() {
     if (!resources || resources.length === 0) {
         grid.innerHTML = `
             <p style="grid-column: 1/-1; text-align: center; padding: 60px 20px; color: var(--text-light);">
-                Recursos descargables prÃ³ximamente.
+                Recursos descargables próximamente.
             </p>
         `;
         return;
     }
     
-    const iconMap = { pdf: 'ðŸ“„', audio: 'ðŸŽµ', video: 'ðŸŽ¬' };
+    const iconMap = { pdf: '📄', audio: '🎵', video: '🎬' };
     
     grid.innerHTML = resources.map(r => `
         <div class="resource-card">
-            <div class="resource-icon">${iconMap[r.type] || 'ðŸ“„'}</div>
+            <div class="resource-icon">${iconMap[r.type] || '📄'}</div>
             <h3>${r.title}</h3>
             <p>${r.description}</p>
             <a href="${r.file}" class="resource-download" download>Descargar ${r.type.toUpperCase()}</a>
@@ -333,18 +333,18 @@ function applyFAQ() {
     if (!faq || faq.length === 0) {
         accordion.innerHTML = `
             <div class="faq-item">
-                <button class="faq-question">Â¿CÃ³mo es la primera sesiÃ³n?</button>
+                <button class="faq-question">¿Cómo es la primera sesión?</button>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        La primera sesiÃ³n es un espacio de conocimiento mutuo donde podrÃ¡s contarme quÃ© te trae a consulta y evaluaremos juntos cÃ³mo puedo ayudarte.
+                        La primera sesión es un espacio de conocimiento mutuo donde podrás contarme qué te trae a consulta y evaluaremos juntos cómo puedo ayudarte.
                     </div>
                 </div>
             </div>
             <div class="faq-item">
-                <button class="faq-question">Â¿CuÃ¡nto dura una sesiÃ³n?</button>
+                <button class="faq-question">¿Cuánto dura una sesión?</button>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        Cada sesiÃ³n tiene una duraciÃ³n aproximada de 50-60 minutos.
+                        Cada sesión tiene una duración aproximada de 50-60 minutos.
                     </div>
                 </div>
             </div>
@@ -371,7 +371,7 @@ function applyContact() {
     document.getElementById('contact-email').href = `mailto:${config.email}`;
     document.getElementById('contact-email').textContent = config.email;
     document.getElementById('contact-phone').textContent = config.phone;
-    document.getElementById('contact-address').textContent = config.address || 'Madrid, EspaÃ±a';
+    document.getElementById('contact-address').textContent = config.address || 'Madrid, España';
     
     // DOCFAV Integration
     const calendarDiv = document.getElementById('calendar-integration');
@@ -395,7 +395,7 @@ function applyConfig() {
     document.getElementById('nav-logo').textContent = config.name;
     document.getElementById('footer-name').textContent = config.name;
     document.getElementById('footer-copy').textContent = config.name;
-    document.getElementById('page-title').textContent = `${config.name} - PsicÃ³loga ClÃ­nica`;
+    document.getElementById('page-title').textContent = `${config.name} - Psicóloga Clínica`;
     
     // WhatsApp
     document.getElementById('whatsapp-float').href = `https://wa.me/${config.whatsapp}`;
@@ -526,54 +526,54 @@ function initializeFAQ() {
 
 // Load data when page loads
 document.addEventListener('DOMContentLoaded', loadData);
-// Funcionalidad para Ãreas Clickeables con Modal Detallado
+// Funcionalidad para Áreas Clickeables con Modal Detallado
 
-// Datos detallados de cada Ã¡rea (se puede cargar desde data.json tambiÃ©n)
+// Datos detallados de cada área (se puede cargar desde data.json también)
 const areasDetailed = {
     1: {
-        icon: "ðŸ§˜",
-        title: "Ansiedad y EstrÃ©s",
+        icon: "🧘",
+        title: "Ansiedad y Estrés",
         subtitle: "Recupera la calma y aprende a gestionar la ansiedad de manera efectiva",
-        description: "La ansiedad es una de las consultas mÃ¡s frecuentes en psicologÃ­a. Juntos trabajaremos para que comprendas el origen de tu ansiedad y desarrolles herramientas prÃ¡cticas para gestionarla.",
+        description: "La ansiedad es una de las consultas más frecuentes en psicología. Juntos trabajaremos para que comprendas el origen de tu ansiedad y desarrolles herramientas prácticas para gestionarla.",
         sections: [
             {
-                title: "Â¿CÃ³mo te ayudo?",
-                content: "Mediante tÃ©cnicas de terapia cognitivo-conductual, mindfulness y relajaciÃ³n, aprenderÃ¡s a identificar los pensamientos que generan ansiedad y a modificarlos. TambiÃ©n trabajaremos en tÃ©cnicas de respiraciÃ³n y gestiÃ³n emocional."
+                title: "¿Cómo te ayudo?",
+                content: "Mediante técnicas de terapia cognitivo-conductual, mindfulness y relajación, aprenderás a identificar los pensamientos que generan ansiedad y a modificarlos. También trabajaremos en técnicas de respiración y gestión emocional."
             },
             {
-                title: "SÃ­ntomas que trabajamos",
+                title: "Síntomas que trabajamos",
                 list: [
-                    "PreocupaciÃ³n excesiva y pensamientos rumiativos",
-                    "TensiÃ³n muscular y sÃ­ntomas fÃ­sicos",
-                    "Ataques de pÃ¡nico",
+                    "Preocupación excesiva y pensamientos rumiativos",
+                    "Tensión muscular y síntomas físicos",
+                    "Ataques de pánico",
                     "Dificultad para relajarte o descansar",
-                    "EvitaciÃ³n de situaciones que generan ansiedad",
-                    "Problemas de sueÃ±o relacionados con preocupaciones"
+                    "Evitación de situaciones que generan ansiedad",
+                    "Problemas de sueño relacionados con preocupaciones"
                 ]
             },
             {
                 title: "Resultados esperados",
-                content: "Con el tratamiento adecuado, podrÃ¡s reducir significativamente los sÃ­ntomas de ansiedad, mejorar tu calidad de vida y desarrollar recursos para enfrentar situaciones estresantes de manera saludable."
+                content: "Con el tratamiento adecuado, podrás reducir significativamente los síntomas de ansiedad, mejorar tu calidad de vida y desarrollar recursos para enfrentar situaciones estresantes de manera saludable."
             }
         ]
     },
     2: {
-        icon: "ðŸŒ±",
-        title: "DepresiÃ³n y Estado de Ãnimo",
+        icon: "🌱",
+        title: "Depresión y Estado de Ánimo",
         subtitle: "Encuentra el camino de regreso a una vida plena y significativa",
-        description: "La depresiÃ³n puede hacer que todo se sienta pesado y sin sentido. En terapia trabajaremos para recuperar tu motivaciÃ³n, energÃ­a y capacidad de disfrutar la vida.",
+        description: "La depresión puede hacer que todo se sienta pesado y sin sentido. En terapia trabajaremos para recuperar tu motivación, energía y capacidad de disfrutar la vida.",
         sections: [
             {
-                title: "Â¿CÃ³mo te ayudo?",
+                title: "¿Cómo te ayudo?",
                 content: "Utilizando terapia humanista e integrativa, exploraremos las causas de tu malestar y trabajaremos en activar conductas positivas, modificar pensamientos negativos y reconectar con lo que te da sentido."
             },
             {
-                title: "SÃ­ntomas que trabajamos",
+                title: "Síntomas que trabajamos",
                 list: [
-                    "Tristeza persistente o sensaciÃ³n de vacÃ­o",
-                    "PÃ©rdida de interÃ©s en actividades que antes disfrutabas",
-                    "Fatiga y falta de energÃ­a",
-                    "Cambios en el apetito o el sueÃ±o",
+                    "Tristeza persistente o sensación de vacío",
+                    "Pérdida de interés en actividades que antes disfrutabas",
+                    "Fatiga y falta de energía",
+                    "Cambios en el apetito o el sueño",
                     "Dificultad para concentrarte",
                     "Pensamientos negativos sobre ti mismo",
                     "Aislamiento social"
@@ -581,55 +581,55 @@ const areasDetailed = {
             },
             {
                 title: "Resultados esperados",
-                content: "La terapia te ayudarÃ¡ a recuperar tu energÃ­a vital, mejorar tu estado de Ã¡nimo, reconectar con tus valores y encontrar nuevamente sentido y propÃ³sito en tu vida."
+                content: "La terapia te ayudará a recuperar tu energía vital, mejorar tu estado de ánimo, reconectar con tus valores y encontrar nuevamente sentido y propósito en tu vida."
             }
         ]
     },
     3: {
-        icon: "ðŸ’‘",
+        icon: "💑",
         title: "Terapia de Pareja",
-        subtitle: "Mejora la comunicaciÃ³n y fortalece el vÃ­nculo con tu pareja",
-        description: "Las relaciones pasan por diferentes etapas y a veces necesitamos ayuda profesional para superar crisis, mejorar la comunicaciÃ³n o fortalecer la conexiÃ³n emocional.",
+        subtitle: "Mejora la comunicación y fortalece el vínculo con tu pareja",
+        description: "Las relaciones pasan por diferentes etapas y a veces necesitamos ayuda profesional para superar crisis, mejorar la comunicación o fortalecer la conexión emocional.",
         sections: [
             {
-                title: "Â¿CÃ³mo te ayudo?",
-                content: "Trabajaremos en un espacio seguro donde ambos puedan expresarse libremente. AprenderÃ¡n tÃ©cnicas de comunicaciÃ³n efectiva, resoluciÃ³n de conflictos y fortalecimiento del vÃ­nculo emocional."
+                title: "¿Cómo te ayudo?",
+                content: "Trabajaremos en un espacio seguro donde ambos puedan expresarse libremente. Aprenderán técnicas de comunicación efectiva, resolución de conflictos y fortalecimiento del vínculo emocional."
             },
             {
                 title: "Situaciones que trabajamos",
                 list: [
-                    "Crisis de pareja y problemas de comunicaciÃ³n",
+                    "Crisis de pareja y problemas de comunicación",
                     "Conflictos recurrentes y discusiones constantes",
-                    "Infidelidad y reconstrucciÃ³n de la confianza",
+                    "Infidelidad y reconstrucción de la confianza",
                     "Diferencias en la crianza de los hijos",
-                    "Problemas de intimidad emocional o fÃ­sica",
+                    "Problemas de intimidad emocional o física",
                     "Toma de decisiones importantes (matrimonio, hijos, mudanzas)",
                     "Diferencias en valores o proyectos de vida"
                 ]
             },
             {
                 title: "Resultados esperados",
-                content: "Las parejas que completan el proceso terapÃ©utico logran comunicarse mejor, resolver conflictos de manera constructiva y recuperar la conexiÃ³n emocional que los uniÃ³ inicialmente."
+                content: "Las parejas que completan el proceso terapéutico logran comunicarse mejor, resolver conflictos de manera constructiva y recuperar la conexión emocional que los unió inicialmente."
             }
         ]
     },
     4: {
-        icon: "âœ¨",
+        icon: "✨",
         title: "Autoestima y Crecimiento Personal",
-        subtitle: "Desarrolla una relaciÃ³n mÃ¡s sana y compasiva contigo mismo",
+        subtitle: "Desarrolla una relación más sana y compasiva contigo mismo",
         description: "La autoestima es la base del bienestar emocional. Trabajaremos en fortalecer tu amor propio, confianza y capacidad para alcanzar tus objetivos.",
         sections: [
             {
-                title: "Â¿CÃ³mo te ayudo?",
-                content: "Mediante ejercicios de autoconocimiento, reestructuraciÃ³n cognitiva y desarrollo de habilidades, aprenderÃ¡s a valorarte, establecer lÃ­mites saludables y perseguir tus metas con confianza."
+                title: "¿Cómo te ayudo?",
+                content: "Mediante ejercicios de autoconocimiento, reestructuración cognitiva y desarrollo de habilidades, aprenderás a valorarte, establecer límites saludables y perseguir tus metas con confianza."
             },
             {
                 title: "Aspectos que trabajamos",
                 list: [
-                    "AutocrÃ­tica excesiva y diÃ¡logo interno negativo",
-                    "Dificultad para establecer lÃ­mites",
+                    "Autocrítica excesiva y diálogo interno negativo",
+                    "Dificultad para establecer límites",
                     "Inseguridad y miedo al rechazo",
-                    "ComparaciÃ³n constante con los demÃ¡s",
+                    "Comparación constante con los demás",
                     "Perfeccionismo y miedo al fracaso",
                     "Dependencia emocional",
                     "Dificultad para tomar decisiones"
@@ -637,69 +637,69 @@ const areasDetailed = {
             },
             {
                 title: "Resultados esperados",
-                content: "DesarrollarÃ¡s una autoimagen mÃ¡s positiva, aumentarÃ¡s tu confianza, aprenderÃ¡s a establecer lÃ­mites saludables y te sentirÃ¡s mÃ¡s capaz de alcanzar tus objetivos personales y profesionales."
+                content: "Desarrollarás una autoimagen más positiva, aumentarás tu confianza, aprenderás a establecer límites saludables y te sentirás más capaz de alcanzar tus objetivos personales y profesionales."
             }
         ]
     },
     5: {
-        icon: "ðŸ•Šï¸",
-        title: "Duelo y PÃ©rdidas",
-        subtitle: "AcompaÃ±amiento en momentos de pÃ©rdida y transformaciÃ³n",
-        description: "El duelo es un proceso natural pero doloroso. Te acompaÃ±o en este camino para que puedas procesar la pÃ©rdida de manera saludable y encontrar un nuevo equilibrio.",
+        icon: "🕊️",
+        title: "Duelo y Pérdidas",
+        subtitle: "Acompañamiento en momentos de pérdida y transformación",
+        description: "El duelo es un proceso natural pero doloroso. Te acompaño en este camino para que puedas procesar la pérdida de manera saludable y encontrar un nuevo equilibrio.",
         sections: [
             {
-                title: "Â¿CÃ³mo te ayudo?",
-                content: "Ofrezco un espacio seguro y empÃ¡tico donde puedes expresar tu dolor sin juicios. Trabajaremos a tu ritmo en las diferentes etapas del duelo, honrando tu proceso Ãºnico."
+                title: "¿Cómo te ayudo?",
+                content: "Ofrezco un espacio seguro y empático donde puedes expresar tu dolor sin juicios. Trabajaremos a tu ritmo en las diferentes etapas del duelo, honrando tu proceso único."
             },
             {
-                title: "Tipos de duelo que acompaÃ±o",
+                title: "Tipos de duelo que acompaño",
                 list: [
-                    "PÃ©rdida de seres queridos",
+                    "Pérdida de seres queridos",
                     "Rupturas de pareja o divorcios",
-                    "PÃ©rdida de empleo o cambios profesionales",
+                    "Pérdida de empleo o cambios profesionales",
                     "Mudanzas o cambios de vida significativos",
                     "Duelo anticipado (enfermedades terminales)",
-                    "PÃ©rdidas gestacionales o infertilidad",
+                    "Pérdidas gestacionales o infertilidad",
                     "Duelo complicado o prolongado"
                 ]
             },
             {
                 title: "Resultados esperados",
-                content: "Aunque el dolor de la pÃ©rdida nunca desaparece completamente, la terapia te ayudarÃ¡ a procesarlo de manera saludable, encontrar significado y continuar con tu vida honrando lo que perdiste."
+                content: "Aunque el dolor de la pérdida nunca desaparece completamente, la terapia te ayudará a procesarlo de manera saludable, encontrar significado y continuar con tu vida honrando lo que perdiste."
             }
         ]
     },
     6: {
-        icon: "ðŸ‘¨â€ðŸ‘©â€ðŸ‘§",
+        icon: "👨‍👩‍👧",
         title: "Terapia Familiar",
-        subtitle: "Mejora la dinÃ¡mica familiar y fortalece los vÃ­nculos",
-        description: "Los conflictos familiares afectan a todos los miembros. Trabajaremos juntos para mejorar la comunicaciÃ³n, resolver problemas y crear un ambiente familiar mÃ¡s saludable.",
+        subtitle: "Mejora la dinámica familiar y fortalece los vínculos",
+        description: "Los conflictos familiares afectan a todos los miembros. Trabajaremos juntos para mejorar la comunicación, resolver problemas y crear un ambiente familiar más saludable.",
         sections: [
             {
-                title: "Â¿CÃ³mo te ayudo?",
-                content: "Desde un enfoque sistÃ©mico, trabajaremos con todos los miembros de la familia para comprender las dinÃ¡micas relacionales, mejorar la comunicaciÃ³n y encontrar soluciones que beneficien a todos."
+                title: "¿Cómo te ayudo?",
+                content: "Desde un enfoque sistémico, trabajaremos con todos los miembros de la familia para comprender las dinámicas relacionales, mejorar la comunicación y encontrar soluciones que beneficien a todos."
             },
             {
                 title: "Situaciones que trabajamos",
                 list: [
                     "Conflictos entre padres e hijos adolescentes",
-                    "Problemas de comportamiento en niÃ±os",
+                    "Problemas de comportamiento en niños",
                     "Divorcio y familias reconstituidas",
-                    "Dificultades en la comunicaciÃ³n familiar",
+                    "Dificultades en la comunicación familiar",
                     "Roles familiares disfuncionales",
                     "Conflictos intergeneracionales",
-                    "AdaptaciÃ³n a cambios familiares (nacimientos, mudanzas)"
+                    "Adaptación a cambios familiares (nacimientos, mudanzas)"
                 ]
             },
             {
                 title: "Resultados esperados",
-                content: "Las familias aprenden a comunicarse de manera mÃ¡s efectiva, resuelven conflictos de forma constructiva y crean un ambiente familiar mÃ¡s armÃ³nico y de apoyo mutuo."
+                content: "Las familias aprenden a comunicarse de manera más efectiva, resuelven conflictos de forma constructiva y crean un ambiente familiar más armónico y de apoyo mutuo."
             }
         ]
     }
 };
 
-// FunciÃ³n para abrir modal de Ã¡rea
+// Función para abrir modal de área
 function openAreaModal(areaId) {
     const area = areasDetailed[areaId];
     if (!area) return;
@@ -765,7 +765,7 @@ function openAreaModal(areaId) {
     };
 }
 
-// FunciÃ³n para cerrar modal
+// Función para cerrar modal
 function closeAreaModal() {
     const modal = document.getElementById('area-modal');
     if (modal) {
@@ -781,9 +781,9 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Hacer las Ã¡reas clickeables cuando se cargan
+// Hacer las áreas clickeables cuando se cargan
 document.addEventListener('DOMContentLoaded', function() {
-    // Esperar a que se carguen las Ã¡reas
+    // Esperar a que se carguen las áreas
     setTimeout(function() {
         const areaCards = document.querySelectorAll('.area-card');
         areaCards.forEach((card, index) => {
@@ -798,7 +798,7 @@ document.addEventListener('DOMContentLoaded', function() {
             footer.className = 'area-card-footer';
             footer.innerHTML = `
                 <span class="area-learn-more">
-                    Conocer mÃ¡s â†’
+                    Conocer más →
                 </span>
             `;
             card.appendChild(footer);

@@ -1,8 +1,8 @@
 {
   "hero": {
+    "label": "Psicología Clínica",
     "title": "Un espacio seguro para tu bienestar emocional",
     "subtitle": "Acompañamiento profesional en terapia individual, de pareja y familiar. Presencial y online.",
-    "label": "Psicología Clínica",
     "btnPrimary": "Primera Consulta Gratuita",
     "btnSecondary": "Conocer Más",
     "backgroundImage": ""
@@ -105,21 +105,21 @@
   ],
   "blog": [
     {
-      "id": 1,
+      "id": 1706000000000,
       "title": "Cómo gestionar la ansiedad en el día a día",
       "content": "La ansiedad es una respuesta natural del cuerpo ante situaciones de estrés, pero cuando se vuelve constante puede afectar significativamente nuestra calidad de vida.\n\nEn este artículo exploraremos estrategias prácticas y efectivas que puedes implementar desde hoy:\n\n1. Técnicas de respiración profunda: Dedica 5 minutos al día para practicar respiración consciente. Inhala profundamente contando hasta 4, mantén 4 segundos y exhala en 6.\n\n2. Mindfulness y atención plena: La práctica de mindfulness te ayuda a centrarte en el presente y reducir la preocupación por el futuro o el pasado.\n\n3. Actividad física regular: El ejercicio libera endorfinas que mejoran naturalmente nuestro estado de ánimo y reducen los síntomas de ansiedad.\n\n4. Establece rutinas saludables: La estructura y predictibilidad reducen la incertidumbre, uno de los principales desencadenantes de la ansiedad.\n\n5. Limita la cafeína y el alcohol: Estas sustancias pueden aumentar los síntomas de ansiedad.\n\n6. Identifica tus pensamientos ansiosos: Aprende a reconocer cuando estás cayendo en patrones de pensamiento catastrófico.\n\nRecuerda que si la ansiedad interfiere significativamente con tu vida diaria, es importante buscar ayuda profesional. La terapia psicológica puede proporcionarte herramientas personalizadas y un acompañamiento especializado en tu proceso.",
       "image": "",
       "date": "15/02/2024"
     },
     {
-      "id": 2,
+      "id": 1705900000000,
       "title": "La importancia del autocuidado emocional",
       "content": "El autocuidado emocional no es un lujo, es una necesidad fundamental para mantener nuestro bienestar mental.\n\nEn nuestra sociedad actual, estamos constantemente ocupados cuidando de otros - familia, trabajo, amigos - pero rara vez nos detenemos a preguntarnos: ¿y yo?\n\nEl autocuidado emocional implica reconocer nuestras necesidades emocionales y tomar medidas activas para satisfacerlas. Esto incluye:\n\n- Establecer límites saludables con los demás\n- Aprender a decir 'no' sin culpa\n- Dedicar tiempo a actividades que disfrutas\n- Practicar la autocompasión en lugar de la autocrítica\n- Buscar apoyo cuando lo necesitas\n\nNo se trata de ser egoísta, sino de reconocer que solo podemos dar a los demás cuando nuestro propio vaso está lleno.",
       "image": "",
       "date": "08/02/2024"
     },
     {
-      "id": 3,
+      "id": 1705800000000,
       "title": "Señales de que podrías beneficiarte de terapia",
       "content": "Muchas personas se preguntan cuándo es el momento adecuado para buscar ayuda profesional. La realidad es que no necesitas estar en crisis para beneficiarte de la terapia.\n\nAlgunas señales que indican que la terapia podría ayudarte:\n\n1. Te sientes estancado en tu vida personal o profesional\n2. Experimentas emociones intensas que no sabes cómo manejar\n3. Tus relaciones se ven afectadas constantemente por los mismos problemas\n4. Has perdido el interés en actividades que antes disfrutabas\n5. Tienes dificultades para dormir o cambios en el apetito\n6. Sientes que repites patrones poco saludables\n\nLa terapia es un espacio para crecer, no solo para 'arreglar' problemas.",
       "image": "",

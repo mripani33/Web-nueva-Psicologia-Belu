@@ -417,7 +417,7 @@ body {
 }
 
 .modality-features li::before {
-    content: 'âœ“'; position: absolute; left: 0; color: var(--accent); font-weight: 600;
+    content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 600;
 }
 
 .modality-card.featured .modality-features li::before {
@@ -780,7 +780,7 @@ body {
 }
 
 .faq-question.active::after {
-    content: 'âˆ’'; transform: translateY(-50%) rotate(180deg);
+    content: '−'; transform: translateY(-50%) rotate(180deg);
 }
 
 .faq-answer {
@@ -904,7 +904,7 @@ body {
 }
 /* MEJORAS RESPONSIVE Y AREAS CLICKEABLES */
 
-/* Mejoras Responsive para MÃ³vil */
+/* Mejoras Responsive para Móvil */
 @media (max-width: 968px) {
     .nav-links { 
         display: none; 
@@ -1009,7 +1009,7 @@ body {
     }
 }
 
-/* Ãreas de Trabajo Clickeables */
+/* Áreas de Trabajo Clickeables */
 .area-card {
     cursor: pointer;
     position: relative;
@@ -1061,7 +1061,7 @@ body {
     color: var(--accent-dark);
 }
 
-/* Modal para Ãreas Detalladas */
+/* Modal para Áreas Detalladas */
 .area-modal {
     display: none;
     position: fixed;
@@ -1174,7 +1174,7 @@ body {
 }
 
 .area-modal-section li::before {
-    content: 'âœ“';
+    content: '✓';
     position: absolute;
     left: 0;
     color: var(--accent);
@@ -1230,7 +1230,7 @@ body {
     }
 }
 
-/* SecciÃ³n Voces del Tourette */
+/* Sección Voces del Tourette */
 .tourette-section {
     padding: var(--section-padding);
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
