@@ -9,12 +9,12 @@ function initFirebase() {
     const config = {
         // PEGA AQUÍ TU CONFIGURACIÓN DE FIREBASE
         // La misma que usaste en el admin
-        apiKey: "TU_API_KEY",
-        authDomain: "TU_AUTH_DOMAIN",
-        projectId: "TU_PROJECT_ID",
-        storageBucket: "TU_STORAGE_BUCKET",
-        messagingSenderId: "TU_MESSAGING_SENDER_ID",
-        appId: "TU_APP_ID"
+        apiKey: "AIzaSyCEj1oELDai-n2yIJCPuQzb8K8hHEAa7d4",
+  authDomain: "maria-belen-prieto-web.firebaseapp.com",
+  projectId: "maria-belen-prieto-web",
+  storageBucket: "maria-belen-prieto-web.firebasestorage.app",
+  messagingSenderId: "61304026951",
+  appId: "1:61304026951:web:5a41d8182127ae07577e62",
     };
     
     try {
