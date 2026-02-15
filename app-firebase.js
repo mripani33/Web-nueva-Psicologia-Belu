@@ -35,8 +35,10 @@ async function loadDataFromFirebase() {
         // Get main site data
         const doc = await db.collection('siteData').doc('main').get();
         
-        if (doc.exists) {
-            siteData = doc.data();
+// FAQ
+    if (siteData.faq && siteData.faq.length > 0) {
+        loadFAQ();
+    }
             console.log('✅ Data loaded from Firebase');
             
             // Load blog posts
@@ -394,7 +396,48 @@ function listenForUpdates() {
         console.log('🔄 Blog updated from Firebase');
     });
 }
+// FAQ FUNCTIONS
+function loadFAQ() {
+    if (!siteData.faq || siteData.faq.length === 0) {
+        console.log('No hay FAQ');
+        return;
+    }
+    
+    const faqContainer = document.querySelector('#faq .faq-container');
+    if (!faqContainer) {
+        console.log('Contenedor FAQ no encontrado');
+        return;
+    }
+    
+    faqContainer.innerHTML = siteData.faq.map((item, index) => `
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(${index})">
+                <span>${item.question}</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-${index}">
+                <p>${item.answer}</p>
+            </div>
+        </div>
+    `).join('');
+    
+    console.log('✅ FAQ loaded:', siteData.faq.length, 'questions');
+}
 
+function toggleFAQ(index) {
+    const answer = document.getElementById(`faq-answer-${index}`);
+    const button = answer.previousElementSibling;
+    const icon = button.querySelector('.faq-icon');
+    const isOpen = answer.classList.contains('active');
+    
+    document.querySelectorAll('.faq-answer').forEach(item => item.classList.remove('active'));
+    document.querySelectorAll('.faq-icon').forEach(item => item.textContent = '+');
+    
+    if (!isOpen) {
+        answer.classList.add('active');
+        icon.textContent = '−';
+    }
+}
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
     initFirebase();
