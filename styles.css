@@ -1701,3 +1701,210 @@ body {
         font-size: 1rem;
     }
 }
+/* ==========================================
+   ÁREAS DE TRABAJO - TARJETAS EXPANDIBLES
+   ========================================== */
+
+.areas {
+    padding: 6rem 0;
+    background: white;
+}
+
+.section-description {
+    text-align: center;
+    max-width: 700px;
+    margin: 1rem auto 3rem;
+    color: #666;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.areas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+/* Tarjeta Individual */
+.area-card {
+    background: white;
+    border: 2px solid #f0f0f0;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.area-card:hover {
+    border-color: #C4A574;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transform: translateY(-3px);
+}
+
+.area-card.expanded {
+    border-color: #C4A574;
+}
+
+/* Header de la Tarjeta */
+.area-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: #fafafa;
+    transition: background 0.3s;
+}
+
+.area-card.expanded .area-header {
+    background: linear-gradient(135deg, #C4A574 0%, #B39564 100%);
+    color: white;
+}
+
+.area-icon {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.area-card.expanded .area-icon {
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+}
+
+/* Si hay imagen en lugar de emoji */
+.area-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.area-header-content {
+    flex: 1;
+}
+
+.area-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.area-card.expanded .area-name {
+    color: white;
+}
+
+.area-short-description {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+.area-card.expanded .area-short-description {
+    color: rgba(255,255,255,0.9);
+}
+
+.area-toggle {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 50%;
+    color: #C4A574;
+    font-size: 1.5rem;
+    transition: all 0.3s;
+    flex-shrink: 0;
+}
+
+.area-card.expanded .area-toggle {
+    background: rgba(255,255,255,0.3);
+    color: white;
+    transform: rotate(180deg);
+}
+
+/* Contenido Expandible */
+.area-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+
+.area-card.expanded .area-content {
+    max-height: 1000px;
+    transition: max-height 0.6s ease-in;
+}
+
+.area-content-inner {
+    padding: 2rem;
+    background: white;
+}
+
+.area-full-description {
+    color: #555;
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+.area-full-description p {
+    margin-bottom: 1rem;
+}
+
+.area-full-description ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.area-full-description li {
+    margin-bottom: 0.5rem;
+    color: #666;
+}
+
+.area-full-description strong {
+    color: #333;
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .areas-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .area-header {
+        padding: 1.25rem;
+        gap: 1rem;
+    }
+    
+    .area-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .area-name {
+        font-size: 1.1rem;
+    }
+    
+    .area-content-inner {
+        padding: 1.5rem;
+    }
+}
+
+/* Loading State */
+.areas-grid .loading {
+    text-align: center;
+    padding: 3rem;
+    color: #999;
+    font-size: 1rem;
+}
