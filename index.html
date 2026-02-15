@@ -109,18 +109,20 @@
 </section>
 
     <!-- Áreas de Trabajo / Especialidades -->
-    <section id="areas" class="areas-section">
-        <div class="container">
-            <div class="section-header-centered">
-                <span class="section-tag">Áreas de Trabajo</span>
-                <h2 class="section-title">¿En qué puedo ayudarte?</h2>
-                <p class="section-description">Especializada en diferentes áreas de la psicología clínica para acompañarte en tu proceso terapéutico.</p>
-            </div>
-            <div class="areas-grid" id="areas-grid">
-                <!-- Se cargará dinámicamente desde data.json -->
-            </div>
+   <section id="areas" class="areas">
+    <div class="container">
+        <span class="section-tag">ÁREAS DE TRABAJO</span>
+        <h2 class="section-title">¿En qué puedo ayudarte?</h2>
+        <p class="section-description">
+            Especializada en diferentes áreas de la psicología clínica para acompañarte en tu proceso terapéutico.
+        </p>
+        
+        <div id="areas-grid" class="areas-grid">
+            <!-- Las áreas se cargan desde Firebase -->
+            <div class="loading">Cargando especialidades...</div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Enfoque Terapéutico -->
     <section class="approach-section">
