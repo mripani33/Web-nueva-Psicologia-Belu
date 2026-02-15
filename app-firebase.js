@@ -438,6 +438,72 @@ function toggleFAQ(index) {
         icon.textContent = '−';
     }
 }
+// ESTE ES EL CÓDIGO COMPLETO QUE DEBE ESTAR AL FINAL DE app-firebase.js
+// Copia desde AQUÍ hasta el final
+
+// ==========================================
+// FAQ FUNCTIONS
+// ==========================================
+
+function loadFAQ() {
+    console.log('🔍 Intentando cargar FAQ...');
+    console.log('FAQ data:', siteData.faq);
+    
+    if (!siteData.faq || siteData.faq.length === 0) {
+        console.log('❌ No hay FAQ en siteData');
+        return;
+    }
+    
+    const faqContainer = document.querySelector('#faq .faq-container');
+    if (!faqContainer) {
+        console.log('❌ Contenedor FAQ no encontrado en HTML');
+        return;
+    }
+    
+    console.log('✅ Contenedor FAQ encontrado');
+    console.log('✅ Creando HTML para', siteData.faq.length, 'preguntas');
+    
+    faqContainer.innerHTML = siteData.faq.map((item, index) => `
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(${index})">
+                <span>${item.question}</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-${index}">
+                <p>${item.answer}</p>
+            </div>
+        </div>
+    `).join('');
+    
+    console.log('✅ FAQ HTML creado correctamente');
+}
+
+function toggleFAQ(index) {
+    const answer = document.getElementById(`faq-answer-${index}`);
+    if (!answer) return;
+    
+    const button = answer.previousElementSibling;
+    const icon = button.querySelector('.faq-icon');
+    const isOpen = answer.classList.contains('active');
+    
+    // Cerrar todas
+    document.querySelectorAll('.faq-answer').forEach(item => {
+        item.classList.remove('active');
+    });
+    document.querySelectorAll('.faq-icon').forEach(item => {
+        item.textContent = '+';
+    });
+    
+    // Abrir esta si no estaba abierta
+    if (!isOpen) {
+        answer.classList.add('active');
+        icon.textContent = '−';
+    }
+}
+
+// ==========================================
+// FIN FAQ FUNCTIONS
+// ==========================================
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
     initFirebase();
