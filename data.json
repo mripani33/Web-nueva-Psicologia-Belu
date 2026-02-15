@@ -1,20 +1,17 @@
 {
   "hero": {
-    "label": "Psicología Clínica",
+    "label": "Psicología",
     "title": "Un espacio seguro para tu bienestar emocional",
-    "subtitle": "Acompañamiento profesional en terapia individual, de pareja y familiar. Presencial y online.",
-    "btnPrimary": "Primera Consulta Gratuita",
-    "btnSecondary": "Conocer Más",
-    "backgroundImage": ""
+    "subtitle": "Especialista en Trastornos del Neurodesarrollo.",
+    "btn1": "Pide tu cita aquí",
+    "btn2": "Conocer Más"
   },
   "about": {
     "title": "Comprometida con tu proceso de cambio",
-    "bio1": "Soy psicóloga clínica colegiada con vocación de ayudar a las personas a encontrar su bienestar emocional y desarrollar todo su potencial.",
-    "bio2": "Mi enfoque terapéutico es humanista e integrativo, lo que significa que adapto las técnicas y estrategias a las necesidades únicas de cada persona, combinando diferentes corrientes terapéuticas para lograr los mejores resultados.",
-    "bio3": "Creo firmemente en el potencial de cambio de cada individuo y en la importancia de crear un espacio terapéutico seguro, empático y libre de juicios donde puedas explorar tus emociones y encontrar tus propias respuestas.",
-    "education": "Licenciada en Psicología por la Universidad [Nombre]",
-    "colegiacion": "XXXXX",
-    "experience": "Más de X años de práctica clínica",
+    "bio": "",
+    "education": "UBA ",
+    "colegiacion": "123456990",
+    "experience": "Más de 20 años de práctica clínica",
     "image": ""
   },
   "areas": [
