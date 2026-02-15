@@ -1,0 +1,192 @@
+{
+  "hero": {
+    "label": "Psicología Clínica",
+    "title": "Un espacio seguro para tu bienestar emocional",
+    "subtitle": "Acompañamiento profesional en terapia individual, de pareja y familiar. Presencial y online.",
+    "btnPrimary": "Primera Consulta Gratuita",
+    "btnSecondary": "Conocer Más",
+    "backgroundImage": ""
+  },
+  "about": {
+    "title": "Comprometida con tu proceso de cambio",
+    "bio1": "Soy psicóloga clínica colegiada con vocación de ayudar a las personas a encontrar su bienestar emocional y desarrollar todo su potencial.",
+    "bio2": "Mi enfoque terapéutico es humanista e integrativo, lo que significa que adapto las técnicas y estrategias a las necesidades únicas de cada persona, combinando diferentes corrientes terapéuticas para lograr los mejores resultados.",
+    "bio3": "Creo firmemente en el potencial de cambio de cada individuo y en la importancia de crear un espacio terapéutico seguro, empático y libre de juicios donde puedas explorar tus emociones y encontrar tus propias respuestas.",
+    "education": "Licenciada en Psicología por la Universidad [Nombre]",
+    "colegiacion": "XXXXX",
+    "experience": "Más de X años de práctica clínica",
+    "image": ""
+  },
+  "areas": [
+    {
+      "id": 1,
+      "name": "Ansiedad y Estrés",
+      "icon": "🧘",
+      "description": "Aprende a gestionar la ansiedad, el estrés y las preocupaciones excesivas. Desarrolla herramientas para recuperar el control y la calma en tu vida diaria."
+    },
+    {
+      "id": 2,
+      "name": "Depresión y Estado de Ánimo",
+      "icon": "🌱",
+      "description": "Trabajo terapéutico para superar la tristeza, la apatía y recuperar la motivación. Juntos encontraremos el camino hacia una vida más plena."
+    },
+    {
+      "id": 3,
+      "name": "Terapia de Pareja",
+      "icon": "💑",
+      "description": "Mejora la comunicación, resuelve conflictos y fortalece la conexión emocional en tu relación. Espacio seguro para crecer juntos."
+    },
+    {
+      "id": 4,
+      "name": "Autoestima y Crecimiento Personal",
+      "icon": "✨",
+      "description": "Desarrolla una relación más sana contigo mismo. Trabaja la autoconfianza, el autocuidado y alcanza tus objetivos personales."
+    },
+    {
+      "id": 5,
+      "name": "Duelo y Pérdidas",
+      "icon": "🕊️",
+      "description": "Acompañamiento en procesos de duelo por pérdida de seres queridos, rupturas o cambios vitales significativos."
+    },
+    {
+      "id": 6,
+      "name": "Terapia Familiar",
+      "icon": "👨‍👩‍👧",
+      "description": "Resolución de conflictos familiares, mejora de la comunicación y fortalecimiento de los vínculos entre los miembros de la familia."
+    }
+  ],
+  "approach": {
+    "title": "Terapia centrada en la persona",
+    "description": "<p>Mi enfoque terapéutico es humanista e integrativo, lo que significa que adapto las técnicas y estrategias a las necesidades únicas de cada persona.</p><p>Creo firmemente en el potencial de cambio de cada individuo y en la importancia de crear un espacio terapéutico seguro, empático y libre de juicios.</p>",
+    "quote": "El proceso terapéutico es un camino de autodescubrimiento donde aprenderás a reconocer tus fortalezas y a gestionar tus dificultades de manera más saludable."
+  },
+  "education": [
+    {
+      "id": 1,
+      "year": "2023",
+      "title": "Especialización en Terapia de Pareja",
+      "description": "Formación avanzada en terapia sistémica y técnicas de comunicación para parejas."
+    },
+    {
+      "id": 2,
+      "year": "2020",
+      "title": "Máster en Psicología Clínica",
+      "description": "Especialización en intervención terapéutica y diagnóstico clínico."
+    },
+    {
+      "id": 3,
+      "year": "2018",
+      "title": "Licenciatura en Psicología",
+      "description": "Universidad [Nombre]. Formación integral en las diferentes áreas de la psicología."
+    }
+  ],
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Ana M.",
+      "role": "Paciente de terapia individual",
+      "text": "María Belén me ayudó a superar un momento muy difícil de mi vida. Su empatía y profesionalidad hicieron que me sintiera comprendida desde el primer día. Totalmente recomendable.",
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "name": "Carlos y Laura",
+      "role": "Pareja en terapia",
+      "text": "Llegamos a terapia en un momento crítico de nuestra relación. Gracias a Belén aprendimos a comunicarnos mejor y recuperamos la conexión que habíamos perdido. Muy agradecidos.",
+      "rating": 5
+    },
+    {
+      "id": 3,
+      "name": "Javier R.",
+      "role": "Paciente de terapia online",
+      "text": "La terapia online funciona perfectamente. Es cómoda y efectiva. Belén es una profesional excepcional que realmente te escucha y te ayuda.",
+      "rating": 5
+    }
+  ],
+  "blog": [
+    {
+      "id": 1706000000000,
+      "title": "Cómo gestionar la ansiedad en el día a día",
+      "content": "La ansiedad es una respuesta natural del cuerpo ante situaciones de estrés, pero cuando se vuelve constante puede afectar significativamente nuestra calidad de vida.\n\nEn este artículo exploraremos estrategias prácticas y efectivas que puedes implementar desde hoy:\n\n1. Técnicas de respiración profunda: Dedica 5 minutos al día para practicar respiración consciente. Inhala profundamente contando hasta 4, mantén 4 segundos y exhala en 6.\n\n2. Mindfulness y atención plena: La práctica de mindfulness te ayuda a centrarte en el presente y reducir la preocupación por el futuro o el pasado.\n\n3. Actividad física regular: El ejercicio libera endorfinas que mejoran naturalmente nuestro estado de ánimo y reducen los síntomas de ansiedad.\n\n4. Establece rutinas saludables: La estructura y predictibilidad reducen la incertidumbre, uno de los principales desencadenantes de la ansiedad.\n\n5. Limita la cafeína y el alcohol: Estas sustancias pueden aumentar los síntomas de ansiedad.\n\n6. Identifica tus pensamientos ansiosos: Aprende a reconocer cuando estás cayendo en patrones de pensamiento catastrófico.\n\nRecuerda que si la ansiedad interfiere significativamente con tu vida diaria, es importante buscar ayuda profesional. La terapia psicológica puede proporcionarte herramientas personalizadas y un acompañamiento especializado en tu proceso.",
+      "image": "",
+      "date": "15/02/2024"
+    },
+    {
+      "id": 1705900000000,
+      "title": "La importancia del autocuidado emocional",
+      "content": "El autocuidado emocional no es un lujo, es una necesidad fundamental para mantener nuestro bienestar mental.\n\nEn nuestra sociedad actual, estamos constantemente ocupados cuidando de otros - familia, trabajo, amigos - pero rara vez nos detenemos a preguntarnos: ¿y yo?\n\nEl autocuidado emocional implica reconocer nuestras necesidades emocionales y tomar medidas activas para satisfacerlas. Esto incluye:\n\n- Establecer límites saludables con los demás\n- Aprender a decir 'no' sin culpa\n- Dedicar tiempo a actividades que disfrutas\n- Practicar la autocompasión en lugar de la autocrítica\n- Buscar apoyo cuando lo necesitas\n\nNo se trata de ser egoísta, sino de reconocer que solo podemos dar a los demás cuando nuestro propio vaso está lleno.",
+      "image": "",
+      "date": "08/02/2024"
+    },
+    {
+      "id": 1705800000000,
+      "title": "Señales de que podrías beneficiarte de terapia",
+      "content": "Muchas personas se preguntan cuándo es el momento adecuado para buscar ayuda profesional. La realidad es que no necesitas estar en crisis para beneficiarte de la terapia.\n\nAlgunas señales que indican que la terapia podría ayudarte:\n\n1. Te sientes estancado en tu vida personal o profesional\n2. Experimentas emociones intensas que no sabes cómo manejar\n3. Tus relaciones se ven afectadas constantemente por los mismos problemas\n4. Has perdido el interés en actividades que antes disfrutabas\n5. Tienes dificultades para dormir o cambios en el apetito\n6. Sientes que repites patrones poco saludables\n\nLa terapia es un espacio para crecer, no solo para 'arreglar' problemas.",
+      "image": "",
+      "date": "01/02/2024"
+    }
+  ],
+  "resources": [
+    {
+      "id": 1,
+      "title": "Guía de Mindfulness para Principiantes",
+      "description": "Ejercicios prácticos de atención plena para reducir el estrés y la ansiedad en tu día a día",
+      "file": "https://ejemplo.com/mindfulness.pdf",
+      "type": "pdf"
+    },
+    {
+      "id": 2,
+      "title": "Diario de Emociones",
+      "description": "Plantilla descargable para registrar y comprender mejor tus emociones diarias",
+      "file": "https://ejemplo.com/diario-emociones.pdf",
+      "type": "pdf"
+    }
+  ],
+  "faq": [
+    {
+      "id": 1,
+      "question": "¿Cómo es la primera sesión?",
+      "answer": "La primera sesión es un espacio de conocimiento mutuo donde podrás contarme qué te trae a consulta, tus expectativas y objetivos. Evaluaremos juntos cómo puedo ayudarte y estableceremos un plan de trabajo personalizado. Es completamente normal sentir nervios en la primera sesión, mi objetivo es que te sientas cómodo y seguro desde el principio."
+    },
+    {
+      "id": 2,
+      "question": "¿Cuánto dura una sesión y con qué frecuencia se realizan?",
+      "answer": "Cada sesión tiene una duración de 50-60 minutos. La frecuencia habitual es semanal, especialmente al inicio del proceso terapéutico. Según vayamos avanzando, podemos ajustar la frecuencia según tus necesidades y objetivos."
+    },
+    {
+      "id": 3,
+      "question": "¿Cuánto tiempo dura un proceso terapéutico?",
+      "answer": "La duración del proceso terapéutico varía según cada persona y sus objetivos. Algunas personas encuentran mejoría en pocas sesiones, mientras que otras prefieren un acompañamiento más prolongado. Trabajaremos juntos para que obtengas las herramientas que necesitas en el tiempo que sea adecuado para ti."
+    },
+    {
+      "id": 4,
+      "question": "¿La terapia online es tan efectiva como la presencial?",
+      "answer": "Sí, numerosos estudios demuestran que la terapia online es igual de efectiva que la presencial. Utilizo plataformas seguras y confidenciales. La terapia online ofrece flexibilidad y comodidad, siendo una excelente opción si vives lejos, tienes dificultades de movilidad o prefieres la intimidad de tu hogar."
+    },
+    {
+      "id": 5,
+      "question": "¿Es confidencial lo que hablo en terapia?",
+      "answer": "Absolutamente. El secreto profesional es uno de los pilares fundamentales de la práctica psicológica. Todo lo que compartas en sesión está protegido por el código deontológico del psicólogo. La única excepción sería en casos donde exista riesgo grave e inminente para ti o para terceros."
+    },
+    {
+      "id": 6,
+      "question": "¿Cuál es el precio de las sesiones?",
+      "answer": "El precio de las sesiones individuales es de [X]€. Para terapia de pareja o familiar, el precio es de [Y]€. Ofrezco la primera sesión con descuento para que puedas conocer mi forma de trabajar sin compromiso. También dispongo de bonos de sesiones con descuento."
+    }
+  ],
+  "config": {
+    "name": "María Belén Prieto",
+    "email": "contacto@mariabelenprieto.com",
+    "whatsapp": "34XXXXXXXXX",
+    "phone": "+34 XXX XXX XXX",
+    "address": "Madrid, España",
+    "docfavUrl": "",
+    "docfavWidget": "",
+    "instagram": "",
+    "linkedin": "",
+    "facebook": "",
+    "youtube": "",
+    "metaDescription": "Psicóloga clínica especializada en terapia individual, de pareja y familiar. Atención presencial en Madrid y online para todo el mundo.",
+    "analytics": ""
+  }
+}
