@@ -58,6 +58,10 @@ function applyAllData() {
     // About
     if (siteData.about) {
         loadAbout();
+    // Areas
+    if (siteData.areas && siteData.areas.length > 0) {
+        console.log('🎯 Loading Areas with', siteData.areas.length, 'specialties');
+        loadAreas();
     }
     
     // FAQ
@@ -252,7 +256,71 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('🚀 Page loaded, initializing Firebase...');
     initFirebase();
 });
+// ==========================================
+// AREAS DE TRABAJO FUNCTIONS
+// ==========================================
 
+function loadAreas() {
+    console.log('🎯 loadAreas() called');
+    
+    if (!siteData.areas || siteData.areas.length === 0) {
+        console.log('❌ No areas data');
+        return;
+    }
+    
+    const areasGrid = document.getElementById('areas-grid');
+    if (!areasGrid) {
+        console.log('❌ Areas grid not found');
+        return;
+    }
+    
+    console.log('✅ Areas grid found');
+    console.log('✅ Creating HTML for', siteData.areas.length, 'areas');
+    
+    areasGrid.innerHTML = siteData.areas.map((area, index) => `
+        <div class="area-card" data-index="${index}">
+            <div class="area-header" onclick="toggleArea(${index})">
+                <div class="area-icon">
+                    ${area.image ? 
+                        `<img src="${area.image}" alt="${area.name}">` : 
+                        area.icon || '🧠'
+                    }
+                </div>
+                <div class="area-header-content">
+                    <h3 class="area-name">${area.name}</h3>
+                    <p class="area-short-description">${area.shortDescription || area.description.substring(0, 80) + '...'}</p>
+                </div>
+                <div class="area-toggle">▼</div>
+            </div>
+            <div class="area-content">
+                <div class="area-content-inner">
+                    <div class="area-full-description">
+                        ${area.fullDescription || area.description}
+                    </div>
+                </div>
+            </div>
+        </div>
+    `).join('');
+    
+    console.log('✅ Areas HTML created successfully!');
+}
+
+function toggleArea(index) {
+    const card = document.querySelector(`.area-card[data-index="${index}"]`);
+    if (!card) return;
+    
+    const isExpanded = card.classList.contains('expanded');
+    
+    // Cerrar todas las demás
+    document.querySelectorAll('.area-card').forEach(c => {
+        c.classList.remove('expanded');
+    });
+    
+    // Abrir esta si no estaba abierta
+    if (!isExpanded) {
+        card.classList.add('expanded');
+    }
+}
 // Mobile menu toggle
 document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.querySelector('.mobile-menu-toggle');
