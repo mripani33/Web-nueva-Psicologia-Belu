@@ -1735,6 +1735,8 @@ body {
     overflow: hidden;
     transition: all 0.3s ease;
     cursor: pointer;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .area-card:hover {
@@ -1807,6 +1809,8 @@ body {
     font-size: 0.95rem;
     color: #666;
     line-height: 1.5;
+    display: block !important;
+    opacity: 1 !important;
 }
 
 .area-card.expanded .area-short-description {
