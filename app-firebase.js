@@ -151,28 +151,35 @@ function loadAbout() {
     
     const about = siteData.about;
     
-    const title = document.querySelector('#sobre-mi h2');
+    // Título
+    const title = document.querySelector('#sobre-mi h2, .about-title');
     if (title && about.title) {
         title.textContent = about.title;
     }
     
-    const bio1 = document.querySelector('.bio-1, .about-bio-1, #about-bio1');
-    const bio2 = document.querySelector('.bio-2, .about-bio-2, #about-bio2');
-    const bio3 = document.querySelector('.bio-3, .about-bio-3, #about-bio3');
+    // Biografía
+    const bio1 = document.querySelector('.about-bio-1');
+    const bio2 = document.querySelector('.about-bio-2');
+    const bio3 = document.querySelector('.about-bio-3');
     
     if (bio1 && about.bio1) bio1.textContent = about.bio1;
     if (bio2 && about.bio2) bio2.textContent = about.bio2;
     if (bio3 && about.bio3) bio3.textContent = about.bio3;
     
-    const image = document.querySelector('.about-image, #about-image');
+    // Credenciales
+    const education = document.querySelector('#about-education');
+    const colegiacion = document.querySelector('#about-colegiacion');
+    const experience = document.querySelector('#about-experience');
+    
+    if (education && about.education) education.textContent = about.education;
+    if (colegiacion && about.colegiacion) colegiacion.textContent = about.colegiacion;
+    if (experience && about.experience) experience.textContent = about.experience;
+    
+    // Imagen
+    const image = document.querySelector('#about-image');
     if (image && about.image) {
-        if (image.tagName === 'IMG') {
-            image.src = about.image;
-        } else {
-            image.style.backgroundImage = `url(${about.image})`;
-            image.style.backgroundSize = 'cover';
-            image.style.backgroundPosition = 'center';
-        }
+        image.style.backgroundImage = `url(${about.image})`;
+        console.log('✅ About image loaded:', about.image);
     }
     
     console.log('✅ About section loaded');
