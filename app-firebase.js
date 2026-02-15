@@ -36,9 +36,9 @@ async function loadDataFromFirebase() {
         const doc = await db.collection('siteData').doc('main').get();
         
 // FAQ
-    if (siteData.faq && siteData.faq.length > 0) {
-        loadFAQ();
-    }
+       if (siteData.faq && siteData.faq.length > 0) {
+           loadFAQ();
+       }
             console.log('✅ Data loaded from Firebase');
             
             // Load blog posts
