@@ -52,32 +52,7 @@ function applyAllData() {
     if (siteData.areas) loadAreas();
     if (siteData.faq) loadFAQ();
     if (siteData.testimonios) loadTestimonios();
-   // Blog
-    loadBlogFeatured();
-```
-
-4. **Guardar**: "Add blog featured function"
-
----
-
-### **PASO 2: Crear colección blog en Firebase**
-
-1. Firebase Console → Firestore
-2. **Start collection**
-3. Collection ID: **blog**
-4. Next
-5. **Add document**:
-```
-Document ID: (auto)
-
-Campos:
-- title: "Cómo manejar la ansiedad en tiempos difíciles"
-- excerpt: "Descubre técnicas efectivas para gestionar la ansiedad"
-- content: "<p>La ansiedad es una respuesta natural...</p>"
-- image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800"
-- category: "Ansiedad"
-- date: "2024-02-16"
-- featured: true 
+    
     console.log('✅ All data applied');
 }
 
@@ -298,62 +273,6 @@ function loadTestimonios() {
     }).join('');
     
     console.log('✅ Testimonios loaded');
-}
-// ==========================================
-// BLOG - HOME (Featured)
-// ==========================================
-async function loadBlogFeatured() {
-    console.log('📝 Loading blog...');
-    
-    const container = document.getElementById('blog-featured');
-    if (!container) {
-        console.log('❌ Blog container not found');
-        return;
-    }
-    
-    try {
-        // Obtener 3 artículos
-        const snapshot = await db.collection('blog').limit(3).get();
-        
-        if (snapshot.empty) {
-            container.innerHTML = '<p style="text-align: center; color: #999; grid-column: 1/-1;">Próximamente artículos interesantes</p>';
-            console.log('⚠️ No blog posts found');
-            return;
-        }
-        
-        console.log('✅ Found', snapshot.size, 'blog posts');
-        
-        container.innerHTML = snapshot.docs.map(doc => {
-            const article = doc.data();
-            const articleId = doc.id;
-            
-            const fecha = article.date || '';
-            const excerpt = article.excerpt || '';
-            const image = article.image || 'https://via.placeholder.com/400x250/C4A574/ffffff?text=Blog';
-            
-            return `
-                <article class="blog-article">
-                    <div class="blog-article-image" style="background-image: url('${image}')">
-                        ${article.category ? `<span class="blog-category">${article.category}</span>` : ''}
-                    </div>
-                    <div class="blog-article-content">
-                        <div class="blog-article-meta">
-                            <span class="blog-article-date">📅 ${fecha}</span>
-                        </div>
-                        <h3 class="blog-article-title">${article.title}</h3>
-                        <p class="blog-article-excerpt">${excerpt}</p>
-                        <a href="#blog" class="blog-article-read-more">Leer más →</a>
-                    </div>
-                </article>
-            `;
-        }).join('');
-        
-        console.log('✅ Blog loaded');
-        
-    } catch (error) {
-        console.error('❌ Error loading blog:', error);
-        container.innerHTML = '<p style="text-align: center; color: #999;">Error cargando artículos</p>';
-    }
 }
 
 // ==========================================
