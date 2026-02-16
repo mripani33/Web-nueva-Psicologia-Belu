@@ -1,4 +1,4 @@
-// app-firebase.js - VERSIÓN COMPLETA CON TODAS LAS SECCIONES
+// app-firebase.js - VERSIÓN COMPLETA Y FUNCIONAL
 
 let db;
 let siteData = {};
@@ -28,149 +28,75 @@ function initFirebase() {
 // Load data from Firebase
 async function loadDataFromFirebase() {
     try {
-        console.log('📡 Fetching data from Firebase...');
+        console.log('📡 Loading from Firebase...');
         const doc = await db.collection('siteData').doc('main').get();
         
         if (doc.exists) {
             siteData = doc.data();
             console.log('✅ Data loaded from Firebase');
-            console.log('Hero data:', siteData.hero);
-            console.log('About data:', siteData.about);
-            console.log('FAQ data:', siteData.faq);
-            console.log('Areas data:', siteData.areas);
-            console.log('📊 Full siteData:', siteData);
-            
-            // Apply all data to the page
             applyAllData();
         } else {
-            console.warn('⚠️ No data found in Firebase');
+            console.warn('⚠️ No data found');
         }
     } catch (error) {
-        console.error('❌ Error loading from Firebase:', error);
+        console.error('❌ Error loading:', error);
     }
 }
 
-// Apply all data to the page
+// Apply all data
 function applyAllData() {
-    console.log('🔄 Applying all data to page...');
-    console.log('siteData:', siteData);
+    console.log('🔄 Applying all data...');
     
-    // HERO
-    if (siteData.hero) {
-        console.log('🏠 Loading Hero section...');
-        loadHero();
-    } else {
-        console.log('⚠️ No hero data');
-    }
+    if (siteData.hero) loadHero();
+    if (siteData.about) loadAbout();
+    if (siteData.areas) loadAreas();
+    if (siteData.faq) loadFAQ();
+    if (siteData.testimonios) loadTestimonios();
     
-    // ABOUT
-    if (siteData.about) {
-        console.log('👤 Loading About section...');
-        console.log('About data:', siteData.about);
-        loadAbout();
-    } else {
-        console.log('⚠️ No about data');
-    }
-    
-    // AREAS
-    if (siteData.areas && siteData.areas.length > 0) {
-        console.log('🎯 Loading Areas with', siteData.areas.length, 'specialties');
-        loadAreas();
-    } else {
-        console.log('⚠️ No areas data or empty array');
-    }
-    
-    // FAQ
-    if (siteData.faq && siteData.faq.length > 0) {
-        console.log('📝 Loading FAQ with', siteData.faq.length, 'questions');
-        loadFAQ();
-    } else {
-        console.log('⚠️ No FAQ data');
-    }
-    
-    // TESTIMONIOS
-    if (siteData.testimonios && siteData.testimonios.length > 0) {
-        console.log('⭐ Loading Testimonios with', siteData.testimonios.length, 'reviews');
-        loadTestimonios();
-    } else {
-        console.log('⚠️ No testimonios data');
-    }
-    
-    // BLOG
-    console.log('📝 Loading Blog featured...');
-    loadBlogFeatured();
-    
-    console.log('✅ All data applied to page');
+    console.log('✅ All data applied');
 }
 
 // ==========================================
-// HERO FUNCTIONS
+// HERO
 // ==========================================
-
 function loadHero() {
     const hero = siteData.hero;
-    const heroSection = document.getElementById('inicio');
+    const section = document.getElementById('inicio');
+    if (!section || !hero) return;
     
-    if (!heroSection) {
-        console.log('❌ Hero section not found');
-        return;
-    }
-    
-    // Etiqueta
     const label = document.querySelector('.hero-label, .section-tag');
-    if (label && hero.label) {
-        label.textContent = hero.label;
-        label.className = 'section-tag hero-label';
-    }
-    
-    // Título
     const title = document.querySelector('.hero-title, #inicio h1');
-    if (title && hero.title) {
-        title.textContent = hero.title;
-        title.className = 'hero-title';
-    }
-    
-    // Subtítulo
     const subtitle = document.querySelector('.hero-subtitle, #inicio p');
-    if (subtitle && hero.subtitle) {
-        subtitle.textContent = hero.subtitle;
-        subtitle.className = 'hero-subtitle';
-    }
-    
-    // Botones
     const buttons = document.querySelectorAll('#inicio .btn-primary, #inicio .btn-secondary');
-    if (buttons.length >= 2 && hero.btnPrimary && hero.btnSecondary) {
-        buttons[0].textContent = hero.btnPrimary;
-        buttons[0].className = 'btn-primary btn-hero-primary';
-        buttons[1].textContent = hero.btnSecondary;
-        buttons[1].className = 'btn-secondary btn-hero-secondary';
+    
+    if (label && hero.label) label.textContent = hero.label;
+    if (title && hero.title) title.textContent = hero.title;
+    if (subtitle && hero.subtitle) subtitle.textContent = hero.subtitle;
+    
+    if (buttons.length >= 2) {
+        if (hero.btnPrimary) buttons[0].textContent = hero.btnPrimary;
+        if (hero.btnSecondary) buttons[1].textContent = hero.btnSecondary;
     }
     
-    // Imagen de fondo
     if (hero.backgroundImage) {
-        heroSection.classList.add('has-background');
-        heroSection.style.backgroundImage = `url(${hero.backgroundImage})`;
-        heroSection.style.backgroundSize = 'cover';
-        heroSection.style.backgroundPosition = 'center';
+        section.style.backgroundImage = `url(${hero.backgroundImage})`;
+        section.style.backgroundSize = 'cover';
+        section.style.backgroundPosition = 'center';
     }
     
-    console.log('✅ Hero section loaded');
+    console.log('✅ Hero loaded');
 }
 
 // ==========================================
-// ABOUT FUNCTIONS
+// ABOUT
 // ==========================================
-
 function loadAbout() {
     const about = siteData.about;
+    if (!about) return;
     
-    // Título
     const title = document.querySelector('#sobre-mi h2, .about-title');
-    if (title && about.title) {
-        title.textContent = about.title;
-    }
+    if (title && about.title) title.textContent = about.title;
     
-    // Biografía
     const bio1 = document.querySelector('.about-bio-1');
     const bio2 = document.querySelector('.about-bio-2');
     const bio3 = document.querySelector('.about-bio-3');
@@ -179,7 +105,6 @@ function loadAbout() {
     if (bio2 && about.bio2) bio2.textContent = about.bio2;
     if (bio3 && about.bio3) bio3.textContent = about.bio3;
     
-    // Credenciales
     const education = document.querySelector('#about-education');
     const colegiacion = document.querySelector('#about-colegiacion');
     const experience = document.querySelector('#about-experience');
@@ -188,44 +113,28 @@ function loadAbout() {
     if (colegiacion && about.colegiacion) colegiacion.textContent = about.colegiacion;
     if (experience && about.experience) experience.textContent = about.experience;
     
-    // Imagen
     const image = document.querySelector('#about-image, .about-image');
     if (image && about.image) {
         image.style.backgroundImage = `url(${about.image})`;
         image.style.backgroundSize = 'cover';
         image.style.backgroundPosition = 'center';
-        console.log('✅ About image loaded:', about.image);
+        console.log('✅ About image loaded');
     }
     
-    console.log('✅ About section loaded');
+    console.log('✅ About loaded');
 }
 
 // ==========================================
-// AREAS DE TRABAJO FUNCTIONS
+// AREAS
 // ==========================================
-
 function loadAreas() {
-    console.log('🎯 loadAreas() called');
+    const areas = siteData.areas;
+    if (!areas || areas.length === 0) return;
     
-    if (!siteData.areas || siteData.areas.length === 0) {
-        console.log('❌ No areas data');
-        const areasGrid = document.getElementById('areas-grid');
-        if (areasGrid) {
-            areasGrid.innerHTML = '<p style="text-align: center; color: #999;">No hay especialidades configuradas</p>';
-        }
-        return;
-    }
+    const grid = document.getElementById('areas-grid');
+    if (!grid) return;
     
-    const areasGrid = document.getElementById('areas-grid');
-    if (!areasGrid) {
-        console.log('❌ Areas grid not found');
-        return;
-    }
-    
-    console.log('✅ Areas grid found');
-    console.log('✅ Creating HTML for', siteData.areas.length, 'areas');
-    
-    areasGrid.innerHTML = siteData.areas.map((area, index) => `
+    grid.innerHTML = areas.map((area, index) => `
         <div class="area-card" data-index="${index}">
             <div class="area-header" onclick="toggleArea(${index})">
                 <div class="area-icon">
@@ -236,21 +145,21 @@ function loadAreas() {
                 </div>
                 <div class="area-header-content">
                     <h3 class="area-name">${area.name}</h3>
-                    <p class="area-short-description">${area.shortDescription || area.description.substring(0, 80) + '...'}</p>
+                    <p class="area-short-description">${area.shortDescription || ''}</p>
                 </div>
                 <div class="area-toggle">▼</div>
             </div>
             <div class="area-content">
                 <div class="area-content-inner">
                     <div class="area-full-description">
-                        ${area.fullDescription || area.description}
+                        ${area.fullDescription || area.description || ''}
                     </div>
                 </div>
             </div>
         </div>
     `).join('');
     
-    console.log('✅ Areas HTML created successfully!');
+    console.log('✅ Areas loaded');
 }
 
 function toggleArea(index) {
@@ -259,39 +168,24 @@ function toggleArea(index) {
     
     const isExpanded = card.classList.contains('expanded');
     
-    // Cerrar todas
-    document.querySelectorAll('.area-card').forEach(c => {
-        c.classList.remove('expanded');
-    });
+    document.querySelectorAll('.area-card').forEach(c => c.classList.remove('expanded'));
     
-    // Abrir esta si no estaba abierta
     if (!isExpanded) {
         card.classList.add('expanded');
     }
 }
 
 // ==========================================
-// FAQ FUNCTIONS
+// FAQ
 // ==========================================
-
 function loadFAQ() {
-    console.log('🔍 loadFAQ() called');
+    const faq = siteData.faq;
+    if (!faq || faq.length === 0) return;
     
-    if (!siteData.faq || siteData.faq.length === 0) {
-        console.log('❌ No FAQ data');
-        return;
-    }
+    const container = document.querySelector('.faq-container');
+    if (!container) return;
     
-    const faqContainer = document.querySelector('.faq-container');
-    if (!faqContainer) {
-        console.log('❌ FAQ container not found');
-        return;
-    }
-    
-    console.log('✅ FAQ container found');
-    console.log('✅ Creating HTML for', siteData.faq.length, 'questions');
-    
-    faqContainer.innerHTML = siteData.faq.map((item, index) => `
+    container.innerHTML = faq.map((item, index) => `
         <div class="faq-item">
             <button class="faq-question" onclick="toggleFAQ(${index})">
                 <span>${item.question}</span>
@@ -303,7 +197,7 @@ function loadFAQ() {
         </div>
     `).join('');
     
-    console.log('✅ FAQ HTML created successfully!');
+    console.log('✅ FAQ loaded');
 }
 
 function toggleFAQ(index) {
@@ -314,66 +208,49 @@ function toggleFAQ(index) {
     const icon = button.querySelector('.faq-icon');
     const isOpen = answer.classList.contains('active');
     
-    // Cerrar todas
-    document.querySelectorAll('.faq-answer').forEach(item => {
-        item.classList.remove('active');
-    });
-    document.querySelectorAll('.faq-icon').forEach(item => {
-        item.textContent = '+';
-    });
+    document.querySelectorAll('.faq-answer').forEach(item => item.classList.remove('active'));
+    document.querySelectorAll('.faq-icon').forEach(item => item.textContent = '+');
     
-    // Abrir esta si no estaba abierta
     if (!isOpen) {
         answer.classList.add('active');
         icon.textContent = '−';
     }
 }
-// ==========================================
-// TESTIMONIOS FUNCTIONS
-// ==========================================
 
+// ==========================================
+// TESTIMONIOS
+// ==========================================
 function loadTestimonios() {
-    console.log('⭐ loadTestimonios() called');
-    
-    if (!siteData.testimonios || siteData.testimonios.length === 0) {
-        const grid = document.getElementById('testimonios-grid');
-        if (grid) {
-            grid.innerHTML = '<p style="text-align: center; color: #999;">No hay testimonios disponibles</p>';
-        }
-        return;
-    }
+    const testimonios = siteData.testimonios;
+    if (!testimonios || testimonios.length === 0) return;
     
     const grid = document.getElementById('testimonios-grid');
-    const countEl = document.getElementById('testimonios-count');
+    const count = document.getElementById('testimonios-count');
     
-    if (!grid) {
-        console.log('❌ Testimonios grid not found');
-        return;
-    }
+    if (!grid) return;
     
-    // Actualizar contador
-    if (countEl) {
-        countEl.textContent = siteData.testimonios.length;
-    }
+    if (count) count.textContent = testimonios.length;
     
-    console.log('✅ Creating HTML for', siteData.testimonios.length, 'testimonios');
-    
-    grid.innerHTML = siteData.testimonios.map((testimonio, index) => {
-        // Generar estrellas
+    grid.innerHTML = testimonios.map((testimonio) => {
         const stars = Array(5).fill(0).map((_, i) => {
             const filled = i < (testimonio.rating || 5);
             return `<span class="star ${filled ? 'filled' : 'empty'}">★</span>`;
         }).join('');
         
-        // Obtener inicial del nombre
         const inicial = testimonio.nombre ? testimonio.nombre.charAt(0).toUpperCase() : 'A';
         
-        // Formatear fecha
-        const fecha = testimonio.fecha ? new Date(testimonio.fecha).toLocaleDateString('es-ES', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        }) : '';
+        let fecha = '';
+        if (testimonio.fecha) {
+            try {
+                fecha = new Date(testimonio.fecha).toLocaleDateString('es-ES', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+            } catch (e) {
+                fecha = testimonio.fecha;
+            }
+        }
         
         return `
             <div class="testimonio-card">
@@ -389,114 +266,31 @@ function loadTestimonios() {
                         ${fecha ? `<div class="testimonio-fecha">${fecha}</div>` : ''}
                     </div>
                 </div>
-                <div class="testimonio-rating">
-                    ${stars}
-                </div>
-                <div class="testimonio-texto">
-                    ${testimonio.texto}
-                </div>
+                <div class="testimonio-rating">${stars}</div>
+                <div class="testimonio-texto">${testimonio.texto}</div>
             </div>
         `;
     }).join('');
     
-    console.log('✅ Testimonios HTML created successfully!');
+    console.log('✅ Testimonios loaded');
 }
 
 // ==========================================
-// FIN TESTIMONIOS FUNCTIONS
+// INITIALIZE
 // ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('🚀 Page loaded, initializing...');
+    initFirebase();
+});
 
-// ==========================================
-// BLOG FUNCTIONS - HOME (Featured)
-// ==========================================
-
-async function loadBlogFeatured() {
-    console.log('🔍 DIAGNÓSTICO BLOG - INICIO');
+// Mobile menu
+document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
     
-    const container = document.getElementById('blog-featured');
-    if (!container) {
-        alert('ERROR: No se encuentra el contenedor blog-featured en el HTML');
-        return;
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
     }
-    
-    container.innerHTML = '<p style="color: orange; text-align: center;">⏳ Diagnosticando Firebase...</p>';
-    
-    try {
-        // Paso 1: Verificar que db existe
-        if (!db) {
-            alert('ERROR: Firebase no está inicializado (db es null)');
-            container.innerHTML = '<p style="color: red; text-align: center;">❌ Firebase NO inicializado</p>';
-            return;
-        }
-        
-        console.log('✅ Firebase db existe:', db);
-        
-        // Paso 2: Listar TODAS las colecciones
-        console.log('📋 Intentando listar colecciones...');
-        
-        // Paso 3: Intentar obtener de "blog"
-        console.log('📋 Intentando obtener colección "blog"...');
-        const blogRef = db.collection('blog');
-        console.log('📋 Referencia a blog:', blogRef);
-        
-        const snapshot = await blogRef.get();
-        console.log('📊 Snapshot obtenido');
-        console.log('📊 Size:', snapshot.size);
-        console.log('📊 Empty:', snapshot.empty);
-        console.log('📊 Docs:', snapshot.docs);
-        
-        // Paso 4: Mostrar resultado
-        if (snapshot.empty) {
-            alert('⚠️ La colección "blog" existe pero está VACÍA\n\nVerifica en Firebase Console que el artículo esté dentro de la colección "blog"');
-            container.innerHTML = `
-                <div style="padding: 30px; border: 3px solid red; border-radius: 10px; background: #fff0f0;">
-                    <h3 style="color: red;">⚠️ COLECCIÓN VACÍA</h3>
-                    <p><strong>La colección "blog" existe pero no tiene documentos.</strong></p>
-                    <p>Acciones:</p>
-                    <ol style="text-align: left; display: inline-block;">
-                        <li>Abre Firebase Console</li>
-                        <li>Ve a Firestore Database</li>
-                        <li>Busca la colección "blog"</li>
-                        <li>Verifica que haya documentos dentro</li>
-                        <li>Si no hay, crea uno nuevo</li>
-                    </ol>
-                </div>
-            `;
-        } else {
-            alert('✅ ¡ENCONTRADOS! ' + snapshot.size + ' documentos en la colección "blog"');
-            
-            // Mostrar datos completos
-            let html = '<div style="padding: 20px; background: #e8f5e9; border: 3px solid green; border-radius: 10px;">';
-            html += '<h3 style="color: green;">✅ ARTÍCULOS ENCONTRADOS: ' + snapshot.size + '</h3>';
-            
-            snapshot.docs.forEach((doc, i) => {
-                const data = doc.data();
-                console.log('Documento ' + i + ':', doc.id, data);
-                
-                html += '<div style="margin: 20px 0; padding: 15px; background: white; border-radius: 8px;">';
-                html += '<h4>Documento ID: ' + doc.id + '</h4>';
-                html += '<pre style="background: #f5f5f5; padding: 10px; border-radius: 5px; overflow-x: auto;">';
-                html += JSON.stringify(data, null, 2);
-                html += '</pre>';
-                html += '</div>';
-            });
-            
-            html += '</div>';
-            container.innerHTML = html;
-        }
-        
-    } catch (error) {
-        console.error('❌ ERROR:', error);
-        alert('ERROR: ' + error.message + '\n\nCódigo: ' + (error.code || 'N/A'));
-        container.innerHTML = `
-            <div style="padding: 30px; border: 3px solid red; border-radius: 10px;">
-                <h3 style="color: red;">❌ ERROR</h3>
-                <p><strong>Mensaje:</strong> ${error.message}</p>
-                <p><strong>Código:</strong> ${error.code || 'N/A'}</p>
-                <p><strong>Detalles:</strong> ${error.stack || 'N/A'}</p>
-            </div>
-        `;
-    }
-    
-    console.log('🔍 DIAGNÓSTICO BLOG - FIN');
-}
+});
