@@ -414,82 +414,64 @@ document.addEventListener('DOMContentLoaded', () => {
 // ==========================================
 
 async function loadBlogFeatured() {
-    console.log('📝 loadBlogFeatured() called');
+    console.log('=== BLOG DEBUG START ===');
     
     const container = document.getElementById('blog-featured');
+    console.log('Container:', container);
+    
     if (!container) {
-        console.log('❌ Blog featured container not found');
+        alert('ERROR: No se encuentra blog-featured en el HTML');
         return;
     }
     
+    // Mostrar mensaje de prueba
+    container.innerHTML = '<p style="color: green; font-size: 20px; text-align: center;">✅ JavaScript funciona! Intentando cargar de Firebase...</p>';
+    
     try {
-        // Obtener artículos sin orderBy primero
-        const snapshot = await db.collection('blog').limit(3).get();
+        console.log('Intentando conectar a Firebase...');
         
-        console.log('📊 Snapshot size:', snapshot.size);
-        console.log('📊 Snapshot empty:', snapshot.empty);
+        // Probar conexión simple
+        const snapshot = await db.collection('blog').get();
+        
+        console.log('Snapshot size:', snapshot.size);
+        console.log('Is empty:', snapshot.empty);
         
         if (snapshot.empty) {
-            console.log('⚠️ No articles found in blog collection');
-            container.innerHTML = '<p style="text-align: center; color: #999; grid-column: 1/-1;">Próximamente artículos interesantes</p>';
+            container.innerHTML = '<p style="color: red; text-align: center;">⚠️ Firebase funciona pero NO HAY ARTÍCULOS en la colección "blog"</p>';
             return;
         }
         
-        console.log('✅ Found', snapshot.size, 'articles');
+        // Si llegamos aquí, hay artículos
+        alert('¡Éxito! Se encontraron ' + snapshot.size + ' artículos');
         
-        // Log cada artículo para debug
-        snapshot.docs.forEach((doc, i) => {
-            console.log(`Article ${i}:`, doc.id, doc.data());
+        // Crear HTML simple
+        let html = '';
+        snapshot.docs.forEach(doc => {
+            const data = doc.data();
+            html += `
+                <div style="border: 2px solid green; padding: 20px; margin: 10px;">
+                    <h3>${data.title || 'Sin título'}</h3>
+                    <p>${data.excerpt || 'Sin extracto'}</p>
+                    <p><strong>Categoría:</strong> ${data.category || 'N/A'}</p>
+                    <p><strong>Fecha:</strong> ${data.date || 'N/A'}</p>
+                </div>
+            `;
         });
         
-        container.innerHTML = snapshot.docs.map((doc, index) => {
-            const article = doc.data();
-            const articleId = doc.id;
-            
-            console.log(`Processing article ${index}:`, article.title);
-            
-            // Formatear fecha simple
-            let fecha = article.date || 'Sin fecha';
-            if (typeof fecha === 'object' && fecha.toDate) {
-                fecha = fecha.toDate().toLocaleDateString('es-ES');
-            } else if (typeof fecha === 'string') {
-                try {
-                    fecha = new Date(fecha).toLocaleDateString('es-ES');
-                } catch (e) {
-                    // Usar como está si falla
-                }
-            }
-            
-            // Crear extracto
-            const excerpt = article.excerpt || 'Sin descripción';
-            
-            // Imagen
-            const image = article.image || 'https://via.placeholder.com/400x250/C4A574/ffffff?text=Blog';
-            
-            return `
-                <article class="blog-article" onclick="window.location.href='blog.html?post=${articleId}'">
-                    <div class="blog-article-image" style="background-image: url('${image}')">
-                        ${article.category ? `<span class="blog-category">${article.category}</span>` : ''}
-                    </div>
-                    <div class="blog-article-content">
-                        <div class="blog-article-meta">
-                            <span class="blog-article-date">📅 ${fecha}</span>
-                        </div>
-                        <h3 class="blog-article-title">${article.title || 'Sin título'}</h3>
-                        <p class="blog-article-excerpt">${excerpt}</p>
-                        <a href="blog.html?post=${articleId}" class="blog-article-read-more" onclick="event.stopPropagation()">
-                            Leer más →
-                        </a>
-                    </div>
-                </article>
-            `;
-        }).join('');
-        
-        console.log('✅ Blog featured HTML created');
+        container.innerHTML = html;
+        console.log('✅ HTML creado exitosamente');
         
     } catch (error) {
-        console.error('❌ Error loading blog:', error);
-        console.error('Error details:', error.message);
-        container.innerHTML = `<p style="text-align: center; color: #999; grid-column: 1/-1;">Error: ${error.message}</p>`;
+        console.error('ERROR:', error);
+        container.innerHTML = `
+            <div style="color: red; padding: 20px; border: 2px solid red;">
+                <h3>❌ ERROR:</h3>
+                <p>${error.message}</p>
+                <p>Verifica que Firebase esté inicializado correctamente.</p>
+            </div>
+        `;
+        alert('ERROR: ' + error.message);
     }
+    
+    console.log('=== BLOG DEBUG END ===');
 }
