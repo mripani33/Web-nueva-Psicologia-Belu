@@ -394,111 +394,92 @@ function loadTestimonios() {
 // ==========================================
 
 async function loadBlogFeatured() {
-    console.log('=== BLOG DEBUG START ===');
+    console.log('🔍 DIAGNÓSTICO BLOG - INICIO');
     
     const container = document.getElementById('blog-featured');
-    console.log('Container found:', container);
-    
     if (!container) {
-        console.error('ERROR: blog-featured container not found in HTML');
+        alert('ERROR: No se encuentra el contenedor blog-featured en el HTML');
         return;
     }
     
-    // Mostrar mensaje de carga
-    container.innerHTML = '<p style="color: blue; text-align: center;">🔄 Cargando artículos desde Firebase...</p>';
+    container.innerHTML = '<p style="color: orange; text-align: center;">⏳ Diagnosticando Firebase...</p>';
     
     try {
-        console.log('Connecting to Firebase blog collection...');
-        
-        // Obtener artículos de la colección "blog"
-        const snapshot = await db.collection('blog').limit(3).get();
-        
-        console.log('Snapshot size:', snapshot.size);
-        console.log('Is empty:', snapshot.empty);
-        
-        if (snapshot.empty) {
-            container.innerHTML = '<p style="color: red; text-align: center;">⚠️ Firebase funciona pero NO HAY ARTÍCULOS en la colección "blog"</p>';
+        // Paso 1: Verificar que db existe
+        if (!db) {
+            alert('ERROR: Firebase no está inicializado (db es null)');
+            container.innerHTML = '<p style="color: red; text-align: center;">❌ Firebase NO inicializado</p>';
             return;
         }
         
-        // Si hay artículos, mostrar alerta
-        alert('¡ÉXITO! Se encontraron ' + snapshot.size + ' artículos');
+        console.log('✅ Firebase db existe:', db);
         
-        // Crear HTML para cada artículo
-        let html = '';
+        // Paso 2: Listar TODAS las colecciones
+        console.log('📋 Intentando listar colecciones...');
         
-        snapshot.docs.forEach((doc, index) => {
-            const article = doc.data();
-            const articleId = doc.id;
-            
-            console.log('Article ' + index + ':', article);
-            
-            // Formatear fecha
-            let fecha = article.date || 'Sin fecha';
-            
-            // Crear extracto
-            const excerpt = article.excerpt || 'Sin descripción';
-            
-            // Imagen
-            const image = article.image || 'https://via.placeholder.com/400x250/C4A574/ffffff?text=Blog';
-            
-            html += `
-                <article class="blog-article" style="border: 2px solid #C4A574; padding: 20px; margin: 10px; border-radius: 10px;">
-                    <div style="width: 100%; height: 200px; background-image: url('${image}'); background-size: cover; background-position: center; border-radius: 8px; margin-bottom: 15px;"></div>
-                    <div style="background: #C4A574; color: white; display: inline-block; padding: 5px 15px; border-radius: 15px; font-size: 0.8rem; margin-bottom: 10px;">
-                        ${article.category || 'General'}
-                    </div>
-                    <div style="margin-bottom: 10px; color: #999;">
-                        📅 ${fecha}
-                    </div>
-                    <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: #333;">
-                        ${article.title || 'Sin título'}
-                    </h3>
-                    <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">
-                        ${excerpt}
-                    </p>
-                    <a href="blog.html?post=${articleId}" style="color: #C4A574; font-weight: 600; text-decoration: none;">
-                        Leer más →
-                    </a>
-                </article>
+        // Paso 3: Intentar obtener de "blog"
+        console.log('📋 Intentando obtener colección "blog"...');
+        const blogRef = db.collection('blog');
+        console.log('📋 Referencia a blog:', blogRef);
+        
+        const snapshot = await blogRef.get();
+        console.log('📊 Snapshot obtenido');
+        console.log('📊 Size:', snapshot.size);
+        console.log('📊 Empty:', snapshot.empty);
+        console.log('📊 Docs:', snapshot.docs);
+        
+        // Paso 4: Mostrar resultado
+        if (snapshot.empty) {
+            alert('⚠️ La colección "blog" existe pero está VACÍA\n\nVerifica en Firebase Console que el artículo esté dentro de la colección "blog"');
+            container.innerHTML = `
+                <div style="padding: 30px; border: 3px solid red; border-radius: 10px; background: #fff0f0;">
+                    <h3 style="color: red;">⚠️ COLECCIÓN VACÍA</h3>
+                    <p><strong>La colección "blog" existe pero no tiene documentos.</strong></p>
+                    <p>Acciones:</p>
+                    <ol style="text-align: left; display: inline-block;">
+                        <li>Abre Firebase Console</li>
+                        <li>Ve a Firestore Database</li>
+                        <li>Busca la colección "blog"</li>
+                        <li>Verifica que haya documentos dentro</li>
+                        <li>Si no hay, crea uno nuevo</li>
+                    </ol>
+                </div>
             `;
-        });
-        
-        container.innerHTML = html;
-        console.log('✅ Blog HTML created successfully');
+        } else {
+            alert('✅ ¡ENCONTRADOS! ' + snapshot.size + ' documentos en la colección "blog"');
+            
+            // Mostrar datos completos
+            let html = '<div style="padding: 20px; background: #e8f5e9; border: 3px solid green; border-radius: 10px;">';
+            html += '<h3 style="color: green;">✅ ARTÍCULOS ENCONTRADOS: ' + snapshot.size + '</h3>';
+            
+            snapshot.docs.forEach((doc, i) => {
+                const data = doc.data();
+                console.log('Documento ' + i + ':', doc.id, data);
+                
+                html += '<div style="margin: 20px 0; padding: 15px; background: white; border-radius: 8px;">';
+                html += '<h4>Documento ID: ' + doc.id + '</h4>';
+                html += '<pre style="background: #f5f5f5; padding: 10px; border-radius: 5px; overflow-x: auto;">';
+                html += JSON.stringify(data, null, 2);
+                html += '</pre>';
+                html += '</div>';
+            });
+            
+            html += '</div>';
+            container.innerHTML = html;
+        }
         
     } catch (error) {
-        console.error('ERROR loading blog:', error);
+        console.error('❌ ERROR:', error);
+        alert('ERROR: ' + error.message + '\n\nCódigo: ' + (error.code || 'N/A'));
         container.innerHTML = `
-            <div style="color: red; padding: 20px; border: 2px solid red; border-radius: 10px;">
-                <h3>❌ ERROR:</h3>
+            <div style="padding: 30px; border: 3px solid red; border-radius: 10px;">
+                <h3 style="color: red;">❌ ERROR</h3>
                 <p><strong>Mensaje:</strong> ${error.message}</p>
                 <p><strong>Código:</strong> ${error.code || 'N/A'}</p>
+                <p><strong>Detalles:</strong> ${error.stack || 'N/A'}</p>
             </div>
         `;
-        alert('ERROR al cargar blog: ' + error.message);
     }
     
-    console.log('=== BLOG DEBUG END ===');
+    console.log('🔍 DIAGNÓSTICO BLOG - FIN');
 }
-
-// ==========================================
-// INITIALIZE
-// ==========================================
-
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('🚀 Page loaded, initializing Firebase...');
-    initFirebase();
-});
-
-// Mobile menu toggle
-document.addEventListener('DOMContentLoaded', () => {
-    const menuToggle = document.querySelector('.mobile-menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    
-    if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-    }
-    });
