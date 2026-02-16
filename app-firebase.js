@@ -75,7 +75,12 @@ function applyAllData() {
         console.log('📝 Loading FAQ with', siteData.faq.length, 'questions');
         loadFAQ();
     }
-    
+
+    // Testimonios
+    if (siteData.testimonios && siteData.testimonios.length > 0) {
+        console.log('⭐ Loading Testimonios with', siteData.testimonios.length, 'reviews');
+        loadTestimonios();
+    }
     console.log('✅ All data applied to page');
 }
 
@@ -304,6 +309,83 @@ function toggleFAQ(index) {
         icon.textContent = '−';
     }
 }
+// ==========================================
+// TESTIMONIOS FUNCTIONS
+// ==========================================
+
+function loadTestimonios() {
+    console.log('⭐ loadTestimonios() called');
+    
+    if (!siteData.testimonios || siteData.testimonios.length === 0) {
+        const grid = document.getElementById('testimonios-grid');
+        if (grid) {
+            grid.innerHTML = '<p style="text-align: center; color: #999;">No hay testimonios disponibles</p>';
+        }
+        return;
+    }
+    
+    const grid = document.getElementById('testimonios-grid');
+    const countEl = document.getElementById('testimonios-count');
+    
+    if (!grid) {
+        console.log('❌ Testimonios grid not found');
+        return;
+    }
+    
+    // Actualizar contador
+    if (countEl) {
+        countEl.textContent = siteData.testimonios.length;
+    }
+    
+    console.log('✅ Creating HTML for', siteData.testimonios.length, 'testimonios');
+    
+    grid.innerHTML = siteData.testimonios.map((testimonio, index) => {
+        // Generar estrellas
+        const stars = Array(5).fill(0).map((_, i) => {
+            const filled = i < (testimonio.rating || 5);
+            return `<span class="star ${filled ? 'filled' : 'empty'}">★</span>`;
+        }).join('');
+        
+        // Obtener inicial del nombre
+        const inicial = testimonio.nombre ? testimonio.nombre.charAt(0).toUpperCase() : 'A';
+        
+        // Formatear fecha
+        const fecha = testimonio.fecha ? new Date(testimonio.fecha).toLocaleDateString('es-ES', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        }) : '';
+        
+        return `
+            <div class="testimonio-card">
+                <div class="testimonio-header">
+                    <div class="testimonio-avatar">
+                        ${testimonio.foto ? 
+                            `<img src="${testimonio.foto}" alt="${testimonio.nombre}">` : 
+                            inicial
+                        }
+                    </div>
+                    <div class="testimonio-info">
+                        <div class="testimonio-nombre">${testimonio.nombre}</div>
+                        ${fecha ? `<div class="testimonio-fecha">${fecha}</div>` : ''}
+                    </div>
+                </div>
+                <div class="testimonio-rating">
+                    ${stars}
+                </div>
+                <div class="testimonio-texto">
+                    ${testimonio.texto}
+                </div>
+            </div>
+        `;
+    }).join('');
+    
+    console.log('✅ Testimonios HTML created successfully!');
+}
+
+// ==========================================
+// FIN TESTIMONIOS FUNCTIONS
+// ==========================================
 
 // ==========================================
 // INITIALIZE
@@ -324,4 +406,4 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.toggle('active');
         });
     }
-});
+    });
