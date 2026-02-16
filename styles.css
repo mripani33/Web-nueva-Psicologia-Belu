@@ -1953,3 +1953,220 @@ body {
     color: #999;
     font-size: 1rem;
 }
+/* ==========================================
+   MODALIDADES - DISEÑO COMPLETO
+   ========================================== */
+
+.modalidades {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.modalidades-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+/* ==========================================
+   TARJETA DE MODALIDAD
+   ========================================== */
+
+.modalidad-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.modalidad-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+/* Tarjeta destacada */
+.modalidad-destacada {
+    border: 3px solid #C4A574;
+    transform: scale(1.05);
+}
+
+.modalidad-destacada:hover {
+    transform: scale(1.05) translateY(-10px);
+}
+
+/* Badge "Más solicitada" */
+.modalidad-badge {
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    background: linear-gradient(135deg, #C4A574 0%, #B39564 100%);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(196, 165, 116, 0.3);
+}
+
+/* ==========================================
+   ICONO - CON TWEMOJI
+   ========================================== */
+
+.modalidad-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.modalidad-icon img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+/* ==========================================
+   CONTENIDO
+   ========================================== */
+
+.modalidad-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.modalidad-description {
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    flex-grow: 1;
+}
+
+/* ==========================================
+   LISTA DE CARACTERÍSTICAS - ARREGLADA
+   ========================================== */
+
+.modalidad-features {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+.modalidad-features li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 0.75rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.modalidad-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, #C4A574 0%, #B39564 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* ==========================================
+   BOTÓN CTA
+   ========================================== */
+
+.btn-modalidad {
+    display: block;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: white;
+    color: #333;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    margin-top: auto;
+}
+
+.btn-modalidad:hover {
+    background: #f5f5f5;
+    border-color: #C4A574;
+    color: #C4A574;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Botón principal (para Online) */
+.btn-modalidad-primary {
+    background: linear-gradient(135deg, #C4A574 0%, #B39564 100%);
+    color: white;
+    border: none;
+}
+
+.btn-modalidad-primary:hover {
+    background: linear-gradient(135deg, #B39564 0%, #A28554 100%);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(196, 165, 116, 0.4);
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 968px) {
+    .modalidades-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .modalidad-destacada {
+        transform: scale(1);
+    }
+    
+    .modalidad-destacada:hover {
+        transform: translateY(-10px);
+    }
+}
+
+@media (max-width: 480px) {
+    .modalidad-card {
+        padding: 1.5rem;
+    }
+    
+    .modalidad-title {
+        font-size: 1.3rem;
+    }
+    
+    .modalidad-icon {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .modalidad-icon img {
+        width: 40px;
+        height: 40px;
+    }
+}
