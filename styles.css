@@ -302,7 +302,47 @@ body {
 }
 
 .area-icon {
-    font-size: 3rem; margin-bottom: 20px;
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    line-height: 1;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    
+    /* FONT STACK PARA EMOJIS */
+    font-family: 
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji",
+        "EmojiOne Color",
+        "Android Emoji",
+        sans-serif;
+    
+    /* Forzar rendering de color */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    
+    /* Prevenir interferencia de otros estilos */
+    font-style: normal !important;
+    font-weight: normal !important;
+}
+
+.area-card.expanded .area-icon {
+    background: rgba(255,255,255,0.95);
+}
+
+.area-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
 }
 
 .area-card h3 {
