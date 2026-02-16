@@ -51,6 +51,8 @@ async function loadDataFromFirebase() {
 // Apply all data to the page
 function applyAllData() {
     console.log('🔄 Applying all data to page...');
+// Blog (solo destacados para home)
+    loadBlogFeatured();
     
     // HERO
     if (siteData.hero) {
@@ -407,3 +409,95 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     });
+// ==========================================
+// BLOG FUNCTIONS - HOME (Featured)
+// ==========================================
+
+async function loadBlogFeatured() {
+    console.log('📝 loadBlogFeatured() called');
+    
+    const container = document.getElementById('blog-featured');
+    if (!container) {
+        console.log('❌ Blog featured container not found');
+        return;
+    }
+    
+    try {
+        // Obtener los 3 artículos más recientes
+        const snapshot = await db.collection('blog')
+            .orderBy('date', 'desc')
+            .limit(3)
+            .get();
+        
+        if (snapshot.empty) {
+            container.innerHTML = '<p style="text-align: center; color: #999; grid-column: 1/-1;">Próximamente artículos interesantes</p>';
+            return;
+        }
+        
+        console.log('✅ Found', snapshot.size, 'featured articles');
+        
+        container.innerHTML = snapshot.docs.map(doc => {
+            const article = doc.data();
+            const articleId = doc.id;
+            
+            // Formatear fecha
+            const fecha = article.date ? new Date(article.date).toLocaleDateString('es-ES', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }) : '';
+            
+            // Crear extracto
+            const excerpt = article.excerpt || createExcerpt(article.content, 150);
+            
+            // Imagen por defecto si no hay
+            const image = article.image || 'https://via.placeholder.com/400x250/C4A574/ffffff?text=Artículo';
+            
+            return `
+                <article class="blog-article" onclick="window.location.href='blog.html?post=${articleId}'">
+                    <div class="blog-article-image" style="background-image: url('${image}')">
+                        ${article.category ? `<span class="blog-category">${article.category}</span>` : ''}
+                    </div>
+                    <div class="blog-article-content">
+                        <div class="blog-article-meta">
+                            <span class="blog-article-date">
+                                📅 ${fecha}
+                            </span>
+                        </div>
+                        <h3 class="blog-article-title">${article.title}</h3>
+                        <p class="blog-article-excerpt">${excerpt}</p>
+                        <a href="blog.html?post=${articleId}" class="blog-article-read-more" onclick="event.stopPropagation()">
+                            Leer más →
+                        </a>
+                    </div>
+                </article>
+            `;
+        }).join('');
+        
+        console.log('✅ Blog featured loaded successfully');
+        
+    } catch (error) {
+        console.error('❌ Error loading blog:', error);
+        container.innerHTML = '<p style="text-align: center; color: #999; grid-column: 1/-1;">Error cargando artículos</p>';
+    }
+}
+
+// Helper: Crear extracto del HTML
+function createExcerpt(html, maxLength) {
+    if (!html) return '';
+    
+    // Remover tags HTML
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    const text = div.textContent || div.innerText || '';
+    
+    // Truncar
+    if (text.length > maxLength) {
+        return text.substring(0, maxLength) + '...';
+    }
+    return text;
+}
+
+// ==========================================
+// FIN BLOG FUNCTIONS
+// ==========================================
