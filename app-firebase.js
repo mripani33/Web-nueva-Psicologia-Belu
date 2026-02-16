@@ -424,10 +424,9 @@ async function loadBlogFeatured() {
     
     try {
         // Obtener los 3 artículos más recientes
-        const snapshot = await db.collection('blog')
-            .orderBy('date', 'desc')
-            .limit(3)
-            .get();
+const snapshot = await db.collection('blog')
+    .limit(3)
+    .get();
         
         if (snapshot.empty) {
             container.innerHTML = '<p style="text-align: center; color: #999; grid-column: 1/-1;">Próximamente artículos interesantes</p>';
@@ -440,12 +439,31 @@ async function loadBlogFeatured() {
             const article = doc.data();
             const articleId = doc.id;
             
-            // Formatear fecha
-            const fecha = article.date ? new Date(article.date).toLocaleDateString('es-ES', {
+            // Formatear fecha - más robusto
+let fecha = '';
+if (article.date) {
+    try {
+        // Si es timestamp de Firebase
+        if (article.date.toDate) {
+            fecha = article.date.toDate().toLocaleDateString('es-ES', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric'
-            }) : '';
+            });
+        } 
+        // Si es string
+        else {
+            fecha = new Date(article.date).toLocaleDateString('es-ES', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+    } catch (e) {
+        console.log('Error formatting date:', e);
+        fecha = article.date; // Usar como string si falla
+    }
+}
             
             // Crear extracto
             const excerpt = article.excerpt || createExcerpt(article.content, 150);
