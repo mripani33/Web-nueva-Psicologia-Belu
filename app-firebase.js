@@ -28,6 +28,7 @@ function initFirebase() {
 // Load data from Firebase
 async function loadDataFromFirebase() {
     try {
+        console.log('📡 Fetching data from Firebase...');
         const doc = await db.collection('siteData').doc('main').get();
         
         if (doc.exists) {
@@ -37,6 +38,7 @@ async function loadDataFromFirebase() {
             console.log('About data:', siteData.about);
             console.log('FAQ data:', siteData.faq);
             console.log('Areas data:', siteData.areas);
+            console.log('📊 Full siteData:', siteData);
             
             // Apply all data to the page
             applyAllData();
@@ -51,38 +53,53 @@ async function loadDataFromFirebase() {
 // Apply all data to the page
 function applyAllData() {
     console.log('🔄 Applying all data to page...');
-// Blog (solo destacados para home)
-    loadBlogFeatured();
+    console.log('siteData:', siteData);
     
     // HERO
     if (siteData.hero) {
         console.log('🏠 Loading Hero section...');
         loadHero();
+    } else {
+        console.log('⚠️ No hero data');
     }
     
     // ABOUT
     if (siteData.about) {
         console.log('👤 Loading About section...');
+        console.log('About data:', siteData.about);
         loadAbout();
+    } else {
+        console.log('⚠️ No about data');
     }
     
     // AREAS
     if (siteData.areas && siteData.areas.length > 0) {
         console.log('🎯 Loading Areas with', siteData.areas.length, 'specialties');
         loadAreas();
+    } else {
+        console.log('⚠️ No areas data or empty array');
     }
     
     // FAQ
     if (siteData.faq && siteData.faq.length > 0) {
         console.log('📝 Loading FAQ with', siteData.faq.length, 'questions');
         loadFAQ();
+    } else {
+        console.log('⚠️ No FAQ data');
     }
-
-    // Testimonios
+    
+    // TESTIMONIOS
     if (siteData.testimonios && siteData.testimonios.length > 0) {
         console.log('⭐ Loading Testimonios with', siteData.testimonios.length, 'reviews');
         loadTestimonios();
+    } else {
+        console.log('⚠️ No testimonios data');
     }
+    
+    // BLOG
+    console.log('📝 Loading Blog featured...');
+    loadBlogFeatured();
+    
     console.log('✅ All data applied to page');
 }
 
