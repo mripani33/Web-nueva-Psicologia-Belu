@@ -423,53 +423,48 @@ async function loadBlogFeatured() {
     }
     
     try {
-        // Obtener los 3 artículos más recientes
-const snapshot = await db.collection('blog')
-    .limit(3)
-    .get();
+        // Obtener artículos sin orderBy primero
+        const snapshot = await db.collection('blog').limit(3).get();
+        
+        console.log('📊 Snapshot size:', snapshot.size);
+        console.log('📊 Snapshot empty:', snapshot.empty);
         
         if (snapshot.empty) {
+            console.log('⚠️ No articles found in blog collection');
             container.innerHTML = '<p style="text-align: center; color: #999; grid-column: 1/-1;">Próximamente artículos interesantes</p>';
             return;
         }
         
-        console.log('✅ Found', snapshot.size, 'featured articles');
+        console.log('✅ Found', snapshot.size, 'articles');
         
-        container.innerHTML = snapshot.docs.map(doc => {
+        // Log cada artículo para debug
+        snapshot.docs.forEach((doc, i) => {
+            console.log(`Article ${i}:`, doc.id, doc.data());
+        });
+        
+        container.innerHTML = snapshot.docs.map((doc, index) => {
             const article = doc.data();
             const articleId = doc.id;
             
-            // Formatear fecha - más robusto
-let fecha = '';
-if (article.date) {
-    try {
-        // Si es timestamp de Firebase
-        if (article.date.toDate) {
-            fecha = article.date.toDate().toLocaleDateString('es-ES', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-        } 
-        // Si es string
-        else {
-            fecha = new Date(article.date).toLocaleDateString('es-ES', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-        }
-    } catch (e) {
-        console.log('Error formatting date:', e);
-        fecha = article.date; // Usar como string si falla
-    }
-}
+            console.log(`Processing article ${index}:`, article.title);
+            
+            // Formatear fecha simple
+            let fecha = article.date || 'Sin fecha';
+            if (typeof fecha === 'object' && fecha.toDate) {
+                fecha = fecha.toDate().toLocaleDateString('es-ES');
+            } else if (typeof fecha === 'string') {
+                try {
+                    fecha = new Date(fecha).toLocaleDateString('es-ES');
+                } catch (e) {
+                    // Usar como está si falla
+                }
+            }
             
             // Crear extracto
-            const excerpt = article.excerpt || createExcerpt(article.content, 150);
+            const excerpt = article.excerpt || 'Sin descripción';
             
-            // Imagen por defecto si no hay
-            const image = article.image || 'https://via.placeholder.com/400x250/C4A574/ffffff?text=Artículo';
+            // Imagen
+            const image = article.image || 'https://via.placeholder.com/400x250/C4A574/ffffff?text=Blog';
             
             return `
                 <article class="blog-article" onclick="window.location.href='blog.html?post=${articleId}'">
@@ -478,11 +473,9 @@ if (article.date) {
                     </div>
                     <div class="blog-article-content">
                         <div class="blog-article-meta">
-                            <span class="blog-article-date">
-                                📅 ${fecha}
-                            </span>
+                            <span class="blog-article-date">📅 ${fecha}</span>
                         </div>
-                        <h3 class="blog-article-title">${article.title}</h3>
+                        <h3 class="blog-article-title">${article.title || 'Sin título'}</h3>
                         <p class="blog-article-excerpt">${excerpt}</p>
                         <a href="blog.html?post=${articleId}" class="blog-article-read-more" onclick="event.stopPropagation()">
                             Leer más →
@@ -492,30 +485,11 @@ if (article.date) {
             `;
         }).join('');
         
-        console.log('✅ Blog featured loaded successfully');
+        console.log('✅ Blog featured HTML created');
         
     } catch (error) {
         console.error('❌ Error loading blog:', error);
-        container.innerHTML = '<p style="text-align: center; color: #999; grid-column: 1/-1;">Error cargando artículos</p>';
+        console.error('Error details:', error.message);
+        container.innerHTML = `<p style="text-align: center; color: #999; grid-column: 1/-1;">Error: ${error.message}</p>`;
     }
 }
-
-// Helper: Crear extracto del HTML
-function createExcerpt(html, maxLength) {
-    if (!html) return '';
-    
-    // Remover tags HTML
-    const div = document.createElement('div');
-    div.innerHTML = html;
-    const text = div.textContent || div.innerText || '';
-    
-    // Truncar
-    if (text.length > maxLength) {
-        return text.substring(0, maxLength) + '...';
-    }
-    return text;
-}
-
-// ==========================================
-// FIN BLOG FUNCTIONS
-// ==========================================
