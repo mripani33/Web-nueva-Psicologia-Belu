@@ -390,6 +390,99 @@ function loadTestimonios() {
 // ==========================================
 
 // ==========================================
+// BLOG FUNCTIONS - HOME (Featured)
+// ==========================================
+
+async function loadBlogFeatured() {
+    console.log('=== BLOG DEBUG START ===');
+    
+    const container = document.getElementById('blog-featured');
+    console.log('Container found:', container);
+    
+    if (!container) {
+        console.error('ERROR: blog-featured container not found in HTML');
+        return;
+    }
+    
+    // Mostrar mensaje de carga
+    container.innerHTML = '<p style="color: blue; text-align: center;">🔄 Cargando artículos desde Firebase...</p>';
+    
+    try {
+        console.log('Connecting to Firebase blog collection...');
+        
+        // Obtener artículos de la colección "blog"
+        const snapshot = await db.collection('blog').limit(3).get();
+        
+        console.log('Snapshot size:', snapshot.size);
+        console.log('Is empty:', snapshot.empty);
+        
+        if (snapshot.empty) {
+            container.innerHTML = '<p style="color: red; text-align: center;">⚠️ Firebase funciona pero NO HAY ARTÍCULOS en la colección "blog"</p>';
+            return;
+        }
+        
+        // Si hay artículos, mostrar alerta
+        alert('¡ÉXITO! Se encontraron ' + snapshot.size + ' artículos');
+        
+        // Crear HTML para cada artículo
+        let html = '';
+        
+        snapshot.docs.forEach((doc, index) => {
+            const article = doc.data();
+            const articleId = doc.id;
+            
+            console.log('Article ' + index + ':', article);
+            
+            // Formatear fecha
+            let fecha = article.date || 'Sin fecha';
+            
+            // Crear extracto
+            const excerpt = article.excerpt || 'Sin descripción';
+            
+            // Imagen
+            const image = article.image || 'https://via.placeholder.com/400x250/C4A574/ffffff?text=Blog';
+            
+            html += `
+                <article class="blog-article" style="border: 2px solid #C4A574; padding: 20px; margin: 10px; border-radius: 10px;">
+                    <div style="width: 100%; height: 200px; background-image: url('${image}'); background-size: cover; background-position: center; border-radius: 8px; margin-bottom: 15px;"></div>
+                    <div style="background: #C4A574; color: white; display: inline-block; padding: 5px 15px; border-radius: 15px; font-size: 0.8rem; margin-bottom: 10px;">
+                        ${article.category || 'General'}
+                    </div>
+                    <div style="margin-bottom: 10px; color: #999;">
+                        📅 ${fecha}
+                    </div>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: #333;">
+                        ${article.title || 'Sin título'}
+                    </h3>
+                    <p style="color: #666; line-height: 1.6; margin-bottom: 15px;">
+                        ${excerpt}
+                    </p>
+                    <a href="blog.html?post=${articleId}" style="color: #C4A574; font-weight: 600; text-decoration: none;">
+                        Leer más →
+                    </a>
+                </article>
+            `;
+        });
+        
+        container.innerHTML = html;
+        console.log('✅ Blog HTML created successfully');
+        
+    } catch (error) {
+        console.error('ERROR loading blog:', error);
+        container.innerHTML = `
+            <div style="color: red; padding: 20px; border: 2px solid red; border-radius: 10px;">
+                <h3>❌ ERROR:</h3>
+                <p><strong>Mensaje:</strong> ${error.message}</p>
+                <p><strong>Código:</strong> ${error.code || 'N/A'}</p>
+            </div>
+        `;
+        alert('ERROR al cargar blog: ' + error.message);
+    }
+    
+    console.log('=== BLOG DEBUG END ===');
+}
+
+// ==========================================
 // INITIALIZE
 // ==========================================
 
@@ -409,69 +502,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     });
-// ==========================================
-// BLOG FUNCTIONS - HOME (Featured)
-// ==========================================
-
-async function loadBlogFeatured() {
-    console.log('=== BLOG DEBUG START ===');
-    
-    const container = document.getElementById('blog-featured');
-    console.log('Container:', container);
-    
-    if (!container) {
-        alert('ERROR: No se encuentra blog-featured en el HTML');
-        return;
-    }
-    
-    // Mostrar mensaje de prueba
-    container.innerHTML = '<p style="color: green; font-size: 20px; text-align: center;">✅ JavaScript funciona! Intentando cargar de Firebase...</p>';
-    
-    try {
-        console.log('Intentando conectar a Firebase...');
-        
-        // Probar conexión simple
-        const snapshot = await db.collection('blog').get();
-        
-        console.log('Snapshot size:', snapshot.size);
-        console.log('Is empty:', snapshot.empty);
-        
-        if (snapshot.empty) {
-            container.innerHTML = '<p style="color: red; text-align: center;">⚠️ Firebase funciona pero NO HAY ARTÍCULOS en la colección "blog"</p>';
-            return;
-        }
-        
-        // Si llegamos aquí, hay artículos
-        alert('¡Éxito! Se encontraron ' + snapshot.size + ' artículos');
-        
-        // Crear HTML simple
-        let html = '';
-        snapshot.docs.forEach(doc => {
-            const data = doc.data();
-            html += `
-                <div style="border: 2px solid green; padding: 20px; margin: 10px;">
-                    <h3>${data.title || 'Sin título'}</h3>
-                    <p>${data.excerpt || 'Sin extracto'}</p>
-                    <p><strong>Categoría:</strong> ${data.category || 'N/A'}</p>
-                    <p><strong>Fecha:</strong> ${data.date || 'N/A'}</p>
-                </div>
-            `;
-        });
-        
-        container.innerHTML = html;
-        console.log('✅ HTML creado exitosamente');
-        
-    } catch (error) {
-        console.error('ERROR:', error);
-        container.innerHTML = `
-            <div style="color: red; padding: 20px; border: 2px solid red;">
-                <h3>❌ ERROR:</h3>
-                <p>${error.message}</p>
-                <p>Verifica que Firebase esté inicializado correctamente.</p>
-            </div>
-        `;
-        alert('ERROR: ' + error.message);
-    }
-    
-    console.log('=== BLOG DEBUG END ===');
-}
