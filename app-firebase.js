@@ -53,6 +53,7 @@ function applyAllData() {
     if (siteData.faq) loadFAQ();
     if (siteData.testimonios) loadTestimonios();
     loadBlogFeatured();
+    loadRecursosFeatured();
 
     console.log('✅ All data applied');
 }
@@ -344,6 +345,66 @@ function loadBlogFeatured() {
     }).catch(function(error) {
         console.error('❌ Error loading blog:', error);
         container.innerHTML = '<p style="text-align:center;color:#999;grid-column:1/-1;">Error cargando artículos</p>';
+    });
+}
+
+
+// ==========================================
+// RECURSOS GRATUITOS - HOME FEATURED
+// ==========================================
+function loadRecursosFeatured() {
+    console.log('📥 Loading recursos...');
+
+    var container = document.getElementById('recursos-featured');
+    if (!container) {
+        console.log('⚠️ Recursos container not found');
+        return;
+    }
+
+    db.collection('recursos').limit(3).get().then(function(snapshot) {
+        console.log('📊 Recursos found:', snapshot.size);
+
+        if (snapshot.empty) {
+            container.innerHTML = '<p style="text-align:center;color:#999;grid-column:1/-1;">Próximamente recursos disponibles</p>';
+            return;
+        }
+
+        var html = '';
+
+        snapshot.forEach(function(doc) {
+            var recurso = doc.data();
+            var title = recurso.title || 'Sin título';
+            var description = recurso.description || '';
+            var image = recurso.image || 'https://via.placeholder.com/400x250/C4A574/ffffff?text=Recurso';
+            var type = recurso.type || 'PDF';
+            var downloadUrl = recurso.downloadUrl || '#';
+            var category = recurso.category || '';
+
+            var typeColor = '#C4A574';
+            if (type === 'PDF') typeColor = '#e74c3c';
+            else if (type === 'Infografía') typeColor = '#3498db';
+            else if (type === 'Manual') typeColor = '#2ecc71';
+            else if (type === 'Vídeo') typeColor = '#9b59b6';
+
+            html += '<div class="recurso-card">' +
+                '<div class="recurso-card-image" style="background-image:url(\'' + image + '\')">' +
+                    '<span class="recurso-type-badge" style="background:' + typeColor + '">' + type + '</span>' +
+                '</div>' +
+                '<div class="recurso-card-content">' +
+                    (category ? '<span class="recurso-category">' + category + '</span>' : '') +
+                    '<h3 class="recurso-title">' + title + '</h3>' +
+                    '<p class="recurso-description">' + description + '</p>' +
+                    '<a href="' + downloadUrl + '" target="_blank" class="recurso-download-btn">📥 Descargar gratis</a>' +
+                '</div>' +
+            '</div>';
+        });
+
+        container.innerHTML = html;
+        console.log('✅ Recursos loaded successfully');
+
+    }).catch(function(error) {
+        console.error('❌ Error loading recursos:', error);
+        container.innerHTML = '<p style="text-align:center;color:#999;grid-column:1/-1;">Error cargando recursos</p>';
     });
 }
 
