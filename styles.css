@@ -2463,3 +2463,183 @@ body {
         font-size: 1.2rem;
     }
 }
+/* ==========================================
+   RECURSOS GRATUITOS - HOME SECTION
+   Agregar al final de styles.css
+   ========================================== */
+
+.recursos-home {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #f9f7f4 0%, #ede8e0 100%);
+}
+
+.recursos-home .section-tag {
+    color: #C4A574;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.recursos-home .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.recursos-home .section-subtitle {
+    color: #777;
+    font-size: 1.05rem;
+    margin-bottom: 3rem;
+    max-width: 600px;
+}
+
+/* Grid */
+.recursos-grid-home {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+/* Tarjeta de recurso */
+.recurso-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    transition: all 0.3s ease;
+    border: 1px solid #e8e0d5;
+    display: flex;
+    flex-direction: column;
+}
+
+.recurso-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    border-color: #C4A574;
+}
+
+/* Imagen */
+.recurso-card-image {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-color: #f0ebe3;
+    position: relative;
+}
+
+/* Badge de tipo */
+.recurso-type-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+/* Contenido */
+.recurso-card-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.recurso-category {
+    color: #C4A574;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.recurso-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+    color: #1a1a2e;
+}
+
+.recurso-description {
+    color: #777;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+/* Botón descarga */
+.recurso-download-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.5rem;
+    background: linear-gradient(135deg, #C4A574, #B39564);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+    box-shadow: 0 3px 12px rgba(196,165,116,0.3);
+    text-align: center;
+}
+
+.recurso-download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 18px rgba(196,165,116,0.4);
+    background: linear-gradient(135deg, #B39564, #A28554);
+}
+
+/* CTA ver todos */
+.recursos-cta {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.btn-recursos-ver-todos {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: transparent;
+    color: #C4A574;
+    border: 2px solid #C4A574;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.btn-recursos-ver-todos:hover {
+    background: #C4A574;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Loading */
+.loading-recursos {
+    text-align: center;
+    padding: 3rem;
+    color: #aaa;
+    grid-column: 1 / -1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .recursos-grid-home {
+        grid-template-columns: 1fr;
+    }
+    .recursos-home .section-title {
+        font-size: 1.8rem;
+    }
+}
