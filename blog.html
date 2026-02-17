@@ -322,7 +322,7 @@
             <div class="post-cta">
                 <h3>¿Quieres dar el primer paso?</h3>
                 <p>Si este artículo te ha resonado, quizás es el momento de iniciar tu proceso terapéutico.</p>
-                <a href="TU_URL_DOCFAV" target="_blank" class="post-cta-btn">Reservar una consulta</a>
+                <a href="index.html#modalidades" class="post-cta-btn">Reservar una consulta</a>
             </div>
         </div>
     </div>
@@ -449,6 +449,11 @@
 
             history.pushState(null, '', 'blog.html?post=' + post.id);
             window.scrollTo(0, 0);
+            // Actualizar navbar
+            var navLink = document.getElementById('navbar-back-link');
+            navLink.textContent = '← Volver al blog';
+            navLink.href = 'javascript:void(0)';
+            navLink.onclick = function() { showList(); };
         }
 
         function showList() {
@@ -457,6 +462,11 @@
             history.pushState(null, '', 'blog.html');
             window.scrollTo(0, 0);
             updateNavbar(false);
+            // Restaurar navbar
+            var navLink = document.getElementById('navbar-back-link');
+            navLink.textContent = '← Volver al inicio';
+            navLink.href = 'index.html';
+            navLink.onclick = null;
         }
 
         document.addEventListener('DOMContentLoaded', function() {
