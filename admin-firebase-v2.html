@@ -14,10 +14,7 @@
         .login-container h1 { margin-bottom: 0.5rem; color: #333; }
         .login-container p { color: #666; margin-bottom: 2rem; }
         
-        /* Setup */
-        .setup-screen { min-height: 100vh; padding: 2rem; background: #f5f5f5; }
-        .setup-container { background: white; padding: 2rem; border-radius: 10px; max-width: 800px; margin: 0 auto; }
-        .setup-step { background: #f9f9f9; padding: 1.5rem; margin-bottom: 1rem; border-radius: 8px; border-left: 4px solid #667eea; }
+
         
         /* Forms */
         .form-group { margin-bottom: 1rem; }
@@ -83,48 +80,8 @@
     </style>
 </head>
 <body>
-    <!-- Setup Screen -->
-    <div id="setup-screen" class="setup-screen">
-        <div class="setup-container">
-            <h1>🔧 Configuración Firebase</h1>
-            <p>Si ya configuraste Firebase antes, estos datos están guardados. Si no, complétalos:</p>
-            
-            <div class="setup-step">
-                <h3>Configuración Firebase</h3>
-                <div class="form-group">
-                    <label>apiKey</label>
-                    <input type="text" id="setup-apiKey">
-                </div>
-                <div class="form-group">
-                    <label>authDomain</label>
-                    <input type="text" id="setup-authDomain">
-                </div>
-                <div class="form-group">
-                    <label>projectId</label>
-                    <input type="text" id="setup-projectId">
-                </div>
-                <div class="form-group">
-                    <label>storageBucket</label>
-                    <input type="text" id="setup-storageBucket">
-                </div>
-                <div class="form-group">
-                    <label>messagingSenderId</label>
-                    <input type="text" id="setup-messagingSenderId">
-                </div>
-                <div class="form-group">
-                    <label>appId</label>
-                    <input type="text" id="setup-appId">
-                </div>
-                
-                <button onclick="saveFirebaseConfig()" class="btn btn-success" style="width: 100%; margin-top: 1rem;">
-                    ✅ Guardar y Continuar
-                </button>
-            </div>
-        </div>
-    </div>
-
     <!-- Login Screen -->
-    <div id="login-screen" class="login-screen" style="display: none;">
+    <div id="login-screen" class="login-screen" style="display: flex;">
         <div class="login-container">
             <h1>🔐 Admin Panel v2</h1>
             <p>mariabelenprieto.com</p>
@@ -624,34 +581,19 @@
     <script>
         let db, auth, currentUser;
         
+        // Firebase config hardcodeada
+        const FIREBASE_CONFIG = {
+            apiKey: "AIzaSyAXO7GpF5cMkVBF_9QV8w7S-4MKzKD2rEI",
+            authDomain: "maria-belen-prieto-web.firebaseapp.com",
+            projectId: "maria-belen-prieto-web",
+            storageBucket: "maria-belen-prieto-web.firebasestorage.app",
+            messagingSenderId: "610348524774",
+            appId: "1:610348524774:web:3d4c7e33c2f8e09dc35c2d"
+        };
+
         function checkFirebaseConfig() {
-            const config = localStorage.getItem('firebaseConfig');
-            if (config) {
-                initializeFirebase(JSON.parse(config));
-                document.getElementById('setup-screen').style.display = 'none';
-                document.getElementById('login-screen').style.display = 'flex';
-            }
-        }
-        
-        function saveFirebaseConfig() {
-            const config = {
-                apiKey: document.getElementById('setup-apiKey').value,
-                authDomain: document.getElementById('setup-authDomain').value,
-                projectId: document.getElementById('setup-projectId').value,
-                storageBucket: document.getElementById('setup-storageBucket').value,
-                messagingSenderId: document.getElementById('setup-messagingSenderId').value,
-                appId: document.getElementById('setup-appId').value
-            };
-            
-            if (!config.apiKey || !config.projectId) {
-                alert('Por favor completa todos los campos');
-                return;
-            }
-            
-            localStorage.setItem('firebaseConfig', JSON.stringify(config));
-            initializeFirebase(config);
-            document.getElementById('setup-screen').style.display = 'none';
-            document.getElementById('login-screen').style.display = 'flex';
+            // Config hardcodeada - inicializar directamente
+            initializeFirebase(FIREBASE_CONFIG);
         }
         
         function initializeFirebase(config) {
