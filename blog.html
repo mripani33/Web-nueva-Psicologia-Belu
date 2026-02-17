@@ -281,7 +281,7 @@
 
     <nav class="navbar">
         <a href="index.html" class="navbar-logo">María Belén Prieto</a>
-        <a href="index.html" class="navbar-back">← Volver al inicio</a>
+        <a href="index.html" class="navbar-back" id="navbar-back-link">← Volver al inicio</a>
     </nav>
 
     <!-- LISTA DE ARTÍCULOS -->
@@ -322,7 +322,7 @@
             <div class="post-cta">
                 <h3>¿Quieres dar el primer paso?</h3>
                 <p>Si este artículo te ha resonado, quizás es el momento de iniciar tu proceso terapéutico.</p>
-                <a href="index.html#contacto" class="post-cta-btn">Reservar una consulta</a>
+                <a href="TU_URL_DOCFAV" target="_blank" class="post-cta-btn">Reservar una consulta</a>
             </div>
         </div>
     </div>
@@ -437,6 +437,7 @@
         function showPost(post) {
             document.getElementById('view-list').style.display = 'none';
             document.getElementById('view-post').style.display = 'block';
+            updateNavbar(true);
 
             var heroEl = document.getElementById('post-hero-image');
             heroEl.style.backgroundImage = post.image ? 'url(' + post.image + ')' : '';
@@ -455,11 +456,25 @@
             document.getElementById('view-post').style.display = 'none';
             history.pushState(null, '', 'blog.html');
             window.scrollTo(0, 0);
+            updateNavbar(false);
         }
 
         document.addEventListener('DOMContentLoaded', function() {
             loadAllPosts();
         });
+        // Cambiar el navbar según la vista
+function updateNavbar(isPost) {
+    var navLink = document.getElementById('navbar-back-link');
+    if (isPost) {
+        navLink.textContent = '← Volver al blog';
+        navLink.href = '#';
+        navLink.onclick = function(e) { e.preventDefault(); showList(); };
+    } else {
+        navLink.textContent = '← Volver al inicio';
+        navLink.href = 'index.html';
+        navLink.onclick = null;
+    }
+}
     </script>
 </body>
 </html>
