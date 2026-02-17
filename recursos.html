@@ -378,6 +378,7 @@
             <input type="email" placeholder="Tu email aquí..." id="subscribe-email">
             <button onclick="subscribeEmail()">Suscribirme</button>
         </div>
+        <p id="subscribe-msg" style="display:none; margin-top:1rem; font-size:0.95rem;"></p>
     </div>
 
     <script>
@@ -519,22 +520,42 @@
         }
 
         function subscribeEmail() {
-            var email = document.getElementById('subscribe-email').value;
-            if (!email || !email.includes('@')) {
-                alert('Por favor introduce un email válido');
-                return;
-            }
-            // Guardar en Firebase
-            db.collection('suscriptores').add({
-                email: email,
-                date: new Date().toISOString()
-            }).then(function() {
-                alert('¡Gracias! Te avisaremos cuando haya nuevos recursos.');
-                document.getElementById('subscribe-email').value = '';
-            }).catch(function() {
-                alert('¡Gracias! Te tendremos en cuenta.');
-            });
+function subscribeEmail() {
+    var email = document.getElementById('subscribe-email').value;
+    var btn = document.querySelector('.subscribe-form button');
+    var msgEl = document.getElementById('subscribe-msg');
+    
+    if (!email || !email.includes('@')) {
+        if (msgEl) {
+            msgEl.textContent = '⚠️ Por favor introduce un email válido';
+            msgEl.style.color = '#e74c3c';
+            msgEl.style.display = 'block';
         }
+        return;
+    }
+    
+    if (btn) btn.textContent = 'Enviando...';
+    
+    db.collection('suscriptores').add({
+        email: email,
+        date: new Date().toISOString()
+    }).then(function() {
+        if (msgEl) {
+            msgEl.textContent = '✅ ¡Gracias! Te avisaremos cuando haya nuevos recursos.';
+            msgEl.style.color = '#2ecc71';
+            msgEl.style.display = 'block';
+        }
+        document.getElementById('subscribe-email').value = '';
+        if (btn) btn.textContent = '✅ Suscrito';
+    }).catch(function() {
+        if (msgEl) {
+            msgEl.textContent = '✅ ¡Gracias! Te tendremos en cuenta.';
+            msgEl.style.color = '#2ecc71';
+            msgEl.style.display = 'block';
+        }
+        if (btn) btn.textContent = '✅ Suscrito';
+    });
+}
 
         document.addEventListener('DOMContentLoaded', function() {
             loadAllRecursos();
