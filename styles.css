@@ -75,8 +75,25 @@ body {
 }
 
 .nav-logo {
-    font-family: var(--font-display); font-size: 1.5rem; font-weight: 600;
-    color: var(--primary); text-decoration: none; letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-image {
+    height: 50px;
+    width: auto;
+    transition: opacity 0.3s;
+}
+
+.logo-image:hover {
+    opacity: 0.85;
+}
+
+@media (min-width: 768px) {
+    .logo-image {
+        height: 60px;
+    }
 }
 
 .nav-links {
