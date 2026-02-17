@@ -35,12 +35,25 @@
             z-index: 100;
         }
         .navbar-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            color: var(--dark);
-            text-decoration: none;
-            font-weight: 600;
-        }
+            .navbar-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.navbar-logo .logo-image {
+    height: 45px;
+    width: auto;
+    max-height: 45px;
+    object-fit: contain;
+}
+
+@media (min-width: 768px) {
+    .navbar-logo .logo-image {
+        height: 50px;
+        max-height: 50px;
+    }
+}
         .navbar-back {
             color: var(--gold);
             text-decoration: none;
