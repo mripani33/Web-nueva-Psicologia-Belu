@@ -286,8 +286,26 @@ body {
     background: var(--bg-cream); border-radius: 8px; border-left: 4px solid var(--accent);
 }
 
+```css
 .credential-icon {
-    font-size: 2rem; flex-shrink: 0;
+    font-size: 2rem;
+    flex-shrink: 0;
+    
+    /* FONT STACK PARA EMOJIS */
+    font-family: 
+        "Apple Color Emoji",
+        "Segoe UI Emoji", 
+        "Segoe UI Symbol",
+        "Noto Color Emoji",
+        "Android Emoji",
+        sans-serif;
+    
+    /* Forzar rendering de color */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+```
 }
 
 .credential-info strong {
