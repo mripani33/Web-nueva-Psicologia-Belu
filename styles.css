@@ -1305,7 +1305,11 @@ body {
     }
 }
 
-/* SecciÃ³n Voces del Tourette */
+/* ========================================
+   ESTILOS VOCES DEL TOURETTE - CORREGIDOS
+   Reemplazar desde línea 1234 a 1347 en styles.css
+   ======================================== */
+
 .tourette-section {
     padding: var(--section-padding);
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -1388,14 +1392,17 @@ body {
     flex-wrap: wrap;
 }
 
+/* BOTONES MEJORADOS */
 .tourette-btn {
     display: inline-block;
-    padding: 16px 40px;
+    padding: 18px 40px;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
 
 .tourette-btn-primary {
@@ -1404,23 +1411,50 @@ body {
 }
 
 .tourette-btn-primary:hover {
-    background: var(--accent-light);
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    background: #f8f9fa;
 }
 
 .tourette-btn-secondary {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.2);
     color: white;
-    border: 2px solid rgba(255,255,255,0.5);
+    border: 2px solid white;
 }
 
 .tourette-btn-secondary:hover {
-    background: rgba(255,255,255,0.1);
-    border-color: white;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
+.tourette-visual {
+    position: relative;
+}
+
+.tourette-logo {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    filter: drop-shadow(0 10px 40px rgba(0,0,0,0.3));
+}
+
+/* RESPONSIVE */
+@media (max-width: 968px) {
+    .tourette-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .tourette-info h2 {
+        font-size: 2.5rem;
+    }
+
+    .tourette-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
 .tourette-visual {
     position: relative;
 }
