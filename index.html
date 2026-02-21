@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Cookie Consent CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
 </head>
 <body>
     <!-- WhatsApp Floating Button -->
@@ -527,6 +529,88 @@
 <script src="app-firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-<script src="app-firebase.js"></script>    
+<script src="app-firebase.js"></script>  
+
+<!-- ============================================
+   BANNER DE COOKIES - RGPD COMPLIANT
+   Agregar ANTES del cierre de </head>
+   ============================================ -->
+
+<!-- Cookie Consent CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
+
+<!-- Cookie Consent JS - Agregar ANTES del cierre de </body> -->
+<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+  window.cookieconsent.initialise({
+    "palette": {
+      "popup": {
+        "background": "#667eea",
+        "text": "#ffffff"
+      },
+      "button": {
+        "background": "#ffffff",
+        "text": "#667eea"
+      }
+    },
+    "theme": "classic",
+    "position": "bottom",
+    "type": "opt-in",
+    "content": {
+      "message": "Este sitio web utiliza cookies para mejorar tu experiencia de navegación y analizar el uso del sitio. Al hacer clic en 'Aceptar', consientes el uso de cookies.",
+      "dismiss": "Aceptar",
+      "deny": "Rechazar",
+      "link": "Más información",
+      "href": "politica-cookies.html",
+      "policy": "Política de Cookies"
+    },
+    "onStatusChange": function(status) {
+      // Si acepta cookies, activar Google Analytics
+      if (this.hasConsented()) {
+        console.log('Usuario aceptó cookies');
+        // Aquí puedes activar Google Analytics o cualquier otro servicio
+        // activarGoogleAnalytics();
+      } else {
+        console.log('Usuario rechazó cookies');
+      }
+    }
+  });
+});
+</script>
+
+<!-- Estilos personalizados para el banner -->
+<style>
+.cc-window {
+  font-family: 'Lato', sans-serif !important;
+  border-radius: 10px !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important;
+}
+
+.cc-btn {
+  border-radius: 25px !important;
+  padding: 12px 30px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+
+.cc-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2) !important;
+}
+
+.cc-link {
+  text-decoration: underline !important;
+  color: #ffffff !important;
+}
+
+@media (max-width: 768px) {
+  .cc-window {
+    margin: 10px !important;
+    border-radius: 10px !important;
+  }
+}
+</style>
+
 </body>
 </html>
