@@ -38,7 +38,7 @@
                 <li><a href="#areas">Áreas de Trabajo</a></li>
                 <li><a href="#formacion">Formación</a></li>
                 <li><a href="#voces-tourette">Voces del Tourette</a></li>
-                <li><a href="#testimonios">Testimonios</a></li>
+                <li class="link-testimonios" style="display:none;"><a href="#testimonios">Testimonios</a></li>
                 <li><a href="#blog">Blog</a></li>
                 <li><a href="#contacto" class="nav-cta">Reservar Cita</a></li>
             </ul>
@@ -294,7 +294,7 @@
  
 
 <!-- TESTIMONIOS -->
-<section id="testimonios" class="testimonios">
+<section id="testimonios" class="testimonios" style="display:none;">
     <div class="container">
         <span class="section-tag">TESTIMONIOS</span>
         <h2 class="section-title">Lo que dicen quienes han confiado en mí</h2>
@@ -478,7 +478,7 @@
             <div class="footer-grid">
                 <div class="footer-col footer-about">
                     <h3 id="footer-name">María Belén Prieto</h3>
-                    <p>Psicóloga clínica colegiada especializada en terapia humanista e integrativa. Atención presencial en Madrid y online.</p>
+                    <p>Psicóloga clínica colegiada especializada en terapia humanista e integrativa. Atención presencial en Valladolid y online.</p>
                     <div class="footer-social" id="footer-social">
                         <!-- Redes sociales -->
                     </div>
@@ -498,7 +498,7 @@
                 <div class="footer-col">
                     <h4>Recursos</h4>
                     <ul>
-                        <li><a href="#testimonios">Testimonios</a></li>
+                        <li class="link-testimonios" style="display:none;"><a href="#testimonios">Testimonios</a></li>
                         <li><a href="#recursos">Material Descargable</a></li>
                         <li><a href="#faq">Preguntas Frecuentes</a></li>
                         <li><a href="/blog">Artículos</a></li>
@@ -507,14 +507,14 @@
                 <div class="footer-col">
                     <h4>Legal</h4>
                     <ul>
-                        <<li><a href="politica-privacidad.html">Política de Privacidad</a></li>
+                        <li><a href="politica-privacidad.html">Política de Privacidad</a></li>
 <li><a href="politica-cookies.html">Política de Cookies</a></li>
 <li><a href="aviso-legal.html">Aviso Legal</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 <span id="footer-copy">María Belén Prieto</span>. Todos los derechos reservados.</p>
+                <p>&copy; <span id="footer-year">2026</span> <span id="footer-copy">María Belén Prieto</span>. Todos los derechos reservados.</p>
                 <p class="footer-credit">Diseñado con dedicación para el bienestar emocional</p>
             </div>
         </div>
@@ -526,17 +526,11 @@
 
 <!-- Firebase App -->
 <script src="app-firebase.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-<script src="app-firebase.js"></script>  
 
 <!-- ============================================
    BANNER DE COOKIES - RGPD COMPLIANT
    Agregar ANTES del cierre de </head>
    ============================================ -->
-
-<!-- Cookie Consent CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
 
 <!-- Cookie Consent JS - Agregar ANTES del cierre de </body> -->
 <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
@@ -611,5 +605,6 @@ window.addEventListener("load", function(){
 }
 </style>
 
+<script>document.getElementById("footer-year").textContent = new Date().getFullYear();</script>
 </body>
 </html>

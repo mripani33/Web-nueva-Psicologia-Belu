@@ -239,6 +239,11 @@ function loadTestimonios() {
 
     if (count) count.textContent = testimonios.length;
 
+    // Mostrar la sección y los enlaces solo cuando hay reseñas reales
+    var seccion = document.getElementById('testimonios');
+    if (seccion) seccion.style.display = '';
+    document.querySelectorAll('.link-testimonios').forEach(function(li) { li.style.display = ''; });
+
     grid.innerHTML = testimonios.map(function(testimonio) {
         var stars = '';
         for (var i = 0; i < 5; i++) {
