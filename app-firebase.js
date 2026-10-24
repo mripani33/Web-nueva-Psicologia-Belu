@@ -299,6 +299,9 @@ function loadBlogFeatured() {
         return;
     }
 
+    // Los artículos de la home se generan como HTML estático (scripts/generar-blog.mjs)
+    if (container.dataset.static === 'true') return;
+
     db.collection('blog').limit(3).get().then(function(snapshot) {
         console.log('📊 Blog posts found:', snapshot.size);
 

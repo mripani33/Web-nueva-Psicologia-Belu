@@ -1,0 +1,56 @@
+# Regenera el blog estático a partir de los artículos del admin (Firestore)
+# y lo publica. Corre solo cada 3 horas, al cambiar el generador,
+# o a mano desde la pestaña Actions → "Publicar blog" → "Run workflow".
+name: Publicar blog
+
+on:
+  schedule:
+    - cron: '23 */3 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/generar-blog.mjs'
+      - '.github/workflows/publicar-blog.yml'
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: publicar-blog
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generar páginas del blog
+        run: node scripts/generar-blog.mjs
+
+      - name: Guardar cambios
+        id: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A blog blog.html index.html sitemap.xml
+          if git diff --cached --quiet; then
+            echo "Sin cambios en el blog."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Blog: actualización automática desde el admin"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Pedir a GitHub Pages que republique
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Pages se actualizará con el push."
