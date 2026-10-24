@@ -439,9 +439,12 @@ async function main() {
     usados.add(slug);
   }
 
+  // Quita comillas sobrantes que envuelven el texto (pasa al pegar desde otro sitio)
+  const sinComillas = (t) => (typeof t === 'string' ? t.trim().replace(/^["“”«»]+\s*/, '').replace(/\s*["“”«»]+$/, '').trim() : t);
+
   const publicados = all
     .filter((p) => p.published !== false && p.title && p.content)
-    .map((p) => ({ ...p, slug: slugs[p.id] }))
+    .map((p) => ({ ...p, title: sinComillas(p.title), excerpt: sinComillas(p.excerpt), content: sinComillas(p.content), slug: slugs[p.id] }))
     .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')) || a.title.localeCompare(b.title, 'es'));
   console.log(`Publicados: ${publicados.length} · Borradores u ocultos: ${all.length - publicados.length}`);
 
