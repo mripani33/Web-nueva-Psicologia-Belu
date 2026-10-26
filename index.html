@@ -48,14 +48,14 @@
       "knowsAbout": [
         "CBIT (Intervención Conductual Integral para Tics)",
         "Trastornos del Neurodesarrollo",
+        "Terapia cognitivo-conductual",
         "Terapia online",
-        "Psicología humanista",
-        "Terapia integrativa",
         "Mindfulness",
         "Ansiedad",
         "Terapia de pareja",
         "Terapia familiar",
-        "Síndrome de Tourette"
+        "Síndrome de Tourette",
+        "Trastornos del Espectro Autista"
       ],
       "hasCredential": [
         {
@@ -78,6 +78,20 @@
           "credentialCategory": "Certificación",
           "name": "Terapeuta certificada en CBIT (Comprehensive Behavioral Intervention for Tics)"
         }
+      ],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Universidad de Buenos Aires"
+      },
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "name": "Tics and Tourette Across the Globe (TTAG)"
+        },
+        {
+          "@type": "Organization",
+          "name": "ACOVASTTA"
+        }
       ]
     },
     {
@@ -87,7 +101,7 @@
       "url": "https://mariabelenprieto.com/",
       "image": "https://mariabelenprieto.com/og-image.jpg",
       "logo": "https://mariabelenprieto.com/Logo_Belu.jpeg",
-      "description": "Terapia psicológica online individual, de pareja y familiar con enfoque humanista e integrativo. Sesiones presenciales puntuales en Valladolid bajo consulta.",
+      "description": "Terapia psicológica online con enfoque cognitivo-conductual para niños, adolescentes, adultos y familias, con experiencia en trastornos del neurodesarrollo y síndrome de Tourette. Sesiones presenciales puntuales en Valladolid bajo consulta.",
       "email": "licmbprieto@gmail.com",
       "founder": {
         "@id": "https://mariabelenprieto.com/#persona"
@@ -197,55 +211,47 @@
 </section>
 
     <!-- Sobre Mí Section -->
-<section id="sobre-mi" class="about">
+<section id="sobre-mi" class="about about-v2" data-static="true">
+    <!-- Contenido fijo (antes se cargaba desde Firebase). Se edita aquí. -->
     <div class="container">
-        <span class="section-tag">SOBRE MÍ</span>
-        <h2 class="about-title">Comprometida con tu proceso de cambio</h2>
-        
-        <div class="about-content">
-            <div class="about-image-container">
-                <div class="about-image" id="about-image"></div>
+        <div class="about-v2-grid">
+            <figure class="about-v2-photo">
+                <img src="https://res.cloudinary.com/ddtpdc670/image/upload/f_auto,q_auto,w_900/v1771442277/Foto_Belu_adaptada_para_Pagina_h2eyy9.jpg" alt="María Belén Prieto en su consulta" width="900" height="1125" loading="lazy">
+            </figure>
+            <div class="about-v2-text">
+                <span class="section-tag">SOBRE MÍ</span>
+                <h2 class="about-title">Comprometida con tu proceso de cambio</h2>
+                <p>Soy Psicóloga General Sanitaria, colegiada M-06437 y graduada en la Universidad de Buenos Aires. Llevo más de 15 años de trayectoria clínica acompañando a niños, adolescentes y adultos.</p>
+                <p>Mi enfoque es cognitivo-conductual: basado en la evidencia científica, cercano y personalizado. A lo largo de mi carrera he centrado mi trabajo en los trastornos del neurodesarrollo, trabajando de forma integral con las personas y sus familias.</p>
+                <p>Durante más de cinco años formé parte del equipo de Trastornos del Espectro Autista del Hospital Italiano de Buenos Aires, donde coordiné equipos interdisciplinarios. Esta experiencia consolidó mi mirada clínica: rigurosa, colaborativa y profundamente humana.</p>
             </div>
-            
-            <div class="about-text">
-                <p class="about-bio-1">
-                    Soy Psicóloga General Sanitaria con más de una década de experiencia acompañando a personas en su proceso de cambio y crecimiento personal.
-                </p>
-                
-                <p class="about-bio-2">
-                    Mi enfoque terapéutico es humanista e integrativo, adaptando las técnicas y estrategias a las necesidades únicas de cada persona.
-                </p>
-                
-                <p class="about-bio-3">
-                    Creo firmemente en el potencial de cambio de cada individuo y en la importancia de crear un espacio terapéutico seguro, empático y libre de juicios.
-                </p>
-                
-                <div class="about-credentials">
-                    <div class="credential-item">
-                        <span class="credential-icon">🎓</span>
-                        <div class="credential-info">
-                            <strong>Formación Académica</strong>
-                            <p id="about-education">Licenciada en Psicología</p>
-                        </div>
-                    </div>
-                    
-                    <div class="credential-item">
-                        <span class="credential-icon">📋</span>
-                        <div class="credential-info">
-                            <strong>Colegiación</strong>
-                            <p id="about-colegiacion">Nº CL06437 · Colegio Oficial de la Psicología de Castilla y León</p>
-                        </div>
-                    </div>
-                    
-                    <div class="credential-item">
-                        <span class="credential-icon">⏱️</span>
-                        <div class="credential-info">
-                            <strong>Experiencia</strong>
-                            <p id="about-experience">Más de una década de experiencia</p>
-                        </div>
-                    </div>
+        </div>
+        <div class="about-creds">
+                <div class="about-cred">
+                    <div class="about-cred-head"><span class="about-cred-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></span><h3>Formación</h3></div>
+                    <ul>
+                        <li>Licenciada en Psicología · Universidad de Buenos Aires</li>
+                        <li>Terapia conductual para el síndrome de Tourette (CBIT) · UCLA, Los Ángeles</li>
+                        <li>Instructora certificada en Mindfulness · Universidad Europea Miguel de Cervantes</li>
+                    </ul>
                 </div>
-            </div>
+                <div class="about-cred">
+                    <div class="about-cred-head"><span class="about-cred-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg></span><h3>Colegiación y redes</h3></div>
+                    <ul>
+                        <li>Psicóloga General Sanitaria · Nº colegiada M-06437</li>
+                        <li>Miembro de Tics and Tourette Across the Globe (TTAG)</li>
+                        <li>Psicóloga colaboradora de ACOVASTTA (Valencia)</li>
+                    </ul>
+                </div>
+                <div class="about-cred">
+                    <div class="about-cred-head"><span class="about-cred-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg></span><h3>Experiencia</h3></div>
+                    <ul>
+                        <li>Más de 15 años de experiencia clínica</li>
+                        <li>Equipo de TEA del Hospital Italiano de Buenos Aires</li>
+                        <li>Docente y formadora internacional</li>
+                        <li>Conferencista y divulgadora en salud mental</li>
+                    </ul>
+                </div>
         </div>
     </div>
 </section>
@@ -319,9 +325,9 @@
             <div class="approach-grid">
                 <div class="approach-content">
                     <span class="section-tag">Mi Enfoque</span>
-                    <h2 class="section-title" id="approach-title">Terapia centrada en la persona</h2>
+                    <h2 class="section-title" id="approach-title">Terapia basada en la evidencia, a tu medida</h2>
                     <div class="approach-text" id="approach-description">
-                        <p>Mi enfoque terapéutico es humanista e integrativo, lo que significa que adapto las técnicas y estrategias a las necesidades únicas de cada persona.</p>
+                        <p>Trabajo desde un enfoque cognitivo-conductual: utilizo técnicas con respaldo científico y las adapto a cada persona, a su momento vital y a su familia.</p>
                         <p>Creo firmemente en el potencial de cambio de cada individuo y en la importancia de crear un espacio terapéutico seguro, empático y libre de juicios.</p>
                     </div>
                     <div class="approach-pillars">
@@ -698,7 +704,7 @@
             <div class="footer-grid">
                 <div class="footer-col footer-about">
                     <h3 id="footer-name">María Belén Prieto</h3>
-                    <p>Psicóloga General Sanitaria colegiada. Terapia online con enfoque humanista e integrativo, y sesiones presenciales en Valladolid bajo consulta.</p>
+                    <p>Psicóloga General Sanitaria colegiada. Terapia online con enfoque cognitivo-conductual, y sesiones presenciales en Valladolid bajo consulta.</p>
                     <div class="footer-social" id="footer-social">
                         <!-- Redes sociales -->
                     </div>

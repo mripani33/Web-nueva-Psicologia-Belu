@@ -95,6 +95,9 @@ function loadHero() {
 function loadAbout() {
     const about = siteData.about;
     if (!about) return;
+    // Sobre mí es contenido fijo en index.html: no se sobrescribe desde Firebase
+    const seccion = document.getElementById('sobre-mi');
+    if (seccion && seccion.dataset.static === 'true') return;
 
     const title = document.querySelector('#sobre-mi h2, .about-title');
     if (title && about.title) title.textContent = about.title;

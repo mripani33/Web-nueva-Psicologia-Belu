@@ -3034,3 +3034,109 @@ body {
 #areas .area-item-text ul { margin: 0.5rem 0 0; padding-left: 1.1rem; display: grid; gap: 0.2rem; }
 #areas .area-item-text li { list-style: disc; }
 #areas .area-item-text li::marker { color: #C4A777; }
+
+/* ==========================================
+   SOBRE MÍ (oct 2026) — misma identidad que portada y áreas
+   ========================================== */
+#sobre-mi.about-v2 { background: #FAF8F5; padding: 6rem 0; }
+
+#sobre-mi .about-v2-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 4.5rem;
+    align-items: center;
+}
+
+#sobre-mi .about-v2-photo { position: relative; margin: 0; }
+#sobre-mi .about-v2-photo::before {
+    content: "";
+    position: absolute;
+    inset: 18px -18px -18px 18px;
+    border: 1.5px solid #C4A777;
+    border-radius: 18px;
+    z-index: 0;
+}
+#sobre-mi .about-v2-photo img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 18px;
+    box-shadow: 0 20px 50px rgba(45, 67, 86, 0.12);
+    background: #EFE7DC;
+}
+
+#sobre-mi .about-v2-text { min-width: 0; }
+#sobre-mi .section-tag {
+    background: none; border: 0; padding: 0;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 2.5px;
+    color: #A08D61; margin-bottom: 0.9rem;
+}
+#sobre-mi .about-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 3vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: #2D4356;
+    margin: 0 0 1.5rem;
+    text-wrap: balance;
+}
+#sobre-mi .about-v2-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #4A4A4A;
+    margin: 0 0 1.1rem;
+    max-width: 62ch;
+}
+#sobre-mi .about-v2-text p:last-child { margin-bottom: 0; }
+
+#sobre-mi .about-creds {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin-top: 4.5rem;
+}
+#sobre-mi .about-cred {
+    background: #FFFFFF;
+    border: 1px solid #E8E1D6;
+    border-radius: 14px;
+    padding: 1.6rem 1.75rem;
+    min-width: 0;
+}
+#sobre-mi .about-cred-head { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem; }
+#sobre-mi .about-cred-icon {
+    flex: 0 0 42px; width: 42px; height: 42px; border-radius: 50%;
+    background: #F5EFE4; color: #A08D61;
+    display: flex; align-items: center; justify-content: center;
+}
+#sobre-mi .about-cred h3 {
+    font-family: var(--font-display);
+    font-size: 1.15rem; color: #2D4356; margin: 0;
+}
+#sobre-mi .about-cred ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.7rem; }
+#sobre-mi .about-cred li {
+    position: relative;
+    padding-left: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: #4A4A4A;
+}
+#sobre-mi .about-cred li::before {
+    content: "";
+    position: absolute; left: 0; top: 0.62em;
+    width: 5px; height: 5px; border-radius: 50%;
+    background: #C4A777;
+}
+
+@media (max-width: 960px) {
+    #sobre-mi .about-v2-grid { grid-template-columns: 1fr; gap: 3rem; }
+    #sobre-mi .about-v2-photo { max-width: 420px; margin: 0 auto; width: calc(100% - 18px); }
+    #sobre-mi .about-creds { grid-template-columns: 1fr; margin-top: 3rem; }
+}
+@media (max-width: 640px) {
+    #sobre-mi.about-v2 { padding: 4rem 0; }
+    #sobre-mi .about-v2-photo::before { inset: 12px -12px -12px 12px; }
+}
