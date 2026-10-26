@@ -136,47 +136,29 @@ function loadAreas() {
     const grid = document.getElementById('areas-grid');
     if (!grid) return;
 
-    grid.innerHTML = areas.map(function(area, index) {
-        return '<div class="area-card" data-index="' + index + '">' +
-            '<div class="area-header" onclick="toggleArea(' + index + ')">' +
-                '<div class="area-icon">' +
-                    (area.image ?
-                        '<img src="' + area.image + '" alt="' + area.name + '">' :
-                        (area.icon || '🧠')
-                    ) +
+    const esc = function (t) {
+        return String(t || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    };
+
+    // Tarjetas abiertas: todo el texto visible, misma altura por fila, sin acordeón
+    grid.className = 'areas-list';
+    grid.innerHTML = areas.map(function (area) {
+        const icono = area.image
+            ? '<img src="' + esc(area.image) + '" alt="" width="28" height="28" loading="lazy">'
+            : '<span aria-hidden="true">' + esc(area.icon || '•') + '</span>';
+        const corta = area.shortDescription ? '<p class="area-item-lead">' + esc(area.shortDescription) + '</p>' : '';
+        const larga = area.fullDescription || area.description || '';
+        return '<article class="area-item">' +
+                '<div class="area-item-head">' +
+                    '<div class="area-item-icon">' + icono + '</div>' +
+                    '<h3 class="area-item-title">' + esc(area.name) + '</h3>' +
                 '</div>' +
-                '<div class="area-header-content">' +
-                    '<h3 class="area-name">' + area.name + '</h3>' +
-                    '<p class="area-short-description">' + (area.shortDescription || '') + '</p>' +
-                '</div>' +
-                '<div class="area-toggle">▼</div>' +
-            '</div>' +
-            '<div class="area-content">' +
-                '<div class="area-content-inner">' +
-                    '<div class="area-full-description">' +
-                        (area.fullDescription || area.description || '') +
-                    '</div>' +
-                '</div>' +
-            '</div>' +
-        '</div>';
+                corta +
+                (larga ? '<div class="area-item-text">' + larga + '</div>' : '') +
+            '</article>';
     }).join('');
 
     console.log('✅ Areas loaded');
-}
-
-function toggleArea(index) {
-    const card = document.querySelector('.area-card[data-index="' + index + '"]');
-    if (!card) return;
-
-    const isExpanded = card.classList.contains('expanded');
-
-    document.querySelectorAll('.area-card').forEach(function(c) {
-        c.classList.remove('expanded');
-    });
-
-    if (!isExpanded) {
-        card.classList.add('expanded');
-    }
 }
 
 // ==========================================
