@@ -3555,3 +3555,17 @@ section[id] { scroll-margin-top: 100px; }
 
 /* Formación: dejar aire bajo el menú fijo al llegar desde el enlace */
 #formacion { scroll-margin-top: 120px; }
+
+/* ==========================================
+   AJUSTES RESPONSIVE (oct 2026)
+   ========================================== */
+/* Pilares de Mi enfoque: texto alineado a la izquierda en todas las pantallas */
+#enfoque .approach-content, #enfoque .pillar-item, #enfoque .pillar-item h3, #enfoque .pillar-item p { text-align: left; }
+
+/* Etiquetas en mayúsculas: mínimo 12px para que se lean bien en el móvil */
+#inicio .hero-label, #modalidades .modalidad-v2-badge, #contacto .contacto-v2-label { font-size: 0.78rem; }
+
+/* Enlaces del footer: área táctil cómoda en móvil y tablet */
+@media (max-width: 1024px) {
+    footer a { display: inline-block; padding: 0.45rem 0; }
+}
