@@ -123,6 +123,29 @@ async function fetchPosts() {
   return posts;
 }
 
+// Preguntas frecuentes: siteData/main → campo "faq" (se edita en la pestaña FAQ del admin)
+async function fetchFaq() {
+  if (process.env.FAQ_MOCK) return JSON.parse(fs.readFileSync(process.env.FAQ_MOCK, 'utf8'));
+  const url = `https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents/siteData/main?key=${API_KEY}`;
+  const res = await fetch(url, { headers: { Referer: `${SITE}/` } });
+  if (!res.ok) throw new Error(`Firestore (FAQ) respondió ${res.status}: ${(await res.text()).slice(0, 500)}`);
+  const doc = await res.json();
+  const faq = decodeFields(doc.fields || {}).faq;
+  return Array.isArray(faq) ? faq.filter((x) => x && x.question && x.answer) : [];
+}
+
+function faqBlock(items) {
+  if (!items.length) return '<p class="faq-v2-empty">Próximamente.</p>';
+  return items.map((item) => {
+    const parrafos = String(item.answer).split(/\n+/).map((t) => t.trim()).filter(Boolean)
+      .map((t) => `<p>${esc(t)}</p>`).join('');
+    return `<details class="faq-v2-item">
+                    <summary><h3>${esc(String(item.question).trim())}</h3><span class="faq-v2-icon" aria-hidden="true"></span></summary>
+                    <div class="faq-v2-answer">${parrafos}</div>
+                </details>`;
+  }).join('\n                ');
+}
+
 // ---------------------------------------------------------------------
 // Plantillas
 // ---------------------------------------------------------------------
@@ -481,7 +504,15 @@ async function main() {
   const index = fs.readFileSync(indexFile, 'utf8');
   const re = /(<!-- BLOG-HOME:START -->)[\s\S]*?(<!-- BLOG-HOME:END -->)/;
   if (!re.test(index)) throw new Error('No se encontraron los marcadores BLOG-HOME en index.html');
-  touch(indexFile, index.replace(re, `$1\n            ${homeBlock(publicados)}\n            $2`));
+  let nuevoIndex = index.replace(re, `$1\n            ${homeBlock(publicados)}\n            $2`);
+
+  // Preguntas frecuentes de la home
+  const reFaq = /(<!-- FAQ:START -->)[\s\S]*?(<!-- FAQ:END -->)/;
+  if (!reFaq.test(nuevoIndex)) throw new Error('No se encontraron los marcadores FAQ en index.html');
+  const faq = await fetchFaq();
+  console.log(`Preguntas frecuentes: ${faq.length}`);
+  nuevoIndex = nuevoIndex.replace(reFaq, `$1\n                ${faqBlock(faq)}\n                $2`);
+  touch(indexFile, nuevoIndex);
 
   console.log(cambios.length ? `Archivos actualizados:\n  - ${cambios.join('\n  - ')}` : 'Sin cambios.');
 }

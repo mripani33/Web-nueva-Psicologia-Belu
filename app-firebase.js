@@ -173,6 +173,8 @@ function loadFAQ() {
     const faq = siteData.faq;
     if (!faq || faq.length === 0) return;
 
+    // Las preguntas se generan como HTML fijo (scripts/generar-blog.mjs)
+    if (document.querySelector('.faq-v2-list[data-static="true"]')) return;
     const container = document.querySelector('.faq-container');
     if (!container) return;
 

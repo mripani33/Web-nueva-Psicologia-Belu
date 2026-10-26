@@ -3375,3 +3375,81 @@ body {
 @media (prefers-reduced-motion: reduce) {
     #voces-tourette .tourette-v2-panel, #voces-tourette .tourette-v2-panel:hover { transition: none; transform: none; }
 }
+
+/* ==========================================
+   PREGUNTAS FRECUENTES (oct 2026) — acordeón accesible con <details>
+   ========================================== */
+#faq.faq-v2 { background: #FAF8F5; padding: 6rem 0; }
+#faq .faq-v2-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+    gap: 4.5rem;
+    align-items: start;
+}
+#faq .faq-v2-intro { position: sticky; top: 130px; min-width: 0; }
+#faq .section-tag {
+    display: block; background: none; border: 0; padding: 0;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 2.5px; color: #A08D61; margin-bottom: 0.9rem;
+}
+#faq .faq-v2-intro h2 {
+    font-family: var(--font-display); font-size: clamp(1.8rem, 2.8vw, 2.3rem);
+    line-height: 1.2; color: #2D4356; margin: 0 0 1.25rem; text-wrap: balance;
+}
+#faq .faq-v2-intro p { font-size: 1.02rem; line-height: 1.75; color: #4A4A4A; margin: 0 0 1.75rem; }
+#faq .faq-v2-btn {
+    display: inline-block; padding: 0.85rem 1.6rem; border-radius: 999px;
+    border: 1.5px solid #2D4356; color: #2D4356; font-weight: 700; font-size: 0.95rem; text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+#faq .faq-v2-btn:hover { background: #2D4356; color: #FFFFFF; }
+
+#faq .faq-v2-list { min-width: 0; border-top: 1px solid #E2D9CB; }
+#faq .faq-v2-item { border-bottom: 1px solid #E2D9CB; }
+#faq .faq-v2-item summary {
+    list-style: none;
+    display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+    padding: 1.5rem 0.25rem;
+    cursor: pointer;
+}
+#faq .faq-v2-item summary::-webkit-details-marker { display: none; }
+#faq .faq-v2-item summary::after { content: none; }
+#faq .faq-v2-item summary h3 {
+    font-family: var(--font-display); font-size: 1.18rem; font-weight: 600; line-height: 1.35;
+    color: #2D4356; margin: 0;
+}
+#faq .faq-v2-item summary:hover h3 { color: #1A2632; }
+#faq .faq-v2-item summary:focus-visible { outline: 3px solid #C4A777; outline-offset: 2px; border-radius: 6px; }
+
+#faq .faq-v2-icon {
+    position: relative; flex: 0 0 34px; width: 34px; height: 34px; border-radius: 50%;
+    border: 1px solid #D9C9A8; background: #FFFFFF;
+    transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+#faq .faq-v2-icon::before,
+#faq .faq-v2-icon::after {
+    content: ""; position: absolute; left: 50%; top: 50%;
+    width: 12px; height: 1.6px; background: #A08D61; border-radius: 2px;
+    transform: translate(-50%, -50%);
+}
+#faq .faq-v2-icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+#faq .faq-v2-item[open] .faq-v2-icon { transform: rotate(45deg); background: #2D4356; border-color: #2D4356; }
+#faq .faq-v2-item[open] .faq-v2-icon::before,
+#faq .faq-v2-item[open] .faq-v2-icon::after { background: #FFFFFF; }
+
+#faq .faq-v2-answer { padding: 0 3.5rem 1.6rem 0.25rem; }
+#faq .faq-v2-answer p { margin: 0 0 0.8rem; font-size: 1rem; line-height: 1.75; color: #4A4A4A; max-width: 66ch; }
+#faq .faq-v2-answer p:last-child { margin-bottom: 0; }
+#faq .faq-v2-empty { padding: 1.5rem 0; color: #8A8378; }
+
+@media (max-width: 960px) {
+    #faq .faq-v2-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    #faq .faq-v2-intro { position: static; }
+}
+@media (max-width: 640px) {
+    #faq.faq-v2 { padding: 4rem 0; }
+    #faq .faq-v2-item summary h3 { font-size: 1.05rem; }
+    #faq .faq-v2-answer { padding-right: 0.25rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+    #faq .faq-v2-icon { transition: none; }
+}
