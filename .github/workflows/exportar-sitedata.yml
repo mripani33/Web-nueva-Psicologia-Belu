@@ -1,0 +1,22 @@
+# Uso puntual: exporta el contenido de la web guardado en Firebase al repo.
+name: Exportar contenido de Firebase
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/exportar-sitedata.yml', 'scripts/exportar-sitedata.mjs']
+permissions:
+  contents: write
+jobs:
+  exportar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: node scripts/exportar-sitedata.mjs
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/sitedata-export.json
+          git diff --cached --quiet || (git commit -m "Exportar contenido de Firebase" && git push)
