@@ -442,9 +442,12 @@ async function main() {
   // Quita comillas sobrantes que envuelven el texto (pasa al pegar desde otro sitio)
   const sinComillas = (t) => (typeof t === 'string' ? t.trim().replace(/^["“”«»]+\s*/, '').replace(/\s*["“”«»]+$/, '').trim() : t);
 
+  // La página ya tiene su H1 (el título): cualquier H1 dentro del contenido pasa a H2
+  const sinH1 = (t) => (typeof t === 'string' ? t.replace(/<h1(\s[^>]*)?>/gi, '<h2$1>').replace(/<\/h1>/gi, '</h2>') : t);
+
   const publicados = all
     .filter((p) => p.published !== false && p.title && p.content)
-    .map((p) => ({ ...p, title: sinComillas(p.title), excerpt: sinComillas(p.excerpt), content: sinComillas(p.content), slug: slugs[p.id] }))
+    .map((p) => ({ ...p, title: sinComillas(p.title), excerpt: sinComillas(p.excerpt), content: sinH1(sinComillas(p.content)), slug: slugs[p.id] }))
     .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')) || a.title.localeCompare(b.title, 'es'));
   console.log(`Publicados: ${publicados.length} · Borradores u ocultos: ${all.length - publicados.length}`);
 
