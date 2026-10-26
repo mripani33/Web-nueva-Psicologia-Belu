@@ -425,8 +425,23 @@ document.addEventListener('DOMContentLoaded', function() {
     var navLinks = document.querySelector('.nav-links');
 
     if (menuToggle && navLinks) {
+        menuToggle.setAttribute('aria-expanded', 'false');
         menuToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
+            var abierto = navLinks.classList.toggle('active');
+            menuToggle.setAttribute('aria-expanded', abierto ? 'true' : 'false');
+        });
+        // Al elegir una opción, cerrar el menú para que se vea la sección
+        navLinks.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                navLinks.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
         });
     }
 });

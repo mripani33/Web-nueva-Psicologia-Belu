@@ -3552,3 +3552,6 @@ body {
 
 /* Al saltar a una sección (#contacto, #faq…), que el menú fijo no tape el título */
 section[id] { scroll-margin-top: 100px; }
+
+/* Formación: dejar aire bajo el menú fijo al llegar desde el enlace */
+#formacion { scroll-margin-top: 120px; }
