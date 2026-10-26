@@ -3298,3 +3298,80 @@ body {
 @media (prefers-reduced-motion: reduce) {
     #modalidades .modalidad-v2, #modalidades .modalidad-v2:hover { transition: none; transform: none; }
 }
+
+/* ==========================================
+   VOCES DEL TOURETTE (oct 2026) — identidad de la marca
+   ========================================== */
+#voces-tourette.tourette-v2 { background: #FFFFFF; padding: 6rem 0; }
+#voces-tourette .tourette-v2-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: 4.5rem;
+    align-items: center;
+}
+#voces-tourette .tourette-v2-text { min-width: 0; }
+#voces-tourette .section-tag {
+    display: block; background: none; border: 0; padding: 0;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 2.5px; color: #A08D61; margin-bottom: 0.9rem;
+}
+#voces-tourette h2 {
+    font-family: var(--font-display); font-size: clamp(1.9rem, 3vw, 2.5rem);
+    line-height: 1.2; color: #2D4356; margin: 0 0 1.5rem; text-wrap: balance;
+}
+#voces-tourette .tourette-v2-text p { font-size: 1.05rem; line-height: 1.8; color: #4A4A4A; margin: 0 0 1.1rem; max-width: 60ch; }
+#voces-tourette .tourette-v2-text strong { color: #2D4356; }
+
+#voces-tourette .tourette-v2-stats { display: flex; gap: 2.5rem; margin: 2rem 0 2.25rem; padding: 0; }
+#voces-tourette .tourette-v2-stats > div { padding-left: 1.25rem; border-left: 2px solid #C4A777; }
+#voces-tourette .tourette-v2-stats dt {
+    font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; line-height: 1; color: #2D4356;
+}
+#voces-tourette .tourette-v2-stats dd { margin: 0.4rem 0 0; font-size: 0.9rem; color: #5E6670; }
+
+#voces-tourette .tourette-v2-ctas { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+#voces-tourette .tourette-v2-btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1.6rem; border-radius: 999px;
+    border: 1.5px solid #2D4356; color: #2D4356; background: transparent;
+    font-weight: 700; font-size: 0.95rem; text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+#voces-tourette .tourette-v2-btn:hover { background: #2D4356; color: #FFFFFF; }
+#voces-tourette .tourette-v2-btn.is-primary { background: #2D4356; color: #FFFFFF; }
+#voces-tourette .tourette-v2-btn.is-primary:hover { background: #1A2632; border-color: #1A2632; }
+#voces-tourette .tourette-v2-btn:focus-visible,
+#voces-tourette .tourette-v2-panel:focus-visible { outline: 3px solid #C4A777; outline-offset: 3px; }
+
+#voces-tourette .tourette-v2-panel {
+    position: relative; overflow: hidden;
+    display: flex; flex-direction: column; justify-content: flex-end; gap: 0.6rem;
+    min-height: 380px; padding: 2.5rem;
+    border-radius: 20px; text-decoration: none;
+    background:
+        radial-gradient(circle at 80% 20%, rgba(196, 167, 119, 0.22), transparent 50%),
+        linear-gradient(160deg, #2D4356 0%, #1A2632 100%);
+    box-shadow: 0 20px 50px rgba(26, 38, 50, 0.2);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+#voces-tourette .tourette-v2-panel:hover { transform: translateY(-4px); box-shadow: 0 26px 60px rgba(26, 38, 50, 0.26); }
+#voces-tourette .tourette-v2-wave {
+    position: absolute; left: 0; right: 0; top: 5%; width: 100%; height: auto;
+    color: #C4A777; opacity: 0.85;
+}
+#voces-tourette .tourette-v2-name { font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: #FFFFFF; line-height: 1.15; }
+#voces-tourette .tourette-v2-claim { color: rgba(255, 255, 255, 0.8); font-size: 0.98rem; line-height: 1.6; max-width: 32ch; }
+#voces-tourette .tourette-v2-url { color: #D4B890; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.02em; margin-top: 0.4rem; }
+
+@media (max-width: 960px) {
+    #voces-tourette .tourette-v2-grid { grid-template-columns: 1fr; gap: 3rem; }
+    #voces-tourette .tourette-v2-panel { min-height: 300px; }
+}
+@media (max-width: 640px) {
+    #voces-tourette.tourette-v2 { padding: 4rem 0; }
+    #voces-tourette .tourette-v2-stats { gap: 1.5rem; }
+    #voces-tourette .tourette-v2-btn { flex: 1 1 100%; justify-content: center; }
+    #voces-tourette .tourette-v2-panel { padding: 2rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+    #voces-tourette .tourette-v2-panel, #voces-tourette .tourette-v2-panel:hover { transition: none; transform: none; }
+}
