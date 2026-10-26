@@ -3453,3 +3453,102 @@ body {
 @media (prefers-reduced-motion: reduce) {
     #faq .faq-v2-icon { transition: none; }
 }
+
+/* ==========================================
+   CONTACTO Y RESERVA (oct 2026) — identidad de la marca
+   ========================================== */
+#contacto.contacto-v2 { background: #FFFFFF; padding: 6rem 0; }
+#contacto .contacto-v2-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    gap: 4.5rem;
+    align-items: start;
+}
+#contacto .contacto-v2-info { min-width: 0; }
+#contacto .section-tag {
+    display: block; background: none; border: 0; padding: 0;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 2.5px; color: #A08D61; margin-bottom: 0.9rem;
+}
+#contacto h2 {
+    font-family: var(--font-display); font-size: clamp(1.9rem, 3vw, 2.5rem);
+    line-height: 1.2; color: #2D4356; margin: 0 0 1.25rem; text-wrap: balance;
+}
+#contacto .contacto-v2-lead { font-size: 1.05rem; line-height: 1.75; color: #4A4A4A; margin: 0 0 2rem; max-width: 56ch; }
+
+#contacto .contacto-v2-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid #ECE4D8; }
+#contacto .contacto-v2-list li {
+    display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 1rem; align-items: start;
+    padding: 1.15rem 0; border-bottom: 1px solid #ECE4D8;
+}
+#contacto .contacto-v2-icon {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: #F5EFE4; color: #A08D61;
+    display: flex; align-items: center; justify-content: center;
+}
+#contacto .contacto-v2-list div { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+#contacto .contacto-v2-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #A08D61; }
+#contacto .contacto-v2-list div > a,
+#contacto .contacto-v2-list div > span:nth-child(2) { font-size: 1.05rem; color: #2D4356; font-weight: 700; text-decoration: none; overflow-wrap: anywhere; }
+#contacto .contacto-v2-list div > a:hover { text-decoration: underline; }
+#contacto .contacto-v2-note { font-size: 0.9rem; color: #6B7280; }
+
+#contacto .contacto-v2-social { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
+#contacto .contacto-v2-social a {
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    padding: 0.6rem 1.1rem; border-radius: 999px;
+    border: 1px solid #D9C9A8; color: #2D4356; font-size: 0.9rem; font-weight: 700; text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+#contacto .contacto-v2-social a svg { color: #A08D61; }
+#contacto .contacto-v2-social a:hover { background: #F5EFE4; border-color: #C4A777; }
+
+#contacto .contacto-v2-booking {
+    position: relative; overflow: hidden;
+    border-radius: 20px; padding: 2.5rem 2.25rem;
+    background:
+        radial-gradient(circle at 85% 10%, rgba(196, 167, 119, 0.2), transparent 50%),
+        linear-gradient(160deg, #2D4356 0%, #1A2632 100%);
+    color: #FFFFFF;
+    box-shadow: 0 20px 50px rgba(26, 38, 50, 0.2);
+}
+#contacto .contacto-v2-booking-icon {
+    width: 52px; height: 52px; border-radius: 50%;
+    border: 1px solid rgba(196, 167, 119, 0.45); background: rgba(196, 167, 119, 0.12); color: #D4B890;
+    display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;
+}
+#contacto .contacto-v2-booking h3 { font-family: var(--font-display); font-size: 1.6rem; color: #FFFFFF; margin: 0 0 1.5rem; }
+#contacto .contacto-v2-steps { counter-reset: paso; list-style: none; margin: 0 0 2rem; padding: 0; display: grid; gap: 1rem; }
+#contacto .contacto-v2-steps li {
+    counter-increment: paso;
+    display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 0.85rem;
+    font-size: 0.98rem; line-height: 1.55; color: rgba(255, 255, 255, 0.82);
+}
+#contacto .contacto-v2-steps li::before {
+    content: counter(paso);
+    width: 30px; height: 30px; border-radius: 50%;
+    background: #C4A777; color: #1A2632; font-weight: 700; font-size: 0.85rem;
+    display: flex; align-items: center; justify-content: center;
+}
+#contacto .contacto-v2-steps strong { color: #FFFFFF; }
+#contacto .contacto-v2-cta {
+    display: block; text-align: center;
+    padding: 1rem 1.5rem; border-radius: 999px;
+    background: #C4A777; color: #1A2632; font-weight: 700; font-size: 1rem; text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+#contacto .contacto-v2-cta:hover { background: #D4B890; transform: translateY(-1px); }
+#contacto .contacto-v2-cta:focus-visible,
+#contacto a:focus-visible { outline: 3px solid #C4A777; outline-offset: 3px; }
+#contacto .contacto-v2-alt { margin: 1.1rem 0 0; text-align: center; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7); }
+#contacto .contacto-v2-alt a { color: #D4B890; font-weight: 700; }
+
+@media (max-width: 960px) {
+    #contacto .contacto-v2-grid { grid-template-columns: 1fr; gap: 3rem; }
+}
+@media (max-width: 640px) {
+    #contacto.contacto-v2 { padding: 4rem 0; }
+    #contacto .contacto-v2-booking { padding: 2rem 1.5rem; }
+}
+
+/* Al saltar a una sección (#contacto, #faq…), que el menú fijo no tape el título */
+section[id] { scroll-margin-top: 100px; }
