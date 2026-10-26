@@ -9,9 +9,17 @@ const dec = (v) => v == null ? null
   : 'arrayValue' in v ? (v.arrayValue.values || []).map(dec)
   : 'mapValue' in v ? Object.fromEntries(Object.entries(v.mapValue.fields || {}).map(([k, x]) => [k, dec(x)]))
   : 'timestampValue' in v ? v.timestampValue : null;
-const res = await fetch(url, { headers: { Referer: 'https://mariabelenprieto.com/' } });
-if (!res.ok) { console.error(res.status, await res.text()); process.exit(1); }
-const doc = await res.json();
+let doc;
+try {
+  const res = await fetch(url, { headers: { Referer: 'https://mariabelenprieto.com/' } });
+  const body = await res.text();
+  if (!res.ok) throw new Error(`HTTP ${res.status}: ${body.slice(0, 800)}`);
+  doc = JSON.parse(body);
+} catch (e) {
+  fs.writeFileSync('data/export-error.txt', String(e.stack || e) + '\n');
+  console.error(e);
+  process.exit(0);
+}
 const data = Object.fromEntries(Object.entries(doc.fields || {}).map(([k, v]) => [k, dec(v)]));
 // Solo contenido público de la web; nada de datos personales de pacientes vive aquí.
 fs.writeFileSync('data/sitedata-export.json', JSON.stringify(data, null, 2) + '\n');
