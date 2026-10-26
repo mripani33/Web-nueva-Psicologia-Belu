@@ -105,6 +105,10 @@
                 </div>
                 
                 <button type="submit" class="btn btn-primary" style="width: 100%;">Iniciar Sesión</button>
+                <p style="text-align:center; margin:1rem 0 0;">
+                    <a href="#" onclick="return resetPassword()" style="color:#667eea; font-size:0.9rem;">¿Olvidaste tu contraseña?</a>
+                </p>
+                <p id="reset-msg" style="display:none; text-align:center; margin:0.75rem 0 0; font-size:0.85rem;"></p>
             </form>
         </div>
     </div>
@@ -692,6 +696,28 @@
             return false;
         }
         
+        function resetPassword() {
+            const email = document.getElementById('login-email').value.trim();
+            const msg = document.getElementById('reset-msg');
+            msg.style.display = 'block';
+            if (!email) {
+                msg.style.color = '#c62828';
+                msg.textContent = 'Escribe tu email arriba y vuelve a hacer clic.';
+                return false;
+            }
+            auth.languageCode = 'es';
+            auth.sendPasswordResetEmail(email).then(() => {
+                msg.style.color = '#2e7d32';
+                msg.textContent = 'Si ese email tiene acceso, te llegará un correo para crear una contraseña nueva. Revisa también la carpeta de spam.';
+            }).catch(error => {
+                msg.style.color = '#c62828';
+                msg.textContent = error.code === 'auth/invalid-email'
+                    ? 'El email no tiene un formato válido.'
+                    : 'No se pudo enviar el correo. Inténtalo de nuevo en unos minutos.';
+            });
+            return false;
+        }
+
         function logout() {
             if (confirm('¿Cerrar sesión?')) {
                 auth.signOut();
