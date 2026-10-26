@@ -218,6 +218,10 @@ function toggleFAQ(index) {
 // TESTIMONIOS
 // ==========================================
 function loadTestimonios() {
+    // Sección desactivada a mano: no se muestra aunque haya datos en Firebase
+    const seccionTestimonios = document.getElementById('testimonios');
+    if (seccionTestimonios && seccionTestimonios.dataset.disabled === 'true') return;
+
     const testimonios = siteData.testimonios;
     if (!testimonios || testimonios.length === 0) return;
 
