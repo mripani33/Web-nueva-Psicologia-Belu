@@ -406,20 +406,21 @@ function homeBlock(posts) {
   const resto = posts.filter((p) => !p.featured);
   const elegidos = [...destacados, ...resto].slice(0, 3);
   if (!elegidos.length) {
-    return '<p style="text-align:center;color:#999;grid-column:1/-1;">Próximamente artículos.</p>';
+    return '<p class="blog-v2-empty">Próximamente nuevos artículos.</p>';
   }
   return elegidos.map((p) => {
     const fecha = fechaLarga(p.date);
-    const img = p.image ? ` style="background-image:url('${esc(p.image)}')"` : '';
-    return `<a class="blog-article" href="/blog/${p.slug}.html" style="display:block;text-decoration:none;color:inherit;">
-                <div class="blog-article-image"${img} role="img" aria-label="${esc(p.title)}">
-                    ${p.category ? `<span class="blog-category">${esc(p.category)}</span>` : ''}
+    const iso = isoDate(p.date);
+    return `<a class="blog-v2-card" href="/blog/${p.slug}.html">
+                <div class="blog-v2-media">
+                    ${p.image ? `<img src="${esc(p.image)}" alt="" loading="lazy" width="800" height="500">` : ''}
+                    ${p.category ? `<span class="blog-v2-cat">${esc(p.category)}</span>` : ''}
                 </div>
-                <div class="blog-article-content">
-                    ${fecha ? `<div class="blog-article-meta"><span class="blog-article-date">📅 ${fecha}</span></div>` : ''}
-                    <h3 class="blog-article-title">${esc(p.title)}</h3>
-                    <p class="blog-article-excerpt">${esc(p.excerpt || '')}</p>
-                    <span class="blog-article-read-more">Leer más →</span>
+                <div class="blog-v2-body">
+                    ${fecha ? `<time class="blog-v2-date" datetime="${iso}">${fecha}</time>` : ''}
+                    <h3>${esc(p.title)}</h3>
+                    <p>${esc(p.excerpt || '')}</p>
+                    <span class="blog-v2-more">Leer artículo <span aria-hidden="true">→</span></span>
                 </div>
             </a>`;
   }).join('\n            ');
