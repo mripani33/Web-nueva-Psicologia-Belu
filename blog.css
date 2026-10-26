@@ -303,3 +303,21 @@ a.blog-card { display: block; text-decoration: none; color: inherit; }
 .post-cta h2 { font-size: 1.8rem; margin-bottom: 1rem; }
 .post-meta { flex-wrap: wrap; gap: 0.75rem 1.5rem; }
 .site-footer a { display: inline-block; white-space: nowrap; margin: 0.2rem 0.6rem; }
+
+/* ===== Portada del artículo: encuadrada, sin estirarse a todo el ancho ===== */
+.post-hero-img {
+    display: block;
+    width: calc(100% - 4rem);
+    max-width: 1040px;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    max-height: 520px;
+    margin: 2.5rem auto 0;
+    object-fit: cover;
+    object-position: center 40%;
+    border-radius: 18px;
+    background-color: var(--light-bg);
+}
+@media (max-width: 768px) {
+    .post-hero-img { width: calc(100% - 2.5rem); height: auto; margin-top: 1.5rem; border-radius: 14px; aspect-ratio: 4 / 3; }
+}

@@ -73,6 +73,21 @@ function fechaLarga(value) {
   return `${d} de ${MESES[mo - 1]} de ${y}`;
 }
 
+// Pexels sirve la foto al tamaño pedido: para la portada del artículo pedimos 1600px
+function imagenGrande(url) {
+  if (!url) return url;
+  try {
+    const u = new URL(url);
+    if (u.hostname.endsWith('pexels.com')) {
+      u.searchParams.set('auto', 'compress');
+      u.searchParams.set('cs', 'tinysrgb');
+      u.searchParams.set('w', '1600');
+      return u.toString();
+    }
+  } catch (e) { /* URL rara: se usa tal cual */ }
+  return url;
+}
+
 // JSON seguro dentro de <script>
 const jsonForScript = (obj) => JSON.stringify(obj, null, 2).replace(/</g, '\\u003c');
 
@@ -191,7 +206,7 @@ function postPage(post, related) {
   const url = `${SITE}/blog/${post.slug}.html`;
   const title = `${post.title} | María Belén Prieto, Psicóloga`;
   const desc = truncate(post.excerpt ? String(post.excerpt).trim() : stripHtml(post.content), 158);
-  const image = post.image || `${SITE}/og-image.jpg`;
+  const image = imagenGrande(post.image) || `${SITE}/og-image.jpg`;
   const published = isoDate(post.date) || isoDate(post.createdAt);
   const modified = isoDate(post.updatedAt) || published;
 
@@ -266,7 +281,7 @@ ${jsonForScript(ld)}
 
     <main>
         <article>
-            ${post.image ? `<img class="post-hero-img" src="${esc(post.image)}" alt="${esc(post.title)}" width="1600" height="480" fetchpriority="high">` : ''}
+            ${post.image ? `<img class="post-hero-img" src="${esc(imagenGrande(post.image))}" alt="${esc(post.title)}" width="1600" height="900" fetchpriority="high">` : ''}
             <div class="post-container">
                 <nav class="post-breadcrumb" aria-label="Ruta de navegación">
                     <a href="/">Inicio</a> › <a href="/blog.html">Blog</a>${post.category ? ` › ${esc(post.category)}` : ''}

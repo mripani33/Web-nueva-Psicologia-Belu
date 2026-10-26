@@ -3638,3 +3638,11 @@ section[id] { scroll-margin-top: 100px; }
 @media (prefers-reduced-motion: reduce) {
     #blog .blog-v2-card, #blog .blog-v2-card:hover { transition: none; transform: none; }
 }
+
+/* Blog en portada: la foto nunca agranda la tarjeta (se recorta siempre igual) y tarjetas más compactas */
+#blog .blog-v2-grid { max-width: 1080px; margin-left: auto; margin-right: auto; }
+#blog .blog-v2-media { aspect-ratio: 16 / 9; overflow: hidden; flex: 0 0 auto; min-height: 0; }
+#blog .blog-v2-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+#blog .blog-v2-body { padding: 1.25rem 1.4rem 1.4rem; gap: 0.5rem; }
+#blog .blog-v2-body h3 { font-size: 1.12rem; }
+#blog .blog-v2-body p { font-size: 0.92rem; -webkit-line-clamp: 2; }
