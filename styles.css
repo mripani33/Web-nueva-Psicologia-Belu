@@ -3364,7 +3364,7 @@ body {
 
 @media (max-width: 960px) {
     #voces-tourette .tourette-v2-grid { grid-template-columns: 1fr; gap: 3rem; }
-    #voces-tourette .tourette-v2-panel { min-height: 300px; }
+    #voces-tourette .tourette-v2-panel { min-height: 360px; }
 }
 @media (max-width: 640px) {
     #voces-tourette.tourette-v2 { padding: 4rem 0; }
