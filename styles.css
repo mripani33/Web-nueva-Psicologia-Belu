@@ -3140,3 +3140,64 @@ body {
     #sobre-mi.about-v2 { padding: 4rem 0; }
     #sobre-mi .about-v2-photo::before { inset: 12px -12px -12px 12px; }
 }
+
+/* ==========================================
+   MI ENFOQUE (oct 2026) — mismo azul marino que la portada
+   ========================================== */
+#enfoque.approach-section {
+    background:
+        radial-gradient(circle at 12% 85%, rgba(196, 167, 119, 0.14), transparent 45%),
+        linear-gradient(135deg, #2D4356 0%, #1A2632 100%);
+    padding: 6rem 0;
+}
+#enfoque .approach-grid { align-items: center; gap: 4.5rem; }
+#enfoque .section-tag {
+    background: none; border: 0; padding: 0;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 2.5px;
+    color: #D4B890; margin-bottom: 0.9rem;
+}
+#enfoque .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 3vw, 2.5rem);
+    line-height: 1.2; margin-bottom: 1.5rem; text-wrap: balance;
+}
+#enfoque .approach-text p { font-size: 1.05rem; line-height: 1.8; max-width: 58ch; }
+
+#enfoque .approach-pillars { display: grid; gap: 1.4rem; margin-top: 2.5rem; }
+#enfoque .pillar-item {
+    display: grid;
+    grid-template-columns: 46px minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+}
+#enfoque .pillar-icon {
+    width: 46px; height: 46px; border-radius: 50%;
+    border: 1px solid rgba(196, 167, 119, 0.45);
+    background: rgba(196, 167, 119, 0.1);
+    color: #D4B890;
+    display: flex; align-items: center; justify-content: center;
+}
+#enfoque .pillar-item h3 {
+    font-family: var(--font-display);
+    font-size: 1.15rem; color: #FFFFFF; margin: 0.15rem 0 0.25rem;
+}
+#enfoque .pillar-item p { margin: 0; font-size: 0.95rem; line-height: 1.6; color: rgba(255, 255, 255, 0.75); }
+
+#enfoque .approach-quote-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(196, 167, 119, 0.3);
+    border-radius: 18px;
+    padding: 2.75rem 2.5rem;
+}
+#enfoque .quote-icon { color: #C4A777; width: 40px; height: 40px; }
+#enfoque .quote-text { color: #FFFFFF; }
+#enfoque .quote-author { color: #D4B890; }
+
+@media (max-width: 960px) {
+    #enfoque .approach-grid { grid-template-columns: 1fr; gap: 3rem; }
+}
+@media (max-width: 640px) {
+    #enfoque.approach-section { padding: 4rem 0; }
+    #enfoque .approach-quote-box { padding: 2rem 1.5rem; }
+}
+#enfoque .container-wide { max-width: 1200px; margin: 0 auto; padding-left: 20px; padding-right: 20px; }
