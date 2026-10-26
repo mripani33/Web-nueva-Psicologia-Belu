@@ -82,6 +82,8 @@ function imagenGrande(url) {
       u.searchParams.set('auto', 'compress');
       u.searchParams.set('cs', 'tinysrgb');
       u.searchParams.set('w', '1600');
+      u.searchParams.set('h', '900');
+      u.searchParams.set('fit', 'crop');
       return u.toString();
     }
   } catch (e) { /* URL rara: se usa tal cual */ }
@@ -271,7 +273,7 @@ function postPage(post, related) {
     <meta name="twitter:description" content="${esc(desc)}">
     <meta name="twitter:image" content="${esc(image)}">
     ${FONTS}
-    <link rel="stylesheet" href="/blog.css">
+    <link rel="stylesheet" href="/blog.css?v=20261026b">
     <script type="application/ld+json">
 ${jsonForScript(ld)}
     </script>
@@ -355,7 +357,7 @@ function blogListPage(posts) {
     <meta name="twitter:description" content="${esc(desc)}">
     <meta name="twitter:image" content="${SITE}/og-image.jpg">
     ${FONTS}
-    <link rel="stylesheet" href="/blog.css">
+    <link rel="stylesheet" href="/blog.css?v=20261026b">
     <script type="application/ld+json">
 ${jsonForScript(ld)}
     </script>
