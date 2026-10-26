@@ -348,6 +348,8 @@ function loadRecursosFeatured() {
     console.log('📥 Loading recursos...');
 
     var container = document.getElementById('recursos-featured');
+    // Sección oculta hasta tener recursos reales: no cargar nada
+    if (container && container.closest('[hidden]')) return;
     if (!container) {
         console.log('⚠️ Recursos container not found');
         return;

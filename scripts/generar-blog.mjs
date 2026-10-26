@@ -27,7 +27,7 @@ const SLUGS_FILE = path.join(BLOG_DIR, '_slugs.json');
 const STATIC_PAGES = [
   { loc: '/', lastmod: '2026-10-24' },
   { loc: '/blog.html', lastmod: null }, // se usa la fecha del último artículo
-  { loc: '/recursos.html', lastmod: '2026-10-24' },
+  // recursos.html: fuera del sitemap hasta publicar el primer recurso
   { loc: '/aviso-legal.html', lastmod: '2026-10-24' },
   { loc: '/politica-privacidad.html', lastmod: '2026-10-24' },
   { loc: '/politica-cookies.html', lastmod: '2026-10-24' },
