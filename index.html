@@ -259,9 +259,56 @@
             Estas son las áreas en las que te puedo acompañar durante tu proceso terapéutico.
         </p>
         
-        <div id="areas-grid" class="areas-grid">
-            <!-- Las áreas se cargan desde Firebase -->
-            <div class="loading">Cargando especialidades...</div>
+        <!-- Áreas como contenido fijo (antes se cargaban desde Firebase). Se editan aquí. -->
+        <div id="areas-grid" class="areas-list" data-static="true">
+            <article class="area-item">
+                <div class="area-item-head">
+                    <div class="area-item-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+                    <h3 class="area-item-title">Síndrome de Tourette y tics</h3>
+                </div>
+                <p class="area-item-lead">Intervención conductual con CBIT</p>
+                <div class="area-item-text"><p>Como terapeuta certificada en CBIT (Intervención Conductual Integral para Tics), te ayudo a reconocer los tics, entender qué los intensifica y aprender estrategias para manejarlos. También acompaño a las familias para que sepan cómo apoyar en casa y en el colegio.</p></div>
+            </article>
+            <article class="area-item">
+                <div class="area-item-head">
+                    <div class="area-item-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.59 13.51 6.83 3.98"/><path d="m15.41 6.51-6.82 3.98"/></svg></div>
+                    <h3 class="area-item-title">Trastornos del Neurodesarrollo</h3>
+                </div>
+                <p class="area-item-lead">Acompañamiento a la persona y a su familia</p>
+                <div class="area-item-text"><p>Acompañamiento psicológico a personas con condiciones del neurodesarrollo y a sus familias: comprender el perfil de cada persona, fortalecer sus recursos y mejorar el día a día en casa, en el colegio o en el trabajo.</p></div>
+            </article>
+            <article class="area-item">
+                <div class="area-item-head">
+                    <div class="area-item-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></svg></div>
+                    <h3 class="area-item-title">Ansiedad y Estrés</h3>
+                </div>
+                <p class="area-item-lead">Manejo de ansiedad, ataques de pánico y estrés crónico</p>
+                <div class="area-item-text"><p>Trabajo con técnicas cognitivo-conductuales y mindfulness para ayudarte a identificar y gestionar los síntomas de ansiedad.</p><ul><li>Ataques de pánico</li><li>Ansiedad generalizada</li><li>Fobias específicas</li><li>Estrés laboral y burnout</li></ul></div>
+            </article>
+            <article class="area-item">
+                <div class="area-item-head">
+                    <div class="area-item-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></div>
+                    <h3 class="area-item-title">Estado de Ánimo y Depresión</h3>
+                </div>
+                <p class="area-item-lead">Acompañamiento en procesos de depresión y estado de ánimo bajo</p>
+                <div class="area-item-text"><p>Apoyo terapéutico en procesos de depresión, tristeza persistente, desmotivación y sensación de vacío. Un espacio seguro para comprender lo que estás viviendo y empezar a recuperar tu energía emocional.</p></div>
+            </article>
+            <article class="area-item">
+                <div class="area-item-head">
+                    <div class="area-item-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg></div>
+                    <h3 class="area-item-title">Crisis Vitales</h3>
+                </div>
+                <p class="area-item-lead">Te acompaño en tu proceso de cambio</p>
+                <div class="area-item-text"><p>Apoyo psicológico en momentos de cambio, duelo, transiciones personales o decisiones importantes. La terapia puede ayudarte a atravesar estas etapas con mayor claridad y estabilidad emocional.</p></div>
+            </article>
+            <article class="area-item">
+                <div class="area-item-head">
+                    <div class="area-item-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+                    <h3 class="area-item-title">Relaciones y Vínculos</h3>
+                </div>
+                <p class="area-item-lead">Pareja, familia y patrones que se repiten</p>
+                <div class="area-item-text"><p>Acompañamiento en conflictos de pareja, dificultades en vínculos afectivos o patrones relacionales que se repiten. Un espacio para mejorar la comunicación, establecer límites saludables y construir relaciones más sanas.</p></div>
+            </article>
         </div>
     </div>
 </section>

@@ -135,6 +135,8 @@ function loadAreas() {
 
     const grid = document.getElementById('areas-grid');
     if (!grid) return;
+    // Las áreas son contenido fijo en index.html: no se sobrescriben desde Firebase
+    if (grid.dataset.static === 'true') return;
 
     const esc = function (t) {
         return String(t || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');

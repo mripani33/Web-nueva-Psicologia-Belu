@@ -3028,3 +3028,9 @@ body {
 @media (prefers-reduced-motion: reduce) {
     #areas .area-item, #areas .area-item:hover { transition: none; transform: none; }
 }
+
+#areas .area-item-icon { color: #A08D61; }
+#areas .area-item-icon svg { width: 24px; height: 24px; }
+#areas .area-item-text ul { margin: 0.5rem 0 0; padding-left: 1.1rem; display: grid; gap: 0.2rem; }
+#areas .area-item-text li { list-style: disc; }
+#areas .area-item-text li::marker { color: #C4A777; }
