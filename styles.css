@@ -3201,3 +3201,100 @@ body {
     #enfoque .approach-quote-box { padding: 2rem 1.5rem; }
 }
 #enfoque .container-wide { max-width: 1200px; margin: 0 auto; padding-left: 20px; padding-right: 20px; }
+
+/* ==========================================
+   MODALIDADES (oct 2026) — identidad de la marca
+   ========================================== */
+#modalidades.modalidades-v2 { background: #FAF8F5; padding: 6rem 0; text-align: center; }
+#modalidades .section-tag {
+    display: block; width: fit-content; margin: 0 auto 0.9rem;
+    background: none; border: 0; padding: 0;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 2.5px; color: #A08D61;
+}
+#modalidades .section-title {
+    font-family: var(--font-display); font-size: clamp(1.9rem, 3vw, 2.5rem);
+    color: #2D4356; text-align: center; margin-bottom: 1rem;
+}
+#modalidades .section-description { max-width: 620px; margin: 0 auto; color: #5E6670; line-height: 1.7; }
+
+#modalidades .modalidades-v2-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+    align-items: stretch;
+    text-align: left;
+}
+#modalidades .modalidad-v2 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    border: 1px solid #E8E1D6;
+    border-radius: 16px;
+    padding: 2rem 1.9rem 1.9rem;
+    min-width: 0;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+#modalidades .modalidad-v2:hover { border-color: #C4A777; box-shadow: 0 12px 32px rgba(45, 67, 86, 0.08); transform: translateY(-3px); }
+
+#modalidades .modalidad-v2-icon {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: #F5EFE4; color: #A08D61;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.25rem;
+}
+#modalidades .modalidad-v2 h3 {
+    font-family: var(--font-display); font-size: 1.4rem; line-height: 1.25;
+    color: #2D4356; margin: 0 0 0.75rem;
+}
+#modalidades .modalidad-v2 > p { margin: 0 0 1.5rem; font-size: 0.98rem; line-height: 1.7; color: #4A4A4A; }
+#modalidades .modalidad-v2 ul { list-style: none; margin: 0 0 1.75rem; padding: 0; display: grid; gap: 0.6rem; }
+#modalidades .modalidad-v2 li { display: flex; align-items: center; gap: 0.6rem; font-size: 0.95rem; color: #4A4A4A; }
+#modalidades .modalidad-v2 li svg { flex: 0 0 16px; color: #A08D61; }
+
+#modalidades .modalidad-v2-btn {
+    margin-top: auto;
+    display: block;
+    text-align: center;
+    padding: 0.85rem 1.25rem;
+    border-radius: 999px;
+    border: 1.5px solid #2D4356;
+    color: #2D4356;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+#modalidades .modalidad-v2-btn:hover { background: #2D4356; color: #FFFFFF; }
+#modalidades .modalidad-v2-btn:focus-visible { outline: 3px solid #C4A777; outline-offset: 3px; }
+
+/* Tarjeta destacada: online */
+#modalidades .modalidad-v2.is-featured {
+    background: linear-gradient(160deg, #2D4356 0%, #1A2632 100%);
+    border-color: #2D4356;
+    box-shadow: 0 18px 40px rgba(26, 38, 50, 0.22);
+}
+#modalidades .modalidad-v2.is-featured h3 { color: #FFFFFF; }
+#modalidades .modalidad-v2.is-featured > p,
+#modalidades .modalidad-v2.is-featured li { color: rgba(255, 255, 255, 0.82); }
+#modalidades .modalidad-v2.is-featured .modalidad-v2-icon { background: rgba(196, 167, 119, 0.15); color: #D4B890; }
+#modalidades .modalidad-v2.is-featured li svg { color: #D4B890; }
+#modalidades .modalidad-v2.is-featured .modalidad-v2-btn { background: #C4A777; border-color: #C4A777; color: #1A2632; }
+#modalidades .modalidad-v2.is-featured .modalidad-v2-btn:hover { background: #D4B890; border-color: #D4B890; }
+#modalidades .modalidad-v2-badge {
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    color: #1A2632; background: #C4A777; padding: 0.35rem 0.8rem; border-radius: 999px;
+}
+
+@media (max-width: 960px) {
+    #modalidades .modalidades-v2-grid { grid-template-columns: 1fr; max-width: 520px; margin-left: auto; margin-right: auto; }
+    #modalidades .modalidad-v2.is-featured { order: -1; }
+}
+@media (max-width: 640px) {
+    #modalidades.modalidades-v2 { padding: 4rem 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+    #modalidades .modalidad-v2, #modalidades .modalidad-v2:hover { transition: none; transform: none; }
+}
