@@ -3702,3 +3702,8 @@ section[id] { scroll-margin-top: 100px; }
     #inicio .hero-photo { justify-self: center; max-width: 260px; }
     #inicio .hero-photo::before { inset: 14px -14px -14px 14px; }
 }
+
+/* Sobre mí sin foto (27 oct 2026): la foto de Belén está en la portada */
+#sobre-mi .about-v2-grid.sin-foto { grid-template-columns: 1fr; max-width: 760px; margin: 0 auto; }
+#sobre-mi .about-v2-grid.sin-foto .about-v2-text { text-align: left; }
+#sobre-mi .about-v2-grid.sin-foto .about-v2-text p { max-width: none; }
